@@ -1,9 +1,4 @@
-<<<<<<< Updated upstream
-import {NgModule} from '@angular/core';
-=======
-import { ProfileComponent } from './profile/profile.component';
 import { NgModule } from '@angular/core';
->>>>>>> Stashed changes
 import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 
@@ -19,4 +14,4 @@ const routes: Routes = [
 export class AppRoutingModule {
 }
 
-export const routingComponents = [HomeComponent]
+export const routingComponents = [HomeComponent];

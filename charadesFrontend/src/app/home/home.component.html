@@ -13,21 +13,26 @@
         <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
       </div>
       <div class="modal-body">
-        <form id="SignInForm" class="">
-          <div class="form-group row"><label for="inputmail" class="col-2 col-form-label">Login</label>
+        <form id="SignInForm" class="" (ngSubmit)="SignIn_onSubmit()" novalidate #signInForm="ngForm">
+          <div class="form-group row"><label for="Signin_inputemail" class="col-2 col-form-label">E-mail</label>
             <div class="col-10">
-              <input type="email" class="form-control" id="inputmail" placeholder="Your nickname"></div>
+              <input type="text" class="form-control" id="Signin_inputemail" placeholder="Your email"
+                     #login="ngModel" required [class.is-invalid]="login.touched && login.invalid" name="login"
+                     [(ngModel)]="signInUserModel.email"></div>
           </div>
-          <div class="form-group row"><label for="inputpasswordh" class="col-2 col-form-label">Password</label>
+          <div class="form-group row"><label for="Signin_inputpassword" class="col-2 col-form-label">Password</label>
             <div class="col-10">
-              <input type="password" class="form-control" id="inputpassword" placeholder="Password"></div>
+              <input type="password" class="form-control" id="Signin_inputpassword" placeholder="Password"
+                     #password="ngModel" required [class.is-invalid]="password.touched && password.invalid"
+                     name="password" [(ngModel)]="signInUserModel.password"></div>
           </div>
           <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
       </div>
-      <div class="justify-content-center">
+      <div>
         <p>or</p>
         <app-facebook></app-facebook>
+        <app-google></app-google>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -35,8 +40,8 @@
     </div>
   </div>
 </div>
-
 <!-- Sign Up Modal -->
+
 
 <div class="modal m-5 fade" id="signUpModal" style="">
   <div class="modal-dialog" role="document">
@@ -46,20 +51,20 @@
         <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
       </div>
       <div class="modal-body">
-        <form id="c_form-h" class="">
-          <div class="form-group row"><label for="inputmailh" class="col-2 col-form-label">Login</label>
+        <form id="SignUpForm" class="" (ngSubmit)="SignUp_onSubmit()" novalidate #signUpForm="ngForm">
+
+          <div class="form-group row"><label for="Signup_inputmail" class="col-2 col-form-label">E-mail</label>
             <div class="col-10">
-              <input type="email" class="form-control" id="inputmailh" placeholder="mail@example.com"></div>
+              <input type="email" class="form-control" id="Signup_inputmail" placeholder="mail@example.com"
+                     #email="ngModel" required [class.is-invalid]="email.touched && email.invalid"
+                     name="email" [(ngModel)]="signUpUserModel.email"></div>
           </div>
-<<<<<<< Updated upstream
-          <div class="form-group row"><label for="inputpasswordh" class="col-2 col-form-label">Password</label>
+          <div class="form-group row"><label for="Signup_inputpassword" class="col-2 col-form-label">Password</label>
             <div class="col-10">
-              <input type="password" class="form-control" id="inputpasswordh" placeholder="Password"></div>
+              <input type="password" class="form-control" id="Signup_inputpassword" placeholder="Password"
+                     #password="ngModel" required [class.is-invalid]="password.touched && password.invalid"
+                     name="password" [(ngModel)]="signUpUserModel.password"></div>
           </div>
-          <button type="submit" class="btn btn-primary">Sign up</button>
-        </form>
-        <p class="text-center">or</p>
-=======
           <div class="form-group row"><label for="Signup_inputpassword_confirmation" class="col-2 col-form-label">Confirm
             Password</label>
             <div class="col-10">
@@ -72,7 +77,6 @@
           </div>
           <button type="submit" class="btn btn-primary">Sign up</button>
         </form>
->>>>>>> Stashed changes
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -127,7 +131,8 @@
     </div>
     <div class="row">
       <div class="col-md-12"><a
-        class="btn d-flex justify-content-center w-25 btn-lg my-2 mx-auto btn-success border border-secondary" data-toggle="modal" data-target="#signUpModal">Sign
+        class="btn d-flex justify-content-center w-25 btn-lg my-2 mx-auto btn-success border border-secondary"
+        data-toggle="modal" data-target="#signUpModal">Sign
         Up<br></a></div>
     </div>
   </div>
