@@ -1,20 +1,28 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule, routingComponents} from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import {AppComponent} from './app.component';
+import {EnrollmentService} from './_services/enrollment.service';
+import {FacebookComponent} from './facebook/facebook.component';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { GoogleComponent } from './google/google.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-  routingComponents
+    routingComponents,
+    FacebookComponent,
+    GoogleComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [EnrollmentService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
