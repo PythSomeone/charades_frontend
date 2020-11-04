@@ -1,4 +1,9 @@
+<<<<<<< Updated upstream
 import {NgModule} from '@angular/core';
+=======
+import { ProfileComponent } from './profile/profile.component';
+import { NgModule } from '@angular/core';
+>>>>>>> Stashed changes
 import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 

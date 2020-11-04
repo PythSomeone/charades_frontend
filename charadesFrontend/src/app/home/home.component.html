@@ -25,8 +25,11 @@
           <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
       </div>
+      <div class="justify-content-center">
+        <p>or</p>
+        <app-facebook></app-facebook>
+      </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -48,6 +51,7 @@
             <div class="col-10">
               <input type="email" class="form-control" id="inputmailh" placeholder="mail@example.com"></div>
           </div>
+<<<<<<< Updated upstream
           <div class="form-group row"><label for="inputpasswordh" class="col-2 col-form-label">Password</label>
             <div class="col-10">
               <input type="password" class="form-control" id="inputpasswordh" placeholder="Password"></div>
@@ -55,9 +59,22 @@
           <button type="submit" class="btn btn-primary">Sign up</button>
         </form>
         <p class="text-center">or</p>
+=======
+          <div class="form-group row"><label for="Signup_inputpassword_confirmation" class="col-2 col-form-label">Confirm
+            Password</label>
+            <div class="col-10">
+              <input type="password" class="form-control" id="Signup_inputpassword_confirmation"
+                     placeholder="Confirm your password"
+                     #password_confirmation="ngModel" required
+                     [class.is-invalid]="password_confirmation.touched && password_confirmation.invalid"
+                     name="password_confirmation"
+                     [(ngModel)]="signUpUserModel.password_confirmation"></div>
+          </div>
+          <button type="submit" class="btn btn-primary">Sign up</button>
+        </form>
+>>>>>>> Stashed changes
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
