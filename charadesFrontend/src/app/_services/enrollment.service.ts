@@ -32,6 +32,8 @@ export class EnrollmentService{
     return this.http.post('http://localhost:3000/sign_in', user).subscribe(
       data => {
         console.log('Success', data);
+        localStorage.setItem('username', data.data.email.substring(0, data.data.email.lastIndexOf("@")));
+        this.router.navigate(['profile']);
       },
       error => console.log('Error:', error)
     );
