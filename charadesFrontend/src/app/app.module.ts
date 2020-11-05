@@ -7,6 +7,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { GoogleComponent } from './google/google.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { GoogleComponent } from './google/google.component';
     routingComponents,
     FacebookComponent,
     GoogleComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
