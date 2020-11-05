@@ -12,17 +12,17 @@
 
 * Damian Grzelak (Backend)
 
-* Kuba Malinowski (Frontend)
+* Jakub Malinowski (Frontend)
 
-* Kuba Jurycz (Dev-Ops, Frontend)
+* Jakub Jurycz (Dev-Ops, Frontend)
 
 * Michał Chojniacki (Tester)
 
 # Useful commands:
 
--ng g m [name]
+- ng g m [name]
 
--ng serve
+- ng serve
 
 - docker ps
 

@@ -1,3 +1,4 @@
+
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule, routingComponents} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -9,10 +10,12 @@ import {HttpClientModule} from '@angular/common/http';
 import { GoogleComponent } from './google/google.component';
 import { ProfileComponent } from './profile/profile.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
+
     FacebookComponent,
     GoogleComponent,
     ProfileComponent,
@@ -23,6 +26,7 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
     HttpClientModule,
   ],
+
   providers: [EnrollmentService],
   bootstrap: [AppComponent]
 })

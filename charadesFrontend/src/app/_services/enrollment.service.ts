@@ -1,12 +1,15 @@
+
 import {Sign_up} from '../_models/sign_up';
 import {Sign_in} from '../_models/sign_in';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 
+
 @Injectable({
   providedIn: 'root'
 })
+
 
 
 export class EnrollmentService {
@@ -15,6 +18,7 @@ export class EnrollmentService {
     private http: HttpClient,
     private router: Router) {
   }
+
 
 
   // tslint:disable-next-line:typedef
@@ -35,8 +39,10 @@ export class EnrollmentService {
     return this.http.post('http://localhost:3000/sign_in', user).subscribe(
       data => {
         console.log('Success', data);
+
         // @ts-ignore
         localStorage.setItem('username', data.data.email.substring('0', data.data.email.lastIndexOf('@')))
+
         this.router.navigate(['profile']);
       },
       error => console.log('Error:', error)

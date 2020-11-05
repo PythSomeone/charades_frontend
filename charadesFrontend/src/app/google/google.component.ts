@@ -1,5 +1,7 @@
+
 import {Component, OnInit} from '@angular/core';
 import {ViewChild, ElementRef} from '@angular/core';
+
 
 @Component({
   selector: 'app-google',
@@ -8,8 +10,10 @@ import {ViewChild, ElementRef} from '@angular/core';
 })
 export class GoogleComponent implements OnInit {
 
+
   constructor() {
   }
+
 
   auth2: any;
   @ViewChild('loginRef', {static: true}) loginElement: ElementRef;
@@ -31,7 +35,9 @@ export class GoogleComponent implements OnInit {
       });
     };
     // tslint:disable-next-line:only-arrow-functions typedef
+
     (function (d, s, id) {
+
       // tslint:disable-next-line:one-variable-per-declaration prefer-const
       let js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) {
@@ -53,6 +59,7 @@ export class GoogleComponent implements OnInit {
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail());
       }, (error) => {
+
       });
   }
 }

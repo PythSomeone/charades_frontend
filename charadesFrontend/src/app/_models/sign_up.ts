@@ -4,5 +4,3 @@ export class Sign_up{
   password_confirmation: string;
   constructor(email, password, password_confirmation) {}
 }
-
-

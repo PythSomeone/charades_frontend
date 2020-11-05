@@ -65,6 +65,7 @@
                      #password="ngModel" required [class.is-invalid]="password.touched && password.invalid"
                      name="password" [(ngModel)]="signUpUserModel.password"></div>
           </div>
+
           <div class="form-group row"><label for="Signup_inputpassword_confirmation" class="col-2 col-form-label">Confirm
             Password</label>
             <div class="col-10">
@@ -73,6 +74,7 @@
                      #password_confirmation="ngModel" required
                      [class.is-invalid]="password_confirmation.touched && password_confirmation.invalid"
                      name="password_confirmation"
+
                      [(ngModel)]="signUpUserModel.password_confirmation"></div>
           </div>
           <button type="submit" class="btn btn-primary">Sign up</button>
