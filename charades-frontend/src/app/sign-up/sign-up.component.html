@@ -1,0 +1,51 @@
+<!-- Sign Up Modal -->
+
+<div class="modal m-5 fade" id="signUpModal" style="">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sign up</h5>
+        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+      </div>
+      <div class="modal-body">
+        <form id="SignUpForm" class="" (ngSubmit)="SignUp_onSubmit()" novalidate #signUpForm="ngForm">
+          <div class="form-group row"><label for="Signup_inputusername" class="col-2 col-form-label">Nickname</label>
+            <div class="col-10">
+              <input type="text" class="form-control" id="Signup_inputusername" placeholder="Type your username"
+                     #username="ngModel" required [class.is-invalid]="username.touched && username.invalid"
+                     name="username" [(ngModel)]="signUpUserModel.username"></div>
+          </div>
+
+          <div class="form-group row"><label for="Signup_inputmail" class="col-2 col-form-label">E-mail</label>
+            <div class="col-10">
+              <input type="email" class="form-control" id="Signup_inputmail" placeholder="Type your email"
+                     #email="ngModel" required [class.is-invalid]="email.touched && email.invalid"
+                     name="email" [(ngModel)]="signUpUserModel.email"></div>
+          </div>
+          <div class="form-group row"><label for="Signup_inputpassword" class="col-2 col-form-label">Password</label>
+            <div class="col-10">
+              <input type="password" class="form-control" id="Signup_inputpassword" placeholder="Typer your password"
+                     #password="ngModel" required [class.is-invalid]="password.touched && password.invalid"
+                     name="password" [(ngModel)]="signUpUserModel.password"></div>
+          </div>
+
+          <div class="form-group row"><label for="Signup_inputpassword_confirmation" class="col-2 col-form-label">Confirm
+            Password</label>
+            <div class="col-10">
+              <input type="password" class="form-control" id="Signup_inputpassword_confirmation"
+                     placeholder="Confirm your password"
+                     #password_confirmation="ngModel" required
+                     [class.is-invalid]="password_confirmation.touched && password_confirmation.invalid"
+                     name="password_confirmation"
+
+                     [(ngModel)]="signUpUserModel.password_confirmation"></div>
+          </div>
+          <button type="submit" (click)="SignUp_onSubmit()" data-dismiss="modal" class="btn btn-primary" >Sign up</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
