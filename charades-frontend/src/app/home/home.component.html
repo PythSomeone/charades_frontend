@@ -1,14 +1,22 @@
 <body class="mat-app-background">
 <div fxFill fxLayoutAlign="center center" fxLayout="column">
   <h1>Charades with friends</h1>
-  <mat-card-content fxLayoutGap="2%" fxLayout="column">
-    <mat-form-field appearance="fill">
-      <mat-label>Enter code</mat-label>
-      <input matInput>
-    </mat-form-field>
-    <button mat-raised-button>Join</button>
-    <app-google></app-google>
-    <app-facebook></app-facebook>
+  <mat-card-content fxLayoutGap="15%" fxLayout="column">
+    <div fxLayoutGap="2%" fxLayout="column">
+      <mat-form-field>
+        <mat-label>Enter code</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <button mat-raised-button>Join</button>
+    </div>
+    <div fxLayoutGap="2%" fxLayout="column">
+      <app-google></app-google>
+      <app-facebook></app-facebook>
+    </div>
+    <div fxLayoutGap="2%" fxLayout="column">
+      <button mat-raised-button (click)="openSignIn()" >Sign in</button>
+      <button mat-stroked-button (click)="openSignUp()" >Sign up</button>
+    </div>
   </mat-card-content>
 </div>
 </body>

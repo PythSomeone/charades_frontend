@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../_services/authentication.service';
 import {Sign_up} from '../_models/sign_up';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,15 +11,20 @@ import {Sign_up} from '../_models/sign_up';
 export class SignUpComponent implements OnInit {
 
   signUpUserModel = new Sign_up('', '', '', '');
+  hide = true;
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private authenticationService: AuthenticationService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
   }
+  
+  signUp(): void {
+    this.authenticationService.SignIn(this.signUpUserModel);
+  }
 
-  SignUp_onSubmit(): void {
-    this.authenticationService.SignUp(this.signUpUserModel);
+  close(): void {
+    this.dialog.closeAll();
   }
 
 }

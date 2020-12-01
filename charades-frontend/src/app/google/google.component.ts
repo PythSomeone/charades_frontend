@@ -16,7 +16,7 @@ export class GoogleComponent implements OnInit {
 
 
   auth2: any;
-  @ViewChild('loginRef', {static: true}) loginElement: ElementRef;
+  @ViewChild('loginRef') loginElement: ElementRef;
 
   ngOnInit(): void {
     this.googleInitialize();
