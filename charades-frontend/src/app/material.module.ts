@@ -15,13 +15,13 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
   exports: [
     MatButtonModule,
     MatToolbarModule,
-    MatIconModule,
     MatSidenavModule,
     MatCardModule,
     MatListModule,
@@ -34,7 +34,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatChipsModule,
     MatTooltipModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule,
+    MatSnackBarModule,
   ]
 })
 export class MaterialModule {}

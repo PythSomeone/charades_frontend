@@ -19,11 +19,11 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(): void {
+  signIn(): void {
     this.authenticationService.SignIn(this.signInUserModel);
   }
 
-  close(): void {
+ close(): void {
     this.dialog.closeAll();
   }
 

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../_services/authentication.service';
 import {Sign_up} from '../_models/sign_up';
-import { MatDialog } from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,9 +18,9 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   signUp(): void {
-    this.authenticationService.SignIn(this.signUpUserModel);
+    this.authenticationService.SignUp(this.signUpUserModel);
   }
 
   close(): void {

@@ -13,11 +13,29 @@
     <button matSuffix mat-icon-button disabled></button>
   </mat-form-field>
 
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input required matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="signUpUserModel.password">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Re-type your password</mat-label>
+    <input required matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="signUpUserModel.password_confirmation">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+
 
   <div fxLayoutGap="20%" fxLayout="column">
-    <button fxFill mat-raised-button (click)="signUp()" type="submit">Sign in</button>
+    <button fxFill mat-raised-button (click)="signUp()" type="submit">Sign Up</button>
     <button mat-raised-button (click)="close()">Cancel</button>
   </div>
 
 </div>
+
 

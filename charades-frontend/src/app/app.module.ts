@@ -16,6 +16,7 @@ import {SignUpComponent} from './sign-up/sign-up.component';
 import {FlexModule} from '@angular/flex-layout';
 import {MaterialModule} from './material.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import {MaterialModule} from './material.module';
     GoogleComponent,
     ProfileComponent,
     SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserAnimationsModule,

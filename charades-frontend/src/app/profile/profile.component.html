@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html>
-<body class="d-flex justify-content-center  bg-primary h-100">
-<div class="w-75 bg-success">
-
-  <div class="border border-primary bg-secondary align-content-center m-auto w-75">
-    <h1 class="m-auto text-center text-white font-weight-bold">Welcome, {{user}}</h1>
+<body class="mat-app-background">
+<div fxFill fxFlexAlign="center" class="mat-background-app" fxLayout="column" fxLayoutGap="5%">
+  <mat-toolbar fxLayoutAlign="center center" fxLayout="column" color="primary">
+    <h1>Welcome, {{user}}</h1>
+    <p>What are you up to?</p>
+  </mat-toolbar>
+  <div fxFill fxLayoutAlign="start center" fxLayout="column" fxLayoutGap="5px">
+    <button mat-raised-button>Create game</button>
+    <button mat-raised-button>Manage your categories</button>
+    <button mat-raised-button>Settings</button>
+    <button mat-raised-button (click)="logout()">Logout</button>
   </div>
-  <div class="border border-primary bg-secondary align-content-center m-auto w-50">
-    <h6 class="m-auto text-center">What are you up to?</h6>
-  </div>
-  <div class=" m-5 p-2 border-primary border d-flex align-self-center justify-content-center">
-    <div class="m-5 d-flex flex-column align-content-center">
-      <button class=" mx-auto my-2 bg-secondary text-white btn-lg btn-primary">Create game</button>
-      <button class=" mx-auto my-2 bg-secondary text-white btn-lg btn-primary">Manage your categories</button>
-      <button class=" mx-auto my-2 bg-secondary text-white btn-lg btn-primary">Settings</button>
-      <button class=" mx-auto my-2 bg-secondary text-white btn-lg btn-primary" (click)="logout()">Logout</button>
-    </div>
-  </div>
-
 </div>
 </body>
-</html>
