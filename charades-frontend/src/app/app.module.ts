@@ -15,6 +15,8 @@ import {SignInComponent} from './sign-in/sign-in.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
 import {FlexModule} from '@angular/flex-layout';
 import {MaterialModule} from './material.module';
+import {SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
+import {GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -34,10 +36,28 @@ import {MaterialModule} from './material.module';
     HttpClientModule,
     MatButtonModule,
     FlexModule,
-    MaterialModule
+    MaterialModule,
+    SocialLoginModule
   ],
 
-  providers: [AuthenticationService, {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
+  providers: [AuthenticationService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+    multi: true
+  }, {
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false,
+      providers: [{
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider('1096940430460-ln1fkpm3muobqapvpbp0qnt094v0doll.apps.googleusercontent.com')
+      },
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider('355306638859925')
+        }]
+    } as SocialAuthServiceConfig
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

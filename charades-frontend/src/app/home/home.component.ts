@@ -36,8 +36,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    /*
     localStorage.removeItem('username');
     localStorage.removeItem('authToken');
+    console.log('home logout');
     this.authenticationService.logOut();
+    */
+
   }
 }

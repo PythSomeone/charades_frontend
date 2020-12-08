@@ -7,6 +7,7 @@ import {Sign_up} from '../_models/sign_up';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {SocialAuthService} from 'angularx-social-login';
 
 
 @Injectable({providedIn: 'root'})
@@ -17,6 +18,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient,
               private router: Router,
               public dialog: MatDialog,
+              private authService: SocialAuthService,
               private _snackBar: MatSnackBar) {
     this.currentUserSubject = new BehaviorSubject<Sign_in>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
@@ -58,7 +60,7 @@ export class AuthenticationService {
         this.logIn();
         console.log('Success', data);
         // @ts-ignore
-        localStorage.setItem('username',data.data.user.username);
+        localStorage.setItem('username', data.data.user.username);
         // @ts-ignore
         localStorage.setItem('authToken', data.data.authentication_token);
         this.openSnackBar('User signed successfully', '');
@@ -72,19 +74,13 @@ export class AuthenticationService {
     );
   }
 
-  logout(): void {
-    this.logOut();
-    this.router.navigate(['h']);
-    localStorage.removeItem('username');
-    localStorage.removeItem('authToken');
-  }
-
   logIn(): void {
     localStorage.setItem('isLoggedIn', 'true');
   }
 
   logOut(): void {
-
+    console.log('authlogout');
     localStorage.setItem('isLoggedIn', 'false');
+    this.authService.signOut();
   }
 }

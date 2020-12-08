@@ -3,6 +3,7 @@ import {AuthenticationService} from '../_services/authentication.service';
 import {Sign_in} from '../_models/sign_in';
 import {MatDialog} from '@angular/material/dialog';
 
+
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -23,7 +24,7 @@ export class SignInComponent implements OnInit {
     this.authenticationService.SignIn(this.signInUserModel);
   }
 
- close(): void {
+  close(): void {
     this.dialog.closeAll();
   }
 

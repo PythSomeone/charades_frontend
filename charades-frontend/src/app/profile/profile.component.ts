@@ -29,8 +29,9 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['c']);
   }
 
-  logout(): void {
-    this.authenticationService.logout();
+  logOut(): void {
+    this.authenticationService.logOut();
+    console.log('profile logout');
+    this.router.navigate(['h']);
   }
-
 }
