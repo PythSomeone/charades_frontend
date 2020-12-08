@@ -15,8 +15,6 @@ import {SignInComponent} from './sign-in/sign-in.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
 import {FlexModule} from '@angular/flex-layout';
 import {MaterialModule} from './material.module';
-import { CategoriesComponent } from './categories/categories.component';
-
 
 @NgModule({
   declarations: [
