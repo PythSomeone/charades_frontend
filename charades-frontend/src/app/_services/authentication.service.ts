@@ -41,7 +41,7 @@ export class AuthenticationService {
     return this.http.post('http://localhost:3000/sign_up', user).subscribe(
       data => {
         this.openSnackBar('User registered successfully', '');
-        console.log('Success', data);
+        console.log('User Signed Up');
         this.dialog.closeAll();
       },
       error => {
@@ -58,7 +58,7 @@ export class AuthenticationService {
     return this.http.post('http://localhost:3000/sign_in', user).subscribe(
       data => {
         this.logIn();
-        console.log('Success', data);
+        console.log('User signed in. ');
         // @ts-ignore
         localStorage.setItem('username', data.data.user.username);
         // @ts-ignore

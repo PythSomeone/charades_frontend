@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
 
   logOut(): void {
     this.authenticationService.logOut();
-    console.log('profile logout');
+    console.log('User Log out.');
     this.router.navigate(['h']);
   }
 }

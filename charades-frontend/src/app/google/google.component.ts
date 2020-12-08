@@ -27,7 +27,7 @@ export class GoogleComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.authState.subscribe((user) => {
-      console.log('User', user.firstName, user.lastName, 'signed in successfully. (Google)');
+      console.log('User signed in successfully. (Google)');
       localStorage.setItem('username', user.firstName);
       localStorage.setItem('authToken', user.authToken);
       localStorage.setItem('isLoggedIn', 'true');

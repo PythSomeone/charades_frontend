@@ -22,7 +22,7 @@ export class FacebookComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.authState.subscribe((user) => {
-      console.log('User', user.firstName, user.lastName, 'signed in successfully. (FB)');
+      console.log('User signed in successfully. (FB)');
       localStorage.setItem('username', user.firstName);
       localStorage.setItem('authToken', user.authToken);
       localStorage.setItem('isLoggedIn', 'true');
