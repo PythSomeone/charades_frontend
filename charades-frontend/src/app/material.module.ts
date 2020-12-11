@@ -38,7 +38,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatPaginatorModule,
     MatIconModule,
     MatSnackBarModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
   ]
 })
 export class MaterialModule {}

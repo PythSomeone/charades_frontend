@@ -11,11 +11,19 @@ import {ColorSchemeService} from '../_services/color-scheme.service';
 })
 export class HomeComponent implements OnInit {
 
+  checked = false;
 
   constructor(private authenticationService: AuthenticationService,
               public dialog: MatDialog,
               private colorSchemeService: ColorSchemeService) {
-    this.colorSchemeService.update('light');
+    this.checkSlideToggle();
+    this.colorSchemeService.load();
+  }
+
+  checkSlideToggle(): void {
+    if (localStorage.getItem('prefers-color')  === 'dark'){
+      this.checked = true;
+    }
   }
 
   openSignIn(): void {
@@ -29,6 +37,7 @@ export class HomeComponent implements OnInit {
   setTheme(): void {
     if (localStorage.getItem('prefers-color') === 'light') {
       this.colorSchemeService.update('dark');
+
     } else {
       this.colorSchemeService.update('light');
     }
@@ -36,12 +45,5 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /*
-    localStorage.removeItem('username');
-    localStorage.removeItem('authToken');
-    console.log('home logout');
-    this.authenticationService.logOut();
-    */
-
   }
 }

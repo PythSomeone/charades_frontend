@@ -4,12 +4,14 @@ import {HomeComponent} from './home/home.component';
 import {ProfileComponent} from './profile/profile.component';
 import {AuthGuard} from './_helpers/auth.guard';
 import {CategoriesComponent} from './categories/categories.component';
+import {UserCategoriesComponent} from './user-categories/user-categories.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'h', pathMatch: 'full'},
   {path: 'h', component: HomeComponent},
   {path: 'p', component: ProfileComponent, canActivate: [AuthGuard]},
-  {path: 'c', component: CategoriesComponent, canActivate: [AuthGuard]}
+  {path: 'gc', component: CategoriesComponent, canActivate: [AuthGuard]},
+  {path: 'cm', component: UserCategoriesComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -20,5 +22,5 @@ export class AppRoutingModule {
 }
 
 
-export const routingComponents = [HomeComponent, ProfileComponent, CategoriesComponent];
+export const routingComponents = [HomeComponent, CategoriesComponent, ProfileComponent, UserCategoriesComponent];
 

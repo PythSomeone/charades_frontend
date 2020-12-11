@@ -2,7 +2,7 @@
 <br>
 <div fxLayoutAlign="end">
   <mat-icon>{{'wb_sunny'}}</mat-icon>
-<mat-slide-toggle (click)="setTheme()"></mat-slide-toggle>
+<mat-slide-toggle [checked]="checked" (click)="setTheme()"></mat-slide-toggle>
   <mat-icon>{{'brightness_3'}}</mat-icon>
 </div>
 <div fxFill fxLayoutAlign="center center" fxLayout="column">

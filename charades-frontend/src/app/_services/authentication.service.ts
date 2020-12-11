@@ -19,13 +19,10 @@ export class AuthenticationService {
               private router: Router,
               public dialog: MatDialog,
               private authService: SocialAuthService,
+              // tslint:disable-next-line:variable-name
               private _snackBar: MatSnackBar) {
     this.currentUserSubject = new BehaviorSubject<Sign_in>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
-  }
-
-  public get currentUserValue(): Sign_in {
-    return this.currentUserSubject.value;
   }
 
   // tslint:disable-next-line:typedef
@@ -56,13 +53,17 @@ export class AuthenticationService {
   SignIn(user: Sign_in) {
 
     return this.http.post('http://localhost:3000/sign_in', user).subscribe(
-      data => {
+      response => {
+        // @ts-ignore
+        this.user = response.data.user;
         this.logIn();
         console.log('User signed in. ');
         // @ts-ignore
-        localStorage.setItem('username', data.data.user.username);
+        localStorage.setItem('username', response.data.user.username);
         // @ts-ignore
-        localStorage.setItem('authToken', data.data.authentication_token);
+        localStorage.setItem('authToken', response.data.user.authentication_token);
+        // @ts-ignore
+        localStorage.setItem('userID', response.data.user.id);
         this.openSnackBar('User signed successfully', '');
         this.dialog.closeAll();
         this.router.navigate(['p']);
@@ -79,8 +80,8 @@ export class AuthenticationService {
   }
 
   logOut(): void {
-    console.log('authlogout');
     localStorage.setItem('isLoggedIn', 'false');
-    this.authService.signOut();
+    this.authService.signOut(true);
+    this.router.navigate(['h']);
   }
 }

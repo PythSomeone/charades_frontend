@@ -21,17 +21,18 @@ export class GoogleComponent implements OnInit {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
-  signOut(): void {
-    this.authService.signOut();
-  }
-
   ngOnInit(): void {
-    this.authService.authState.subscribe((user) => {
-      console.log('User signed in successfully. (Google)');
-      localStorage.setItem('username', user.firstName);
-      localStorage.setItem('authToken', user.authToken);
-      localStorage.setItem('isLoggedIn', 'true');
-      this.router.navigate(['p']);
-    });
+    this.authService.authState.subscribe(
+      user => {
+        console.log('User signed in successfully. (Google)');
+        localStorage.setItem('username', user.firstName);
+        localStorage.setItem('authToken', user.authToken);
+        localStorage.setItem('isLoggedIn', 'true');
+        this.router.navigate(['p']);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

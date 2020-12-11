@@ -2,9 +2,22 @@
 <div fxFill fxFlexAlign="center center" class="mat-background-app" fxLayout="column" fxLayoutGap="5%">
   <br>
   <div fxLayoutAlign="center center" fxLayout="column" color="primary">
-    <h1>Please choose category</h1>
+    <h1>Please choose a category</h1>
   </div>
-  <div fxFill fxLayoutAlign="start center" fxLayout="column" fxLayoutGap="5px" *ngFor="">
+  <div fxFill fxLayoutAlign="start center" fxLayout="column" fxLayoutGap="5px">
+    <mat-label>Standard categories</mat-label>
+    <button mat-raised-button (click)="listAnimals()" >Animals</button>
+    <button mat-raised-button>Video Games</button>
+    <button mat-raised-button>Movies</button>
+    <mat-label *ngIf="userCategories">Your categories</mat-label>
+    <div *ngFor="let category of userCategories">
+    </div>
+    <button mat-raised-button (click)="back()">Back</button>
   </div>
+
+
+
+
+
 </div>
 </body>

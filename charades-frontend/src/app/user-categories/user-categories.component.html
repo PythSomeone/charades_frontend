@@ -1,0 +1,27 @@
+<body class="mat-app-background">
+<br>
+<div fxLayout="column">
+<div fxFill fxLayoutAlign="center start" fxLayout="row" fxLayoutGap="2%">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header hideToggle>
+      <mat-panel-title>
+        Create Category
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-panel-description fxLayout="column">
+      <mat-form-field>
+        <mat-label>Enter name</mat-label>
+        <input matInput [(ngModel)]="this.category.name">
+      </mat-form-field>
+      <button mat-raised-button (click)="createCategory()"  type="submit">Create</button>
+    </mat-panel-description>
+  </mat-expansion-panel>
+  <button mat-raised-button (click)="toProfile()">Back</button>
+</div>
+  Chuj
+  <div *ngFor="let category of categories">
+    {{category.name}}
+  </div>
+
+</div>
+</body>
