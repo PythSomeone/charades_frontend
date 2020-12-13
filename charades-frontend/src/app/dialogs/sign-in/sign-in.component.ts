@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from '../_services/authentication.service';
-import {Sign_in} from '../_models/sign_in';
 import {MatDialog} from '@angular/material/dialog';
+import {AuthenticationService} from '../../_services/authentication.service';
+import {Sign_in} from '../../_models/sign_in';
 
 
 @Component({

@@ -45,8 +45,4 @@ export class ColorSchemeService {
     this.renderer.addClass(document.body, this.colorSchemePrefix + scheme);
   }
 
-  currentActive(): string {
-    return this.colorScheme;
-  }
-
 }

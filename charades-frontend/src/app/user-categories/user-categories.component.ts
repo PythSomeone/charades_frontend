@@ -3,7 +3,9 @@ import {ColorSchemeService} from '../_services/color-scheme.service';
 import {Router} from '@angular/router';
 import {UserCategoriesService} from '../_services/user-categories.service';
 import {Category} from '../_models/category';
-import {AuthenticationService} from '../_services/authentication.service';
+import {MatDialog} from '@angular/material/dialog';
+import {DeleteCategoryComponent} from '../dialogs/delete-category/delete-category.component';
+import {EditCategoryComponent} from '../dialogs/edit-category/edit-category.component';
 
 @Component({
   selector: 'app-user-categories',
@@ -13,18 +15,31 @@ import {AuthenticationService} from '../_services/authentication.service';
 export class UserCategoriesComponent implements OnInit {
   userId = localStorage.getItem('userID');
   category = new Category('', this.userId);
-  categories;
+  categories: any;
+  words: any[];
+  selectedCategory: any;
 
   constructor(private colorSchemeService: ColorSchemeService,
               private router: Router,
               private userCategoriesService: UserCategoriesService,
-              ) {
+              private dialog: MatDialog,
+  ) {
+    this.words = [];
     colorSchemeService.load();
-    this.categories = this.userCategoriesService.getUsersCategories();
-
+    this.userCategoriesService.setUserCategories$.subscribe(
+      categories => {
+        this.categories = categories;
+      });
+    this.userCategoriesService.setUserCategoryWords$.subscribe(
+      words => {
+        this.words.push(words);
+      }
+    );
   }
 
   ngOnInit(): void {
+    this.userCategoriesService.getUserCategories();
+    console.log(this.words);
   }
 
   toProfile(): void {
@@ -32,8 +47,16 @@ export class UserCategoriesComponent implements OnInit {
   }
 
   createCategory(): void {
-    this.userCategoriesService.createUsersCategory(this.category);
+    this.userCategoriesService.createUserCategory(this.category);
   }
 
+  openDeleteDialog(category: any): void {
+    this.dialog.open(DeleteCategoryComponent, {data: {category}});
+  }
+
+
+  openEditDialog(category: any): void {
+    this.dialog.open(EditCategoryComponent, {data: {category}});
+  }
 
 }

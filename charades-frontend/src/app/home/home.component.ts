@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../_services/authentication.service';
 import {MatDialog} from '@angular/material/dialog';
-import {SignInComponent} from '../sign-in/sign-in.component';
-import {SignUpComponent} from '../sign-up/sign-up.component';
 import {ColorSchemeService} from '../_services/color-scheme.service';
+import {SignUpComponent} from '../dialogs/sign-up/sign-up.component';
+import {SignInComponent} from '../dialogs/sign-in/sign-in.component';
 
 @Component({
   templateUrl: './home.component.html',

@@ -10,8 +10,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthenticationService} from './_services/authentication.service';
 import {JwtInterceptor} from './_helpers/jwt.interceptor';
 import {MatButtonModule} from '@angular/material/button';
-import {SignInComponent} from './sign-in/sign-in.component';
-import {SignUpComponent} from './sign-up/sign-up.component';
 import {FlexModule} from '@angular/flex-layout';
 import {MaterialModule} from './material.module';
 import {SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
@@ -19,6 +17,11 @@ import {GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login'
 import {BasicCategoriesService} from './_services/basic-categories.service';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {UserCategoriesService} from './_services/user-categories.service';
+import {DeleteCategoryComponent} from './dialogs/delete-category/delete-category.component';
+import {SignUpComponent} from './dialogs/sign-up/sign-up.component';
+import {SignInComponent} from './dialogs/sign-in/sign-in.component';
+import {EditCategoryComponent} from './dialogs/edit-category/edit-category.component';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import {UserCategoriesService} from './_services/user-categories.service';
     GoogleComponent,
     SignInComponent,
     SignUpComponent,
+    DeleteCategoryComponent,
+    EditCategoryComponent
   ],
   imports: [
     BrowserAnimationsModule,
