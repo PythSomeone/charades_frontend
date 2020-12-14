@@ -5,7 +5,7 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title>
-          Create Category
+          Create Categories
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column">
@@ -28,16 +28,16 @@
         <div fxLayoutAlign="end" fxLayoutGap="16px">
           <button mat-raised-button (click)="openEditDialog(category)">
             <mat-icon>edit</mat-icon>
-            Edit Category
+            Edit Categories
           </button>
           <button mat-raised-button (click)="openDeleteDialog(category)">
             <mat-icon>delete</mat-icon>
-            Delete Category
+            Delete Categories
           </button>
         </div>
-        <div>
+        <div *ngFor="let word of category.words">
           <br>
-          Content
+          {{word.word}}
         </div>
       </mat-panel-description>
     </mat-expansion-panel>

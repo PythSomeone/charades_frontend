@@ -21,6 +21,7 @@ import {DeleteCategoryComponent} from './dialogs/delete-category/delete-category
 import {SignUpComponent} from './dialogs/sign-up/sign-up.component';
 import {SignInComponent} from './dialogs/sign-in/sign-in.component';
 import {EditCategoryComponent} from './dialogs/edit-category/edit-category.component';
+import {WordsService} from './_services/words.service';
 
 
 @NgModule({
@@ -47,24 +48,29 @@ import {EditCategoryComponent} from './dialogs/edit-category/edit-category.compo
     MatExpansionModule
   ],
 
-  providers: [AuthenticationService, BasicCategoriesService, UserCategoriesService, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: JwtInterceptor,
-    multi: true
-  }, {
-    provide: 'SocialAuthServiceConfig',
-    useValue: {
-      autoLogin: false,
-      providers: [{
-        id: GoogleLoginProvider.PROVIDER_ID,
-        provider: new GoogleLoginProvider('1096940430460-ln1fkpm3muobqapvpbp0qnt094v0doll.apps.googleusercontent.com')
-      },
-        {
-          id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider('355306638859925')
-        }]
-    } as SocialAuthServiceConfig
-  }],
+  providers: [
+    AuthenticationService,
+    BasicCategoriesService,
+    UserCategoriesService,
+    WordsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }, {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [{
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider('1096940430460-ln1fkpm3muobqapvpbp0qnt094v0doll.apps.googleusercontent.com')
+        },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('355306638859925')
+          }]
+      } as SocialAuthServiceConfig
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

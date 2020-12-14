@@ -2,10 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {ColorSchemeService} from '../_services/color-scheme.service';
 import {Router} from '@angular/router';
 import {UserCategoriesService} from '../_services/user-categories.service';
-import {Category} from '../_models/category';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteCategoryComponent} from '../dialogs/delete-category/delete-category.component';
 import {EditCategoryComponent} from '../dialogs/edit-category/edit-category.component';
+import {Categories} from '../_models/categories';
+import {Category} from '../_models/category';
+import {WordsService} from '../_services/words.service';
 
 @Component({
   selector: 'app-user-categories',
@@ -14,32 +16,36 @@ import {EditCategoryComponent} from '../dialogs/edit-category/edit-category.comp
 })
 export class UserCategoriesComponent implements OnInit {
   userId = localStorage.getItem('userID');
-  category = new Category('', this.userId);
-  categories: any;
-  words: any[];
-  selectedCategory: any;
+  categories: Array<Categories> = [new Categories('', '', '', [])];
+  category = new Category('', '');
 
   constructor(private colorSchemeService: ColorSchemeService,
               private router: Router,
               private userCategoriesService: UserCategoriesService,
+              private wordsService: WordsService,
               private dialog: MatDialog,
   ) {
-    this.words = [];
     colorSchemeService.load();
+
     this.userCategoriesService.setUserCategories$.subscribe(
-      categories => {
-        this.categories = categories;
+      (categories: Category[]) => {
+        this.categories = categories as Categories[];
+        this.categories.forEach((element) => {
+          element.words = [];
+          this.wordsService.getUserCategoryWords(element.id);
+          this.wordsService.setUserCategoryWords$.subscribe(
+            words => {
+              element.words = words;
+            }
+          );
+          console.log(this.categories);
+        });
+
       });
-    this.userCategoriesService.setUserCategoryWords$.subscribe(
-      words => {
-        this.words.push(words);
-      }
-    );
   }
 
   ngOnInit(): void {
-    this.userCategoriesService.getUserCategories();
-    console.log(this.words);
+
   }
 
   toProfile(): void {
@@ -47,6 +53,7 @@ export class UserCategoriesComponent implements OnInit {
   }
 
   createCategory(): void {
+    this.category.user_id = localStorage.getItem('userID');
     this.userCategoriesService.createUserCategory(this.category);
   }
 
