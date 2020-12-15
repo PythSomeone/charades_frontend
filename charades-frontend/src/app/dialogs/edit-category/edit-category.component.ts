@@ -21,7 +21,7 @@ export class EditCategoryComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-  updateCategory(id: string, category: any): void {
-    this.userCategoriesService.updateUserCategory(id, category);
-}
+  updateCategory(userId: string, id: string, category: any): void {
+    this.userCategoriesService.updateUserCategory(userId, id, category);
+  }
 }

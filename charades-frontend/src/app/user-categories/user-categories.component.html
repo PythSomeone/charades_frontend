@@ -35,9 +35,21 @@
             Delete Categories
           </button>
         </div>
-        <div *ngFor="let word of category.words">
-          <br>
-          {{word.word}}
+
+        <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between" fxFill *ngFor="let word of category.words">
+          <div>
+            {{word.word}}
+          </div>
+          <div>
+            <button mat-raised-button>
+              <mat-icon>edit</mat-icon>
+              Re-name
+            </button>
+            <button mat-raised-button>
+              <mat-icon>delete</mat-icon>
+              Delete
+            </button>
+          </div>
         </div>
       </mat-panel-description>
     </mat-expansion-panel>

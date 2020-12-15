@@ -18,7 +18,7 @@ export class DeleteCategoryComponent implements OnInit {
   }
 
   deleteCategory(id: string): void {
-this.userCategoriesService.deleteUserCategory(id);
+    this.userCategoriesService.deleteUserCategory(localStorage.getItem('userID'), id);
   }
 
   close(): void {

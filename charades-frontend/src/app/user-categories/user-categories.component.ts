@@ -26,15 +26,16 @@ export class UserCategoriesComponent implements OnInit {
               private dialog: MatDialog,
   ) {
     colorSchemeService.load();
-
+    this.userCategoriesService.getUserCategories(localStorage.getItem('userID'));
     this.userCategoriesService.setUserCategories$.subscribe(
       (categories: Category[]) => {
         this.categories = categories as Categories[];
         this.categories.forEach((element) => {
+          this.wordsService.getUserCategoryWords(element.user_id, element.id);
           element.words = [];
-          this.wordsService.getUserCategoryWords(element.id);
           this.wordsService.setUserCategoryWords$.subscribe(
             words => {
+              element.words = [];
               element.words = words;
             }
           );
@@ -54,7 +55,7 @@ export class UserCategoriesComponent implements OnInit {
 
   createCategory(): void {
     this.category.user_id = localStorage.getItem('userID');
-    this.userCategoriesService.createUserCategory(this.category);
+    this.userCategoriesService.createUserCategory(this.category.user_id ,this.category);
   }
 
   openDeleteDialog(category: any): void {

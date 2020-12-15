@@ -12,15 +12,9 @@ export class UserCategoriesService {
   setUserCategories$ = this.userCategoriesSource.asObservable();
 
 
-
   constructor(private http: HttpClient,
               private dialog: MatDialog) {
-    this.http.get('http://localhost:3000/categories/').subscribe(
-      response => {
-        // @ts-ignore
-        this.setUserCategories(response.data);
-      }
-    );
+    this.getUserCategories(localStorage.getItem('userID'));
   }
 
 
@@ -28,8 +22,8 @@ export class UserCategoriesService {
     this.userCategoriesSource.next(categories);
   }
 
-  createUserCategory(category: Category): void {
-    this.http.post('http://localhost:3000/categories', category).subscribe(
+  createUserCategory(userID: string, category: Category): void {
+    this.http.post('http://localhost:3000/user/' + userID + '/categories', category).subscribe(
       response => {
         console.log(response);
         location.reload();
@@ -40,8 +34,8 @@ export class UserCategoriesService {
     );
   }
 
-  getUserCategories(): Subscription {
-    return this.http.get('http://localhost:3000/categories/').subscribe(
+  getUserCategories(userID: string): Subscription {
+    return this.http.get('http://localhost:3000/user/' + userID + '/categories').subscribe(
       response => {
         // @ts-ignore
         this.setUserCategories(response.data);
@@ -49,8 +43,8 @@ export class UserCategoriesService {
     );
   }
 
-  deleteUserCategory(id: string): void {
-    this.http.delete('http://localhost:3000/categories/ ' + id).subscribe(
+  deleteUserCategory(userID: string, id: string): void {
+    this.http.delete('http://localhost:3000/user/' + userID + '/categories/ ' + id).subscribe(
       response => {
         console.log(response);
         location.reload();
@@ -61,8 +55,8 @@ export class UserCategoriesService {
     );
   }
 
-  updateUserCategory(id: string, category: any): void {
-    this.http.patch('http://localhost:3000/categories/ ' + id, category).subscribe(
+  updateUserCategory(userID: string, id: string, category: any): void {
+    this.http.patch('http://localhost:3000/user/' + userID + '/categories/ ' + id, category).subscribe(
       response => {
         console.log(response);
         this.dialog.closeAll();

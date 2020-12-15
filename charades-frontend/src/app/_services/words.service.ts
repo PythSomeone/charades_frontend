@@ -1,6 +1,7 @@
 import {Subject, Subscription} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {Categories} from '../_models/categories';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,15 @@ export class WordsService {
   constructor(private http: HttpClient) {
   }
 
-  setUserCategoryWords(words: any): void {
+  setUserCategoryWords(words: any[]): void {
     this.userCategoryWordsSource.next(words);
   }
 
-  getUserCategoryWords(id: string): Subscription {
-    return this.http.get('http://localhost:3000/categories/' + id + '/words').subscribe(
+  getUserCategoryWords(userID: string, categoryID: string): Subscription {
+    return this.http.get<Categories[]>('http://localhost:3000/user/' + userID + '/categories/' + categoryID + '/words').subscribe(
       response => {
+        // @ts-ignore
+        console.log(response.data);
         // @ts-ignore
         this.setUserCategoryWords(response.data);
       }
