@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../_services/authentication.service';
 import {Router} from '@angular/router';
 import {ColorSchemeService} from '../_services/color-scheme.service';
+import {UserSettingService} from '../_services/user-setting.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,15 +11,21 @@ import {ColorSchemeService} from '../_services/color-scheme.service';
 })
 export class ProfileComponent implements OnInit {
 
-
+  userID = localStorage.getItem('userID');
   user: string;
 
 
   constructor(private authenticationService: AuthenticationService,
               private router: Router,
-              private colorSchemeService: ColorSchemeService) {
+              private colorSchemeService: ColorSchemeService,
+              private userSettingsService: UserSettingService) {
     colorSchemeService.load();
-  };
+    this.userSettingsService.get(this.userID);
+    this.userSettingsService.userObservable.subscribe(
+      user => {
+        this.user = user.username;
+      });
+  }
 
 
   ngOnInit(): void {
@@ -37,6 +44,10 @@ export class ProfileComponent implements OnInit {
   logOut(): void {
     this.authenticationService.logOut();
     console.log('User Log out.');
-
   }
+
+  toSettings(): void {
+    this.router.navigate(['s']);
+  }
+
 }

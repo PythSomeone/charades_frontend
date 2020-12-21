@@ -25,6 +25,9 @@ import {UserWordsService} from './_services/user-words.service';
 import {UserCategoriesWithWordsService} from './_services/user-categories-with-words.service';
 import {EditWordComponent} from './dialogs/edit-word/edit-word.component';
 import {DeleteWordComponent} from './dialogs/delete-word/delete-word.component';
+import { LobbyComponent } from './lobby/lobby.component';
+import { SettingsComponent } from './settings/settings.component';
+import { SettingComponent } from './setting/setting.component';
 
 
 
@@ -39,7 +42,8 @@ import {DeleteWordComponent} from './dialogs/delete-word/delete-word.component';
     DeleteCategoryComponent,
     EditCategoryComponent,
     EditWordComponent,
-    DeleteWordComponent
+    DeleteWordComponent,
+
   ],
   imports: [
     BrowserAnimationsModule,

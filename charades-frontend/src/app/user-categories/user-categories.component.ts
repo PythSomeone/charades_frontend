@@ -70,4 +70,8 @@ export class UserCategoriesComponent implements OnInit {
     this.dialog.open(DeleteWordComponent, {data: {word}});
   }
 
+  toGame(): void {
+    this.router.navigate(['gc']);
+  }
+
 }

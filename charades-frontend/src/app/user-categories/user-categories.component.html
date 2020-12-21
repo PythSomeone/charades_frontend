@@ -1,8 +1,8 @@
 <body class="mat-app-background">
 <br>
 <div fxLayout="column" fxLayoutGap="2%">
-  <div fxFill fxLayoutAlign="center start" fxLayout="row" fxLayoutGap="2%">
-    <mat-expansion-panel>
+  <div fxFill fxLayoutAlign="center start" fxLayout="row wrap" fxLayoutGap="16px">
+    <mat-expansion-panel fxLayoutGap="16px">
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title>
           Create Categories
@@ -16,7 +16,10 @@
         <button mat-raised-button (click)="createCategory()" type="submit">Create</button>
       </mat-panel-description>
     </mat-expansion-panel>
-    <button mat-raised-button (click)="toProfile()">Back</button>
+    <div fxLayoutGap="16px">
+      <button mat-raised-button (click)="toGame()">To Game</button>
+      <button mat-raised-button (click)="toProfile()">Back</button>
+    </div>
   </div>
 
   <div fxLayoutAlign="center center" *ngFor="let category of categories">
@@ -26,7 +29,7 @@
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column">
 
-        <div fxFlex="90"  fxLayoutGap="8px">
+        <div fxFlex="90" fxLayoutGap="8px">
           <button mat-flat-button (click)="openEditCategory(category)">
             <mat-icon>edit</mat-icon>
           </button>

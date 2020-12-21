@@ -34,7 +34,6 @@ export class AuthenticationService {
 
   // tslint:disable-next-line:typedef
   SignUp(user: Sign_up) {
-
     return this.http.post('http://localhost:3000/sign_up', user).subscribe(
       data => {
         this.openSnackBar('User registered successfully', '');

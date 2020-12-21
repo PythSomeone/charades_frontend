@@ -1,0 +1,12 @@
+<body class="mat-app-background">
+
+<div fxFill fxLayoutAlign="center center" fxLayoutGap="16px" fxLayout="column">
+  <h1>Add players that will play in <b>{{category.name}}</b> category</h1>
+  <mat-form-field>
+    <mat-label>Enter name</mat-label>
+    <input matInput [(ngModel)]="this.player.name">
+  </mat-form-field>
+  <button mat-raised-button (click)="addPlayer()" type="submit">Add</button>
+  <button mat-raised-button (click)="toCategories()" >Back</button>
+</div>
+</body>

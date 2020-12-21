@@ -33,8 +33,19 @@ export class UserCategoriesService {
     );
   }
 
-  get(userID: string): Subscription {
-    return this.http.get('http://localhost:3000/user/' + userID + '/categories').subscribe(
+
+  index(user_id: string): Subscription {
+    return this.http.get('http://localhost:3000/user/' + user_id + '/categories').subscribe(
+      response => {
+        // @ts-ignore
+        this.setUserCategories(response.data);
+      }
+    );
+  }
+
+  // tslint:disable-next-line:typedef
+  async get(user_id: string, category_id: string) {
+    return this.http.get('http://localhost:3000/user/' + user_id + '/categories/' + category_id).subscribe(
       response => {
         // @ts-ignore
         this.setUserCategories(response.data);

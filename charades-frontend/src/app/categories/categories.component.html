@@ -3,21 +3,21 @@
   <br>
   <div fxLayoutAlign="center center" fxLayout="column" color="primary">
     <h1>Please choose a category</h1>
+    <div fxLayoutGap="5px">
+      <button mat-raised-button (click)="toUserCategories()">Edit your categories</button>
+      <button mat-raised-button (click)="back()">Back</button>
+    </div>
   </div>
   <div fxFill fxLayoutAlign="start center" fxLayout="column" fxLayoutGap="5px">
     <mat-label>Standard categories</mat-label>
-    <button mat-raised-button (click)="listAnimals()" >Animals</button>
-    <button mat-raised-button>Video Games</button>
-    <button mat-raised-button>Movies</button>
+    <button mat-raised-button (click)="toLobby(0)">Animals</button>
+    <button mat-raised-button (click)="toLobby(1)">Video Games</button>
+    <button mat-raised-button (click)="toLobby(2)">Movies</button>
     <mat-label *ngIf="userCategories">Your categories</mat-label>
     <div *ngFor="let category of userCategories">
+      <button mat-raised-button (click)="toLobby(category.id)">{{category.name}}</button>
     </div>
-    <button mat-raised-button (click)="back()">Back</button>
-  </div>
 
-
-
-
-
+    </div>
 </div>
 </body>

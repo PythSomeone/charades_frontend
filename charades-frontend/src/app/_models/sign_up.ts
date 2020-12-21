@@ -3,10 +3,13 @@ export class Sign_up {
   username: string;
   email: string;
   password: string;
-  // tslint:disable-next-line:variable-name
   password_confirmation: string;
 
-  // tslint:disable-next-line:variable-name
+
   constructor(username, email, password, password_confirmation) {
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.password_confirmation = password_confirmation;
   }
 }
