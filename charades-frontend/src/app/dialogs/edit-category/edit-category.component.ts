@@ -22,6 +22,6 @@ export class EditCategoryComponent implements OnInit {
   }
 
   updateCategory(userId: string, id: string, category: any): void {
-    this.userCategoriesService.updateUserCategory(userId, id, category);
+    this.userCategoriesService.update(userId, id, category);
   }
 }

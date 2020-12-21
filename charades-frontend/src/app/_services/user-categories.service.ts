@@ -9,12 +9,11 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class UserCategoriesService {
   userCategoriesSource = new Subject<Category[]>();
-  setUserCategories$ = this.userCategoriesSource.asObservable();
+  UserCategoriesObservable = this.userCategoriesSource.asObservable();
 
 
   constructor(private http: HttpClient,
               private dialog: MatDialog) {
-    this.getUserCategories(localStorage.getItem('userID'));
   }
 
 
@@ -22,7 +21,7 @@ export class UserCategoriesService {
     this.userCategoriesSource.next(categories);
   }
 
-  createUserCategory(userID: string, category: Category): void {
+  create(userID: string, category: Category): void {
     this.http.post('http://localhost:3000/user/' + userID + '/categories', category).subscribe(
       response => {
         console.log(response);
@@ -34,7 +33,7 @@ export class UserCategoriesService {
     );
   }
 
-  getUserCategories(userID: string): Subscription {
+  get(userID: string): Subscription {
     return this.http.get('http://localhost:3000/user/' + userID + '/categories').subscribe(
       response => {
         // @ts-ignore
@@ -43,7 +42,7 @@ export class UserCategoriesService {
     );
   }
 
-  deleteUserCategory(userID: string, id: string): void {
+  delete(userID: string, id: string): void {
     this.http.delete('http://localhost:3000/user/' + userID + '/categories/ ' + id).subscribe(
       response => {
         console.log(response);
@@ -55,7 +54,7 @@ export class UserCategoriesService {
     );
   }
 
-  updateUserCategory(userID: string, id: string, category: any): void {
+  update(userID: string, id: string, category: any): void {
     this.http.patch('http://localhost:3000/user/' + userID + '/categories/ ' + id, category).subscribe(
       response => {
         console.log(response);

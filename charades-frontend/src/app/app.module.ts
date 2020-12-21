@@ -21,7 +21,11 @@ import {DeleteCategoryComponent} from './dialogs/delete-category/delete-category
 import {SignUpComponent} from './dialogs/sign-up/sign-up.component';
 import {SignInComponent} from './dialogs/sign-in/sign-in.component';
 import {EditCategoryComponent} from './dialogs/edit-category/edit-category.component';
-import {WordsService} from './_services/words.service';
+import {UserWordsService} from './_services/user-words.service';
+import {UserCategoriesWithWordsService} from './_services/user-categories-with-words.service';
+import {EditWordComponent} from './dialogs/edit-word/edit-word.component';
+import {DeleteWordComponent} from './dialogs/delete-word/delete-word.component';
+
 
 
 @NgModule({
@@ -33,7 +37,9 @@ import {WordsService} from './_services/words.service';
     SignInComponent,
     SignUpComponent,
     DeleteCategoryComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    EditWordComponent,
+    DeleteWordComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -52,7 +58,8 @@ import {WordsService} from './_services/words.service';
     AuthenticationService,
     BasicCategoriesService,
     UserCategoriesService,
-    WordsService,
+    UserWordsService,
+    UserCategoriesWithWordsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,

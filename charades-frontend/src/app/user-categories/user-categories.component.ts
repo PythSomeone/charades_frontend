@@ -7,7 +7,11 @@ import {DeleteCategoryComponent} from '../dialogs/delete-category/delete-categor
 import {EditCategoryComponent} from '../dialogs/edit-category/edit-category.component';
 import {Categories} from '../_models/categories';
 import {Category} from '../_models/category';
-import {WordsService} from '../_services/words.service';
+import {Word} from '../_models/word';
+import {UserWordsService} from '../_services/user-words.service';
+import {UserCategoriesWithWordsService} from '../_services/user-categories-with-words.service';
+import {DeleteWordComponent} from '../dialogs/delete-word/delete-word.component';
+import {EditWordComponent} from '../dialogs/edit-word/edit-word.component';
 
 @Component({
   selector: 'app-user-categories',
@@ -16,37 +20,23 @@ import {WordsService} from '../_services/words.service';
 })
 export class UserCategoriesComponent implements OnInit {
   userId = localStorage.getItem('userID');
-  categories: Array<Categories> = [new Categories('', '', '', [])];
+  categories: any[];
   category = new Category('', '');
+  newWord = new Word('', '', '', '');
 
   constructor(private colorSchemeService: ColorSchemeService,
               private router: Router,
               private userCategoriesService: UserCategoriesService,
-              private wordsService: WordsService,
+              private userWordsService: UserWordsService,
+              private userCategoriesWithWordsService: UserCategoriesWithWordsService,
               private dialog: MatDialog,
   ) {
     colorSchemeService.load();
-    this.userCategoriesService.getUserCategories(localStorage.getItem('userID'));
-    this.userCategoriesService.setUserCategories$.subscribe(
-      (categories: Category[]) => {
-        this.categories = categories as Categories[];
-        this.categories.forEach((element) => {
-          this.wordsService.getUserCategoryWords(element.user_id, element.id);
-          element.words = [];
-          this.wordsService.setUserCategoryWords$.subscribe(
-            words => {
-              element.words = [];
-              element.words = words;
-            }
-          );
-          console.log(this.categories);
-        });
-
-      });
   }
 
-  ngOnInit(): void {
-
+  // tslint:disable-next-line:typedef
+  async ngOnInit() {
+    this.categories = await this.userCategoriesWithWordsService.get(this.userId);
   }
 
   toProfile(): void {
@@ -55,16 +45,29 @@ export class UserCategoriesComponent implements OnInit {
 
   createCategory(): void {
     this.category.user_id = localStorage.getItem('userID');
-    this.userCategoriesService.createUserCategory(this.category.user_id ,this.category);
+    this.userCategoriesService.create(this.category.user_id, this.category);
   }
 
-  openDeleteDialog(category: any): void {
+  openDeleteCategory(category: any): void {
     this.dialog.open(DeleteCategoryComponent, {data: {category}});
   }
 
 
-  openEditDialog(category: any): void {
+  openEditCategory(category: any): void {
     this.dialog.open(EditCategoryComponent, {data: {category}});
+  }
+
+  // tslint:disable-next-line:variable-name
+  createWord(user_id: string, category_id: string, word: Word): void {
+    this.userWordsService.create(user_id, category_id, word);
+  }
+
+  openEditWord(word: any): void {
+    this.dialog.open(EditWordComponent, {data: {word}});
+  }
+
+  openDeleteWord(word: any): void {
+    this.dialog.open(DeleteWordComponent, {data: {word}});
   }
 
 }

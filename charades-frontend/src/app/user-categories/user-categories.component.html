@@ -22,37 +22,49 @@
   <div fxLayoutAlign="center center" *ngFor="let category of categories">
     <mat-expansion-panel fxFill>
       <mat-expansion-panel-header>
-        {{category.name}}
+        <h1>{{category.name}}</h1>
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column">
-        <div fxLayoutAlign="end" fxLayoutGap="16px">
-          <button mat-raised-button (click)="openEditDialog(category)">
+
+        <div fxFlex="90"  fxLayoutGap="8px">
+          <button mat-flat-button (click)="openEditCategory(category)">
             <mat-icon>edit</mat-icon>
-            Edit Categories
           </button>
-          <button mat-raised-button (click)="openDeleteDialog(category)">
+          <button mat-flat-button (click)="openDeleteCategory(category)">
             <mat-icon>delete</mat-icon>
-            Delete Categories
           </button>
         </div>
 
-        <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="space-between" fxFill *ngFor="let word of category.words">
-          <div>
-            {{word.word}}
-          </div>
-          <div>
-            <button mat-raised-button>
+        <mat-divider></mat-divider>
+
+        <div fxLayout="row" fxLayoutAlign="space-between" fxFill *ngFor="let word of category.words">
+          <br>
+          <p fxflex="20">{{word.word}}</p>
+          <div fxFlex="80" fxLayoutAlign="end">
+            <button mat-flat-button (click)="openEditWord(word)">
               <mat-icon>edit</mat-icon>
-              Re-name
             </button>
-            <button mat-raised-button>
+            <button mat-flat-button (click)="openDeleteWord(word)">
               <mat-icon>delete</mat-icon>
-              Delete
             </button>
           </div>
+
         </div>
+
       </mat-panel-description>
+      <div fxLayout="row" fxLayoutAlign="space-between" fxFill>
+        <mat-form-field>
+          <mat-label>Enter new word</mat-label>
+          <input matInput [(ngModel)]="newWord.word">
+        </mat-form-field>
+        <div fxFlex="90" fxLayoutAlign="end">
+          <button (click)="createWord(category.user_id, category.id, newWord)" mat-flat-button>
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
     </mat-expansion-panel>
+
   </div>
 
 </div>
