@@ -5,7 +5,6 @@ import {UserCategoriesService} from '../_services/user-categories.service';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteCategoryComponent} from '../dialogs/delete-category/delete-category.component';
 import {EditCategoryComponent} from '../dialogs/edit-category/edit-category.component';
-import {Categories} from '../_models/categories';
 import {Category} from '../_models/category';
 import {Word} from '../_models/word';
 import {UserWordsService} from '../_services/user-words.service';
@@ -37,6 +36,7 @@ export class UserCategoriesComponent implements OnInit {
   // tslint:disable-next-line:typedef
   async ngOnInit() {
     this.categories = await this.userCategoriesWithWordsService.get(this.userId);
+    console.log(this.categories);
   }
 
   toProfile(): void {

@@ -19,7 +19,7 @@
       </mat-panel-description>
     </mat-expansion-panel>
 
-    <mat-expansion-panel>
+    <mat-expansion-panel *ngIf="socialLogin">
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title>
           Change nickname
@@ -34,7 +34,7 @@
       </mat-panel-description>
     </mat-expansion-panel>
 
-    <mat-expansion-panel>
+    <mat-expansion-panel *ngIf="socialLogin">
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title>
           Change e-mail

@@ -37,12 +37,9 @@
             <mat-icon>delete</mat-icon>
           </button>
         </div>
-
         <mat-divider></mat-divider>
-
-        <div fxLayout="row" fxLayoutAlign="space-between" fxFill *ngFor="let word of category.words">
-          <br>
-          <p fxflex="20">{{word.word}}</p>
+        <div fxLayout="row" fxLayoutAlign="space-between" fxFill fxLayoutGap="16px" *ngFor="let word of category.words">
+          <p fxflex="20" fxLayoutAlign="start">{{word.word}}</p>
           <div fxFlex="80" fxLayoutAlign="end">
             <button mat-flat-button (click)="openEditWord(word)">
               <mat-icon>edit</mat-icon>

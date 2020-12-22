@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 
 import {Sign_in} from '../_models/sign_in';
 import {Sign_up} from '../_models/sign_up';
@@ -19,25 +19,25 @@ export class AuthenticationService {
               private router: Router,
               public dialog: MatDialog,
               private authService: SocialAuthService,
-              // tslint:disable-next-line:variable-name
-              private _snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar) {
     this.currentUserSubject = new BehaviorSubject<Sign_in>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  // tslint:disable-next-line:typedef
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
+
+  openSnackBar(message: string, action: string): void {
+    this.snackBar.open(message, action, {
       duration: 2000,
     });
   }
 
-  // tslint:disable-next-line:typedef
-  SignUp(user: Sign_up) {
+  SignUp(user: Sign_up): Subscription {
     return this.http.post('http://localhost:3000/sign_up', user).subscribe(
-      data => {
+      response => {
         this.openSnackBar('User registered successfully', '');
         console.log('User Signed Up');
+        // @ts-ignore
+        localStorage.setItem('userID', response.data.id);
         this.dialog.closeAll();
       },
       error => {
@@ -48,11 +48,11 @@ export class AuthenticationService {
 
   }
 
-  // tslint:disable-next-line:typedef
-  SignIn(user: Sign_in) {
+  SignIn(user: Sign_in): Subscription {
 
     return this.http.post('http://localhost:3000/sign_in', user).subscribe(
       response => {
+        localStorage.setItem('socialLogin', 'false');
         // @ts-ignore
         this.user = response.data.user;
         this.logIn();
@@ -73,6 +73,44 @@ export class AuthenticationService {
       }
     );
   }
+
+  QuietlySignUp(user: Sign_up): Subscription {
+    return this.http.post('http://localhost:3000/sign_up', user).subscribe(
+      response => {
+        console.log('User Signed Up');
+        // @ts-ignore
+        localStorage.setItem('userID', response.data.id);
+      },
+      error => {
+        console.log('Error:', error.status, error.statusText);
+      }
+    );
+
+  }
+
+  QuietlySignIn(user: Sign_in): Subscription {
+
+    return this.http.post('http://localhost:3000/sign_in', user).subscribe(
+      response => {
+        // @ts-ignore
+        this.user = response.data.user;
+        this.logIn();
+        console.log('User signed in. ');
+        // @ts-ignore
+        localStorage.setItem('username', response.data.user.username);
+        // @ts-ignore
+        localStorage.setItem('authToken', response.data.user.authentication_token);
+        // @ts-ignore
+        localStorage.setItem('userID', response.data.user.id);
+        this.router.navigate(['p']);
+      },
+      error => {
+        this.openSnackBar('Something went wrong', '');
+        console.log('Error:', error);
+      }
+    );
+  }
+
 
   logIn(): void {
     localStorage.setItem('isLoggedIn', 'true');

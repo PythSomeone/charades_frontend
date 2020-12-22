@@ -32,7 +32,6 @@ export class UserCategoriesWithWordsService {
               }
               this.userCategoriesWithWords[index] = category;
             });
-
           });
       });
     return this.userCategoriesWithWords;

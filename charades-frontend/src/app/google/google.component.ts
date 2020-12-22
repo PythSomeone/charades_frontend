@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GoogleLoginProvider, SocialAuthService, SocialUser} from 'angularx-social-login';
 import {Router} from '@angular/router';
+import {SocialService} from '../_services/social.service';
 
 // https://www.npmjs.com/package/angularx-social-login
 
@@ -13,26 +14,13 @@ import {Router} from '@angular/router';
 export class GoogleComponent implements OnInit {
   user: SocialUser;
 
-  constructor(private authService: SocialAuthService,
-              private router: Router) {
+  constructor(private socialService: SocialService) {
   }
 
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  async signInWithGoogle(): Promise<void> {
+    await this.socialService.signInWithGoogle();
   }
 
   ngOnInit(): void {
-    this.authService.authState.subscribe(
-      user => {
-        console.log('User signed in successfully. (Google)');
-        localStorage.setItem('username', user.firstName);
-        localStorage.setItem('authToken', user.authToken);
-        localStorage.setItem('isLoggedIn', 'true');
-        this.router.navigate(['p']);
-      },
-      error => {
-        console.log(error);
-      }
-    );
   }
 }

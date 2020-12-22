@@ -3,6 +3,8 @@ import {ColorSchemeService} from '../_services/color-scheme.service';
 import {Router} from '@angular/router';
 import {UserSettingService} from '../_services/user-setting.service';
 import {User} from '../_models/user';
+import {MatDialog} from '@angular/material/dialog';
+import {DeleteAccountComponent} from '../dialogs/delete-account/delete-account.component';
 
 @Component({
   selector: 'app-user-categories',
@@ -10,13 +12,15 @@ import {User} from '../_models/user';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
+  socialLogin: any = localStorage.getItem('socialLogin');
   userID = localStorage.getItem('userID');
   user = new User('', '');
   checked: boolean;
 
   constructor(private router: Router,
               private userSettingsService: UserSettingService,
-              private colorSchemeService: ColorSchemeService) {
+              private colorSchemeService: ColorSchemeService,
+              private dialog: MatDialog) {
     this.userSettingsService.get(this.userID);
     this.userSettingsService.userObservable.subscribe(
       user => {
@@ -24,6 +28,9 @@ export class SettingsComponent implements OnInit {
       });
     this.checkSlideToggle();
     this.colorSchemeService.load();
+    if (this.socialLogin === 'true'){
+      this.socialLogin = false;
+    }
   }
 
   checkSlideToggle(): void {
@@ -56,7 +63,7 @@ export class SettingsComponent implements OnInit {
   }
 
   deleteUser(): void {
-    this.userSettingsService.delete(this.userID);
+    this.dialog.open(DeleteAccountComponent, {});
   }
 
 }

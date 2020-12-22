@@ -3,6 +3,7 @@ import {AuthenticationService} from '../_services/authentication.service';
 import {Router} from '@angular/router';
 import {ColorSchemeService} from '../_services/color-scheme.service';
 import {UserSettingService} from '../_services/user-setting.service';
+import {SocialService} from '../_services/social.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,10 +16,12 @@ export class ProfileComponent implements OnInit {
   user: string;
 
 
-  constructor(private authenticationService: AuthenticationService,
-              private router: Router,
-              private colorSchemeService: ColorSchemeService,
-              private userSettingsService: UserSettingService) {
+  constructor(
+    private socialService: SocialService,
+    private authenticationService: AuthenticationService,
+    private router: Router,
+    private colorSchemeService: ColorSchemeService,
+    private userSettingsService: UserSettingService) {
     colorSchemeService.load();
     this.userSettingsService.get(this.userID);
     this.userSettingsService.userObservable.subscribe(
