@@ -7,8 +7,6 @@ import {Categories} from '../_models/categories';
 import {Player} from '../_models/player';
 import {GameService} from '../_services/game.service';
 import {PlayerService} from '../_services/player.service';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -18,14 +16,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class LobbyComponent implements OnInit {
 
-  visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-
   players: Array<Player> = [];
-  player = new Player('', '');
+  player = new Player('', 0);
   categoryID = localStorage.getItem('categoryID');
   ownCategory = localStorage.getItem('ownCategory');
   userID = localStorage.getItem('userID');

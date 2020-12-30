@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 import {Sign_up} from '../_models/sign_up';
 import {AuthenticationService} from './authentication.service';
 import {Sign_in} from '../_models/sign_in';
-import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Injectable({providedIn: 'root'})
 export class SocialService {
