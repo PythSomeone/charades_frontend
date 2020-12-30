@@ -5,6 +5,7 @@ import {ColorSchemeService} from '../_services/color-scheme.service';
 import {UserCategoriesComponent} from '../user-categories/user-categories.component';
 import {UserCategoriesService} from '../_services/user-categories.service';
 import {Categories} from '../_models/categories';
+import {GameService} from '../_services/game.service';
 
 @Component({
   selector: 'app-categories',
@@ -15,12 +16,12 @@ export class CategoriesComponent implements OnInit {
 
   userCategories = [];
   userID = localStorage.getItem('userID');
-  animals: object;
 
   constructor(private basicCategoriesService: BasicCategoriesService,
               private router: Router,
               private colorSchemeService: ColorSchemeService,
-              private userCategoriesService: UserCategoriesService) {
+              private userCategoriesService: UserCategoriesService,
+              private gameService: GameService) {
     colorSchemeService.load();
   }
 
@@ -31,11 +32,6 @@ export class CategoriesComponent implements OnInit {
         this.userCategories = categories;
       });
   }
-
-  listAnimals(): void {
-    this.animals = this.basicCategoriesService.getAnimals();
-  }
-
 
   back(): void {
     this.router.navigate(['p']);
@@ -68,6 +64,7 @@ export class CategoriesComponent implements OnInit {
         break;
       }
     }
+    this.gameService.create();
     this.router.navigate(['l']);
   }
 }

@@ -2,11 +2,22 @@
 
 <div fxFill fxLayoutAlign="center center" fxLayoutGap="16px" fxLayout="column">
   <h1>Add players that will play in <b>{{category.name}}</b> category</h1>
+  <div fxLayoutGap="16px">
   <mat-form-field>
-    <mat-label>Enter name</mat-label>
-    <input matInput [(ngModel)]="this.player.name">
+    <mat-label>Enter name or nickame</mat-label>
+    <input matInput [(ngModel)]="player.name">
   </mat-form-field>
-  <button mat-raised-button (click)="addPlayer()" type="submit">Add</button>
-  <button mat-raised-button (click)="toCategories()" >Back</button>
+  <button mat-raised-button type="submit" (click)="add(player)">Add</button>
+  </div>
+  <ng-container *ngFor="let player of players"  fxLayoutGap="16px">
+    <button fxLayoutAlign="center" mat-flat-button>
+    {{player.name}}
+    <button mat-flat-button matSuffix (click)="remove(player)">
+      <mat-icon>cancel</mat-icon>
+    </button>
+    </button>
+  </ng-container>
+  <button mat-stroked-button color="accent">Start game</button>
+  <button mat-raised-button (click)="toCategories()">Back</button>
 </div>
 </body>

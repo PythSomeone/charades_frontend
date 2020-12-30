@@ -43,8 +43,7 @@ export class UserCategoriesService {
     );
   }
 
-  // tslint:disable-next-line:typedef
-  async get(user_id: string, category_id: string) {
+  async get(user_id: string, category_id: string): Promise<Subscription> {
     return this.http.get('http://localhost:3000/user/' + user_id + '/categories/' + category_id).subscribe(
       response => {
         // @ts-ignore

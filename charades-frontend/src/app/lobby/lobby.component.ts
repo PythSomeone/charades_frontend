@@ -5,6 +5,10 @@ import {Router} from '@angular/router';
 import {ColorSchemeService} from '../_services/color-scheme.service';
 import {Categories} from '../_models/categories';
 import {Player} from '../_models/player';
+import {GameService} from '../_services/game.service';
+import {PlayerService} from '../_services/player.service';
+import {MatChipInputEvent} from '@angular/material/chips';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-lobby',
@@ -13,17 +17,30 @@ import {Player} from '../_models/player';
 })
 export class LobbyComponent implements OnInit {
 
-  player = new Player('', '', '');
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+
+  players: Array<Player> = [];
+  player = new Player( '', '');
   categoryID = localStorage.getItem('categoryID');
   ownCategory = localStorage.getItem('ownCategory');
   userID = localStorage.getItem('userID');
+  gameID = localStorage.getItem('gameID');
   category: any = new Categories('', '', '', []);
 
   constructor(private userCategoriesService: UserCategoriesService,
               private basicCategoriesService: BasicCategoriesService,
-              private router: Router,
-              private colorSchemeService: ColorSchemeService) {
+              private colorSchemeService: ColorSchemeService,
+              private gameService: GameService,
+              private playerService: PlayerService) {
     colorSchemeService.load();
+    this.playerService.index(this.gameID);
+    this.playerService.playersObservable.subscribe(
+      players => this.players = players
+    );
   }
 
   ngOnInit(): void {
@@ -55,9 +72,19 @@ export class LobbyComponent implements OnInit {
   }
 
   toCategories(): void {
-    this.router.navigate(['gc']);
+    this.gameService.delete();
   }
 
-  addPlayer(): void {
+  add(player: Player): void {
+    this.gameID = localStorage.getItem('gameID');
+    this.playerService.create(this.gameID, player);
+  }
+
+  remove(player: Player): void {
+    this.playerService.delete(player.game_id, player.id);
+  }
+
+  start(): void{
+    
   }
 }

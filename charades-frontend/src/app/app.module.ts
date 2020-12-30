@@ -27,6 +27,8 @@ import {EditWordComponent} from './dialogs/edit-word/edit-word.component';
 import {DeleteWordComponent} from './dialogs/delete-word/delete-word.component';
 import {SocialService} from './_services/social.service';
 import {DeleteAccountComponent} from './dialogs/delete-account/delete-account.component';
+import {GameService} from './_services/game.service';
+import {PlayerService} from './_services/player.service';
 
 
 @NgModule({
@@ -64,6 +66,8 @@ import {DeleteAccountComponent} from './dialogs/delete-account/delete-account.co
     UserWordsService,
     UserCategoriesWithWordsService,
     SocialService,
+    GameService,
+    PlayerService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
