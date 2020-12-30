@@ -20,9 +20,10 @@
       <app-facebook></app-facebook>
     </div>
     <div fxLayoutGap="2%" fxLayout="column">
-      <button mat-raised-button (click)="openSignIn()">Sign in</button>
-      <button mat-stroked-button (click)="openSignUp()">Sign up</button>
+      <button mat-raised-button (click)="openSignIn()">{{'Sign_in'|tr}}</button>
+      <button mat-stroked-button (click)="openSignUp()">{{'sign-up'|tr}}</button>
     </div>
+    <button mat-raised-button (click)="translator.setLanguage(x)" *ngFor="let x of ['en','pl']">{{x|tr}}</button>
   </mat-card-content>
 </div>
 </body>

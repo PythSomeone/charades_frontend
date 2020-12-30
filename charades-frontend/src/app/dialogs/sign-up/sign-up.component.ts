@@ -13,7 +13,8 @@ export class SignUpComponent implements OnInit {
   signUpUserModel = new Sign_up('', '', '', '');
   hide = true;
 
-  constructor(private authenticationService: AuthenticationService, public dialog: MatDialog) {
+  constructor(private authenticationService: AuthenticationService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {

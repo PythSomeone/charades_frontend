@@ -5,20 +5,20 @@
     <mat-expansion-panel fxLayoutGap="16px">
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title>
-          Create Categories
+          {{'create-categories'|tr}}
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column">
         <mat-form-field>
-          <mat-label>Enter name</mat-label>
+          <mat-label>{{'enter-name'|tr}}</mat-label>
           <input matInput [(ngModel)]="this.category.name">
         </mat-form-field>
-        <button mat-raised-button (click)="createCategory()" type="submit">Create</button>
+        <button mat-raised-button (click)="createCategory()" type="submit">{{'Create'|tr}}</button>
       </mat-panel-description>
     </mat-expansion-panel>
     <div fxLayoutGap="16px">
-      <button mat-raised-button (click)="toGame()">To Game</button>
-      <button mat-raised-button (click)="toProfile()">Back</button>
+      <button mat-raised-button (click)="toGame()">{{'to-game'|tr}}</button>
+      <button mat-raised-button (click)="toProfile()">{{'Back'|tr}}</button>
     </div>
   </div>
 
@@ -54,7 +54,7 @@
       </mat-panel-description>
       <div fxLayout="row" fxLayoutAlign="space-between" fxFill>
         <mat-form-field>
-          <mat-label>Enter new word</mat-label>
+          <mat-label>{{'enter-new'|tr}}</mat-label>
           <input matInput [(ngModel)]="newWord.word">
         </mat-form-field>
         <div fxFlex="90" fxLayoutAlign="end">

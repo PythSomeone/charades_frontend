@@ -27,7 +27,7 @@ import {EditWordComponent} from './dialogs/edit-word/edit-word.component';
 import {DeleteWordComponent} from './dialogs/delete-word/delete-word.component';
 import {SocialService} from './_services/social.service';
 import {DeleteAccountComponent} from './dialogs/delete-account/delete-account.component';
-
+import { NgFerhadoTranslatorModule } from './translation/index';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,11 @@ import {DeleteAccountComponent} from './dialogs/delete-account/delete-account.co
     FlexModule,
     MaterialModule,
     SocialLoginModule,
-    MatExpansionModule
+    MatExpansionModule,
+    NgFerhadoTranslatorModule.forRoot({
+      defaultLang: 'en',
+      storagePrefix: 'ferhado-language'
+    })
   ],
 
   providers: [
@@ -84,5 +88,4 @@ import {DeleteAccountComponent} from './dialogs/delete-account/delete-account.co
     }],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

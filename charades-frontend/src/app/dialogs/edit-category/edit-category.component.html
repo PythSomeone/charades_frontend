@@ -1,12 +1,12 @@
 <div fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
-  <p>Edit name of <b>{{data.category.name}}</b> category</p>
+  <p>{{'edit-category'|tr}}<b>{{data.category.name}}</b></p>
   <mat-form-field>
     <input matInput [(ngModel)]="data.category.name">
     <button matSuffix mat-icon-button disabled></button>
   </mat-form-field>
   <div fxLayoutGap="20%" fxLayout="row">
     <button fxLayoutAlign="center" mat-raised-button
-            (click)="updateCategory(data.category.user_id ,data.category.id, data.category)" type="submit">Update
+            (click)="updateCategory(data.category.user_id ,data.category.id, data.category)" type="submit">{{'Update'|tr}}
     </button>
     <button fxLayoutAlign="center" mat-raised-button (click)="close()">Cancel</button>
   </div>
