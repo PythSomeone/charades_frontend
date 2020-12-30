@@ -7,6 +7,9 @@ import {CategoriesComponent} from './categories/categories.component';
 import {UserCategoriesComponent} from './user-categories/user-categories.component';
 import {LobbyComponent} from './lobby/lobby.component';
 import {SettingsComponent} from './settings/settings.component';
+import {GameComponent} from './game/game.component';
+import {Game} from './_models/game';
+
 
 const routes: Routes = [
   {path: '', redirectTo: 'h', pathMatch: 'full'},
@@ -15,7 +18,8 @@ const routes: Routes = [
   {path: 'gc', component: CategoriesComponent, canActivate: [AuthGuard]},
   {path: 'cm', component: UserCategoriesComponent, canActivate: [AuthGuard]},
   {path: 'l', component: LobbyComponent, canActivate: [AuthGuard]},
-  {path: 's', component: SettingsComponent, canActivate: [AuthGuard]}
+  {path: 's', component: SettingsComponent, canActivate: [AuthGuard]},
+  {path: 'g', component: GameComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -33,5 +37,6 @@ export const routingComponents = [
   UserCategoriesComponent,
   LobbyComponent,
   SettingsComponent,
+  GameComponent
 ];
 

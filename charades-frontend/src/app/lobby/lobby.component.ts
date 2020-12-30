@@ -9,6 +9,7 @@ import {GameService} from '../_services/game.service';
 import {PlayerService} from '../_services/player.service';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-lobby',
@@ -24,7 +25,7 @@ export class LobbyComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   players: Array<Player> = [];
-  player = new Player( '', '');
+  player = new Player('', '');
   categoryID = localStorage.getItem('categoryID');
   ownCategory = localStorage.getItem('ownCategory');
   userID = localStorage.getItem('userID');
@@ -35,7 +36,9 @@ export class LobbyComponent implements OnInit {
               private basicCategoriesService: BasicCategoriesService,
               private colorSchemeService: ColorSchemeService,
               private gameService: GameService,
-              private playerService: PlayerService) {
+              private playerService: PlayerService,
+              private router: Router,
+              private snackBar: MatSnackBar) {
     colorSchemeService.load();
     this.playerService.index(this.gameID);
     this.playerService.playersObservable.subscribe(
@@ -71,6 +74,12 @@ export class LobbyComponent implements OnInit {
     }
   }
 
+  openSnackBar(message: string, action: string): void {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
   toCategories(): void {
     this.gameService.delete();
   }
@@ -84,7 +93,11 @@ export class LobbyComponent implements OnInit {
     this.playerService.delete(player.game_id, player.id);
   }
 
-  start(): void{
-    
+  start(): void {
+    if (this.players.length >= 2) {
+      this.router.navigate(['g']);
+    } else {
+      this.openSnackBar('Needed at least 2 players', '');
+    }
   }
 }
