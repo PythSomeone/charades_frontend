@@ -7,7 +7,7 @@
     <mat-label>Enter name or nickame</mat-label>
     <input matInput [(ngModel)]="player.name">
   </mat-form-field>
-  <button mat-raised-button type="submit" (click)="add(player)">Add</button>
+  <button mat-raised-button color="accent" type="submit" (click)="add(player)">Add</button>
   </div>
   <ng-container *ngFor="let player of players"  fxLayoutGap="16px">
     <button fxLayoutAlign="center" mat-flat-button>

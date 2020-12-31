@@ -21,7 +21,7 @@
 <br>
 <div fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="16px">
   <ng-container *ngFor="let player of players" fxLayout="row">
-    <button mat-flat-button>{{player.name}} {{player.points}}</button>
+    <button mat-flat-button> {{player.name}} {{player.points}} </button>
   </ng-container>
   <button *ngIf="inTurn" mat-raised-button color="accent" (click)="giveUp()">Give Up</button>
   <button mat-raised-button (click)="endGame()">End Game</button>

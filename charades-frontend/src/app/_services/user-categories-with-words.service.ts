@@ -20,7 +20,7 @@ export class UserCategoriesWithWordsService {
       (categories) => {
         this.userCategories = categories;
         this.userCategories.forEach(category => {
-          this.userWordsService.get(user_id, category.id);
+          this.userWordsService.index(user_id, category.id);
         });
         this.userWordsService.userCategoryWordsObservable.subscribe(
           words => {

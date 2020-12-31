@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Player} from '../_models/player';
 import {Subject, Subscription} from 'rxjs';
-import {log} from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +22,9 @@ export class PlayerService {
       response => {
         // @ts-ignore
         this.setPlayers(response.data);
+      },
+      error => {
+        console.log(error);
       }
     );
   }
@@ -53,7 +55,14 @@ export class PlayerService {
       },
       error => console.log(error)
     );
-    ;
   }
 
+  update(game_id: string, player_id: string, player: Player): void {
+    this.http.patch(this.apiURL + '/games/' + game_id + '/players/' + player_id, player).subscribe(
+      response => {
+        console.log(response);
+      },
+      error => console.log(error)
+    );
+  }
 }

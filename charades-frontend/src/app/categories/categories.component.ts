@@ -43,19 +43,19 @@ export class CategoriesComponent implements OnInit {
 
   toLobby(category: any): void {
     switch (category) {
-      case 0: {
+      case 'Animals': {
         localStorage.setItem('ownCategory', 'false');
-        localStorage.setItem('categoryID', '0');
+        localStorage.setItem('categoryID', 'Animals');
         break;
       }
-      case 1: {
+      case 'Video Games': {
         localStorage.setItem('ownCategory', 'false');
-        localStorage.setItem('categoryID', '1');
+        localStorage.setItem('categoryID', 'Video Games');
         break;
       }
-      case 2: {
+      case 'Movies': {
         localStorage.setItem('ownCategory', 'false');
-        localStorage.setItem('categoryID', '2');
+        localStorage.setItem('categoryID', 'Movies');
         break;
       }
       default: {

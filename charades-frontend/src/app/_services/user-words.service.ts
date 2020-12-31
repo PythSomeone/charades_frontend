@@ -19,8 +19,7 @@ export class UserWordsService {
     this.userCategoryWordsSource.next(words);
   }
 
-  // tslint:disable-next-line:typedef
-  get(userID: string, categoryID: string) {
+  index(userID: string, categoryID: string): Subscription {
     return this.http.get<Categories[]>('http://localhost:3000/user/' + userID + '/categories/' + categoryID + '/words').subscribe(
       response => {
         // @ts-ignore
@@ -29,7 +28,15 @@ export class UserWordsService {
     );
   }
 
-  // tslint:disable-next-line:variable-name
+  get(userID: string, categoryID: string, wordID: string): Subscription {
+    return this.http.get<Categories[]>('http://localhost:3000/user/' + userID + '/categories/' + categoryID + '/words/' + wordID).subscribe(
+      response => {
+        // @ts-ignore
+        this.setUserCategoryWords(response.data);
+      }
+    );
+  }
+
   create(user_id: string, category_id: string, word: any): void {
     this.http.post('http://localhost:3000/user/' + user_id + '/categories/' + category_id + '/words', word).subscribe(
       response => {
@@ -42,7 +49,6 @@ export class UserWordsService {
     );
   }
 
-  // tslint:disable-next-line:variable-name
   delete(user_id: string, category_id: string, id: string): void {
     this.http.delete('http://localhost:3000/user/' + user_id + '/categories/' + category_id + '/words/' + id).subscribe(
       response => {
@@ -56,7 +62,6 @@ export class UserWordsService {
     );
   }
 
-  // tslint:disable-next-line:variable-name
   update(user_id: string, category_id: string, id: string, word: any): void {
     this.http.patch('http://localhost:3000/user/' + user_id + '/categories/ ' + category_id + '/words/' + id, word).subscribe(
       response => {

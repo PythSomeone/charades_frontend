@@ -43,7 +43,7 @@ import {PlayerService} from './_services/player.service';
     EditCategoryComponent,
     EditWordComponent,
     DeleteWordComponent,
-    DeleteAccountComponent
+    DeleteAccountComponent,
 
   ],
   imports: [

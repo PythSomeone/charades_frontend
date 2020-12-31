@@ -39,31 +39,32 @@ export class LobbyComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.categoryID = localStorage.getItem('categoryID');
+    this.ownCategory = localStorage.getItem('ownCategory');
     if (this.ownCategory === 'true') {
       this.userCategoriesService.get(this.userID, this.categoryID);
       this.userCategoriesService.UserCategoriesObservable.subscribe(
         category => {
           this.category = category;
+          localStorage.setItem('categoryName', this.category.name);
         });
-      {
-      }
     } else {
       switch (this.categoryID) {
-        case '0': {
+        case 'Animals': {
           this.category.name = 'Animals';
           break;
         }
-        case '1': {
+        case 'Video Games': {
           this.category.name = 'Video Games';
           break;
         }
-        case '2': {
+        case 'Movies': {
           this.category.name = 'Movies';
           break;
         }
       }
-
     }
+
   }
 
   openSnackBar(message: string, action: string): void {
@@ -86,7 +87,7 @@ export class LobbyComponent implements OnInit {
   }
 
   start(): void {
-    if (this.players.length >= 2) {
+    if (this.players.length > 2) {
       this.router.navigate(['g']);
     } else {
       this.openSnackBar('Needed at least 2 players', '');
