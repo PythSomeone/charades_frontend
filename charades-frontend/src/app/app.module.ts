@@ -46,18 +46,18 @@ import {PlayerService} from './_services/player.service';
     DeleteAccountComponent,
 
   ],
-  imports: [
-    BrowserAnimationsModule,
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    MatButtonModule,
-    FlexModule,
-    MaterialModule,
-    SocialLoginModule,
-    MatExpansionModule
-  ],
+    imports: [
+        BrowserAnimationsModule,
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        MatButtonModule,
+        FlexModule,
+        MaterialModule,
+        SocialLoginModule,
+        MatExpansionModule,
+    ],
 
   providers: [
     AuthenticationService,

@@ -1,28 +1,31 @@
 <body class="mat-app-background" fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="16px">
-
-
 <div *ngIf="inTurn">
-  <div fxLayoutAlign="center center"  fxLayout="column">
+  <div fxLayoutAlign="center center" fxLayout="column">
     <div fxLayoutAlign="center center" fxLayout="column">
       <h1>{{word.word}}</h1>
       <p>{{category.name}}</p>
     </div>
-    <div *ngFor="let player of players" fxLayoutGap="16px">
-      <button *ngIf="!(host.name === player.name)" mat-raised-button (click)="addPoints(player)">
-        {{player.name}}
-      </button>
+    <div>
+      <div fxFlexAlign="center center" *ngFor="let player of players">
+        <br>
+        <button fxFlexAlign="center center" *ngIf="!(host.name === player.name)" mat-raised-button (click)="addPoints(player)">
+          <mat-label>{{player.name}}</mat-label>
+        </button>
+      </div>
     </div>
   </div>
 </div>
-<div *ngIf="!inTurn"  fxLayoutAlign="center center" fxLayout="column">
-<h1> Are you read for the next round {{host.name}}?</h1>
+<div *ngIf="!inTurn" fxLayoutAlign="center center" fxLayout="column">
+  <h1> Are you read for the next round {{host.name}}?</h1>
   <button mat-raised-button color="accent" (click)="ready()">Yes!</button>
 </div>
 <br>
-<div fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="16px">
-  <ng-container *ngFor="let player of players" fxLayout="row">
+<div fxLayoutAlign="center center" fxLayoutGap="16px">
+  <div *ngFor="let player of players" fxLayout="row">
     <button mat-flat-button> {{player.name}} {{player.points}} </button>
-  </ng-container>
+  </div>
+</div>
+<div fxLayout="column" fxLayoutGap="16px">
   <button *ngIf="inTurn" mat-raised-button color="accent" (click)="giveUp()">Give Up</button>
   <button mat-raised-button (click)="endGame()">End Game</button>
 </div>

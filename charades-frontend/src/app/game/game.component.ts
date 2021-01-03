@@ -14,19 +14,11 @@ import {Router} from '@angular/router';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-/*
-Getowanie hasła, kategorii i graczy z bazy, z użyciem serwisow
-(basic-categories, user-categories, player, game)
-Losowanie hasła po kliknięciu przucisku z nazwą gracza lub GIVE UP
-Przy naciśnięciu END GAME push do bazy z wynikami gry
-
-Tłumaczenie
-Ekran podsumowania
-*/
 export class GameComponent implements OnInit {
   host = new Player('', 0);
   word = new Word('', '', '', '');
   category = new Category('', '');
+
   categoryID = localStorage.getItem('categoryID');
   ownCategory = localStorage.getItem('ownCategory');
   userID = localStorage.getItem('userID');

@@ -90,7 +90,7 @@ export class LobbyComponent implements OnInit {
     if (this.players.length > 2) {
       this.router.navigate(['g']);
     } else {
-      this.openSnackBar('Needed at least 2 players', '');
+      this.openSnackBar('At least 3 players needed', 'Close');
     }
   }
 }
