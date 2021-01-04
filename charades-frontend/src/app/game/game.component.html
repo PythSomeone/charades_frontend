@@ -5,28 +5,28 @@
       <h1>{{word.word}}</h1>
       <p>{{category.name}}</p>
     </div>
-    <div>
-      <div fxFlexAlign="center center" *ngFor="let player of players">
+      <div fxLayoutAlign="center" fxLayout="column" fxLayoutGap="16px" *ngFor="let player of players">
         <br>
-        <button fxFlexAlign="center center" *ngIf="!(host.name === player.name)" mat-raised-button (click)="addPoints(player)">
+        <button fxLayoutAlign="center" *ngIf="!(host.name === player.name)" mat-raised-button (click)="addPoints(player)">
           <mat-label>{{player.name}}</mat-label>
         </button>
       </div>
-    </div>
   </div>
 </div>
-<div *ngIf="!inTurn" fxLayoutAlign="center center" fxLayout="column">
-  <h1> Are you read for the next round {{host.name}}?</h1>
+<div *ngIf="!inTurn" fxLayoutAlign="center center" fxLayout="column wrap">
+  <h1> Are you read for the next round</h1>
+  <h1> {{host.name}}? </h1>
   <button mat-raised-button color="accent" (click)="ready()">Yes!</button>
 </div>
 <br>
-<div fxLayoutAlign="center center" fxLayoutGap="16px">
-  <div *ngFor="let player of players" fxLayout="row">
-    <button mat-flat-button> {{player.name}} {{player.points}} </button>
+<div fxLayoutAlign="center" fxLayoutGap="16px grid" fxLayout="row wrap">
+  <div *ngFor="let player of players">
+    <button mat-flat-button > {{player.name}} {{player.points}} </button>
   </div>
 </div>
-<div fxLayout="column" fxLayoutGap="16px">
+<br>
+<div fxLayout="column" fxLayoutGap="15px">
   <button *ngIf="inTurn" mat-raised-button color="accent" (click)="giveUp()">Give Up</button>
-  <button mat-raised-button (click)="endGame()">End Game</button>
+  <button mat-raised-button color="warn" (click)="endGame()" >End Game</button>
 </div>
 </body>

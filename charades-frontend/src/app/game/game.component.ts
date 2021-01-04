@@ -40,6 +40,18 @@ export class GameComponent implements OnInit {
     this.random = 0;
 
     this.colorSchemeService.load();
+    this.playerService.index(this.gameID);
+    this.playerService.playersObservable.subscribe(
+      players => {
+        this.players = players;
+        this.inTurn = true;
+        this.players.forEach(player => {
+          if (player.points === null) {
+            player.points = 0;
+          }
+        });
+      }
+    );
     if (this.ownCategory === 'true') {
       this.category.name = localStorage.getItem('categoryName');
       this.userWordsService.index(this.userID, this.categoryID);
@@ -50,19 +62,6 @@ export class GameComponent implements OnInit {
           this.word = words[this.random];
           console.log(words);
         });
-      this.playerService.index(this.gameID);
-      this.playerService.playersObservable.subscribe(
-        players => {
-          this.players = players;
-          this.inTurn = true;
-          this.players.forEach(player => {
-            if (player.points === null) {
-              player.points = 0;
-            }
-          });
-        }
-      );
-
     } else {
 
       switch (this.categoryID) {
