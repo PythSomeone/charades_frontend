@@ -1,14 +1,20 @@
-<body fxFill class="mat-app-background" fxLayoutAlign="center center" fxLayout="column">
+<body fxFill class="mat-app-background" fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="15px">
 <h1>{{category.name}}</h1>
 <h3>Leaderboards:</h3>
-
-<div fxLayout="column" *ngFor="let player of players">
-  <div fxFill fxLayout="row" fxFlexAlign="center center" fxLayoutGap="200%">
-    <p fxFlex="20" fxFlexAlign="center center">{{player.name}} {{player.points}}</p>
-    <mat-progress-bar fxFlexFill mode="determinate" value="{{player.points/max * 100}}"
-                      color="accent"></mat-progress-bar>
+<div *ngFor="let player of players">
+  <div fxFlexAlign="start center" >
+    <mat-progress-bar mode="determinate" value="{{player.points/max * 100}}"
+                      color="accent" ></mat-progress-bar>
+  </div>
+  <div fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <p><b>{{player.name}}</b> {{player.points}} Points</p>
+    </div>
   </div>
 </div>
+
 <br>
-<button mat-raised-button color="accent" (click)="backToProfile()">Back to profile</button>
+<div>
+  <button mat-raised-button color="accent" fxLayoutAlign="center center" (click)="backToProfile()">Back to profile</button>
+</div>
 </body>
