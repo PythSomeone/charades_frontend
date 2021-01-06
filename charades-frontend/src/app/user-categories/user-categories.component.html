@@ -1,7 +1,7 @@
 <body class="mat-app-background">
 <br>
 <div fxLayout="column" fxLayoutGap="2%">
-  <div fxFill fxLayoutAlign="center start" fxLayout="row wrap" fxLayoutGap="16px">
+  <div fxFill fxLayoutAlign="center start" fxLayout="row wrap">
     <mat-expansion-panel fxLayoutGap="16px">
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title>
@@ -16,20 +16,22 @@
         <button mat-raised-button (click)="createCategory()" type="submit">{{'Create'|tr}}</button>
       </mat-panel-description>
     </mat-expansion-panel>
-    <div fxLayoutGap="16px">
-      <button mat-raised-button (click)="toGame()">{{'to-game'|tr}}</button>
-      <button mat-raised-button (click)="toProfile()">{{'Back'|tr}}</button>
-    </div>
   </div>
+  <div fxLayoutGap="16px" fxLayoutAlign="center">
+    <button mat-raised-button (click)="toGame()">{{'to-game'|tr}}</button>
+    <button mat-raised-button (click)="toProfile()">{{'Back'|tr}}</button>
+  </div>
+
 
   <div fxLayoutAlign="center center" *ngFor="let category of categories">
     <mat-expansion-panel fxFill>
-      <mat-expansion-panel-header>
+      <mat-expansion-panel-header fxLayoutAlign="space-between">
         <h1>{{category.name}}</h1>
+
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column">
-
-        <div fxFlex="90" fxLayoutGap="8px">
+        <div fxLayoutGap="16px">
+          <h3>{{'cat-man'|tr}}</h3>
           <button mat-flat-button (click)="openEditCategory(category)">
             <mat-icon>edit</mat-icon>
           </button>
@@ -39,8 +41,8 @@
         </div>
         <mat-divider></mat-divider>
         <div fxLayout="row" fxLayoutAlign="space-between" fxFill fxLayoutGap="16px" *ngFor="let word of category.words">
-          <p fxflex="20" fxLayoutAlign="start">{{word.word}}</p>
-          <div fxFlex="80" fxLayoutAlign="end">
+          <p fxflex="50" fxLayoutAlign="start">{{word.word}}</p>
+          <div fxFlex="50" fxLayoutAlign="end">
             <button mat-flat-button (click)="openEditWord(word)">
               <mat-icon>edit</mat-icon>
             </button>
@@ -48,7 +50,6 @@
               <mat-icon>delete</mat-icon>
             </button>
           </div>
-
         </div>
 
       </mat-panel-description>

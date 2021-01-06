@@ -14,19 +14,19 @@
   </div>
 </div>
 <div *ngIf="!inTurn" fxLayoutAlign="center center" fxLayout="column wrap">
-  <h1> Are you read for the next round</h1>
-  <h1> {{host.name}}? </h1>
-  <button mat-raised-button color="accent" (click)="ready()">Yes!</button>
+  <h1> {{'ready1'|tr}}</h1>
+  <h1> {{'ready2'|tr}}{{host.name}}? </h1>
+  <button mat-raised-button color="accent" (click)="ready()">{{'yes'|tr}}</button>
 </div>
 <br>
-<div fxLayoutAlign="center" fxLayoutGap="16px grid" fxLayout="row wrap">
-  <div *ngFor="let player of players">
-    <button mat-flat-button > {{player.name}} {{player.points}} </button>
+<div fxLayoutAlign="center" fxLayout="row" fxLayoutGap="16px grid" fxLayout="row wrap">
+  <div *ngFor="let player of players" fxLayoutAlign="center">
+    <button mat-flat-button> {{player.name}} {{player.points}} </button>
   </div>
 </div>
 <br>
 <div fxLayout="column" fxLayoutGap="15px">
-  <button *ngIf="inTurn" mat-raised-button color="accent" (click)="giveUp()">Give Up</button>
-  <button mat-raised-button color="warn" (click)="endGame()" >End Game</button>
+  <button *ngIf="inTurn" mat-raised-button color="accent" (click)="giveUp()">{{'change-word'|tr}}</button>
+  <button mat-raised-button color="warn" (click)="endGame()" >{{'end-game'|tr}}</button>
 </div>
 </body>

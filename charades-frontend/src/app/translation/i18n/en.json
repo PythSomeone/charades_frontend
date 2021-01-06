@@ -21,7 +21,8 @@
   "sign-up": "Sign up",
   "username": "Enter your username",
   "repassword": "Re-type your password",
-  "lobby": "Add players that will play in category ",
+  "lobby1": "Add players that will play",
+  "lobby2": " in category",
   "enter-name": "Enter name",
   "Add": "Add",
   "create-game": "Create Game",
@@ -36,16 +37,27 @@
   "google": "Sign in with Google",
   "Welcome": "Welcome",
   "sup": "What are you up to?",
-  "Light": "Light,",
+  "Light": "Light",
   "Dark": "Dark",
   "Theme": "Theme",
   "change-nick": "Change Nickname",
   "Change": "Change",
   "change-mail": "Change e-mail",
   "delete": "Delete account",
-  "cattegory-choice": "Please choose a category"
-
-
-
-
+  "category-choice": "Please choose a category",
+  "choose-lang": "Choose Language",
+  "start-game": "Start Game",
+  "cancel": "cancel",
+  "ready1": "Are you read for the next",
+  "ready2": "round ",
+  "yes": "Yes!",
+  "change-word": "Change word",
+  "end-game": "End Game",
+  "end-game-question1": "Are you sure you want",
+  "end-game-question2": "to finish this game? ",
+  "leaderboards": "Leaderboards: ",
+  "points": "Points",
+  "back-to-profile": "Back to profile",
+  "cat-man": "Manage category: "
+  
 }

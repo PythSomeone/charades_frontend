@@ -4,6 +4,16 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title>
+          {{'choose-lang'|tr}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <mat-panel-description fxLayout="column" fxLayoutGap="10%">
+          <button mat-raised-button (click)="translator.setLanguage(x)" *ngFor="let x of ['en','pl']">{{x|tr}}</button>
+        </mat-panel-description>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header hideToggle>
+        <mat-panel-title>
           {{'Theme'|tr}}
         </mat-panel-title>
       </mat-expansion-panel-header>
@@ -18,7 +28,6 @@
         </div>
       </mat-panel-description>
     </mat-expansion-panel>
-    <button mat-raised-button (click)="translator.setLanguage(x)" *ngFor="let x of ['en','pl']">{{x|tr}}</button>
     <mat-expansion-panel *ngIf="socialLogin">
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title>

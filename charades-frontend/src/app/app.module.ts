@@ -30,6 +30,7 @@ import {DeleteAccountComponent} from './dialogs/delete-account/delete-account.co
 import {GameService} from './_services/game.service';
 import {PlayerService} from './_services/player.service';
 import { NgFerhadoTranslatorModule } from './translation/index';
+import {EndGameComponent} from './dialogs/end-game/end-game.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { NgFerhadoTranslatorModule } from './translation/index';
     EditWordComponent,
     DeleteWordComponent,
     DeleteAccountComponent,
+    EndGameComponent
 
   ],
 

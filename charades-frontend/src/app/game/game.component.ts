@@ -8,6 +8,9 @@ import {UserWordsService} from '../_services/user-words.service';
 import {ColorSchemeService} from '../_services/color-scheme.service';
 import {PlayerService} from '../_services/player.service';
 import {Router} from '@angular/router';
+import {DeleteAccountComponent} from '../dialogs/delete-account/delete-account.component';
+import {MatDialog} from '@angular/material/dialog';
+import {EndGameComponent} from '../dialogs/end-game/end-game.component';
 
 @Component({
   selector: 'app-game',
@@ -35,7 +38,8 @@ export class GameComponent implements OnInit {
     private userWordsService: UserWordsService,
     private colorSchemeService: ColorSchemeService,
     private playerService: PlayerService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog,
   ) {
     this.random = 0;
 
@@ -103,9 +107,7 @@ export class GameComponent implements OnInit {
     this.playerService.update(this.gameID, player.id, player);
   }
 
-  endGame(): void {
-    this.router.navigate(['r']);
-  }
+
 
   ready(): void {
     this.inTurn = true;
@@ -125,5 +127,8 @@ export class GameComponent implements OnInit {
     }
     this.random = randomNumber;
     return randomNumber;
+  }
+  endGame(): void {
+    this.dialog.open(EndGameComponent, {});
   }
 }

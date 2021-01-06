@@ -1,6 +1,6 @@
 <body fxFill class="mat-app-background" fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="15px">
 <h1>{{category.name}}</h1>
-<h3>Leaderboards:</h3>
+<h3>{{'leaderboards'|tr}}</h3>
 <div *ngFor="let player of players">
   <div fxFlexAlign="start center" >
     <mat-progress-bar mode="determinate" value="{{player.points/max * 100}}"
@@ -8,13 +8,13 @@
   </div>
   <div fxLayout="column">
     <div fxLayout="row" fxLayoutAlign="center center">
-      <p><b>{{player.name}}</b> {{player.points}} Points</p>
+      <p><b>{{player.name}}</b> {{player.points}} {{'points'|tr}}</p>
     </div>
   </div>
 </div>
 
 <br>
 <div>
-  <button mat-raised-button color="accent" fxLayoutAlign="center center" (click)="backToProfile()">Back to profile</button>
+  <button mat-raised-button color="accent" fxLayoutAlign="center center" (click)="backToProfile()">{{'back-to-profile'|tr}}</button>
 </div>
 </body>
