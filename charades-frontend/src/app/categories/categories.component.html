@@ -2,18 +2,18 @@
 <div fxFill fxFlexAlign="center center" class="mat-background-app" fxLayout="column" fxLayoutGap="5%">
   <br>
   <div fxLayoutAlign="center center" fxLayout="column" color="primary">
-    <h1>Please choose a category</h1>
+    <h1>{{'cattegory-choice'|tr}}</h1>
     <div fxLayoutGap="5px">
-      <button mat-raised-button (click)="toUserCategories()">Edit your categories</button>
-      <button mat-raised-button (click)="back()">Back</button>
+      <button mat-raised-button (click)="toUserCategories()">{{'Edit_your_categories'|tr}}</button>
+      <button mat-raised-button (click)="back()">{{'Back'|tr}}</button>
     </div>
   </div>
   <div fxFill fxLayoutAlign="start center" fxLayout="column" fxLayoutGap="5px">
-    <mat-label>Standard categories</mat-label>
-    <button mat-raised-button (click)="toLobby('Animals')">Animals</button>
-    <button mat-raised-button (click)="toLobby('Video Games')">Video Games</button>
-    <button mat-raised-button (click)="toLobby('Movies')">Movies</button>
-    <mat-label *ngIf="userCategories">Your categories</mat-label>
+    <mat-label>{{'Standard_categories'|tr}}</mat-label>
+    <button mat-raised-button (click)="toLobby(0)">{{'Animals'|tr}}</button>
+    <button mat-raised-button (click)="toLobby(1)">{{'Video_Games'|tr}}</button>
+    <button mat-raised-button (click)="toLobby(2)">{{'Movies'|tr}}</button>
+    <mat-label *ngIf="userCategories">{{'Your_categories'|tr}}</mat-label>
     <div *ngFor="let category of userCategories">
       <button mat-raised-button (click)="toLobby(category.id)">{{category.name}}</button>
     </div>

@@ -1,13 +1,13 @@
 <div fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
-  <p>Edit name of <b>{{data.word.word}}</b> category</p>
+  <p>{{'edit-category'|tr}}<b>{{data.word.word}}</b></p>
   <mat-form-field>
     <input matInput [(ngModel)]="data.word.word">
     <button matSuffix mat-icon-button disabled></button>
   </mat-form-field>
   <div fxLayoutGap="20%" fxLayout="row">
     <button fxLayoutAlign="center" mat-raised-button
-            (click)="updateWord(data.word)" type="submit">Update
+            (click)="updateWord(data.word)" type="submit">{{'Update'|tr}}
     </button>
-    <button fxLayoutAlign="center" mat-raised-button (click)="close()">Cancel</button>
+    <button fxLayoutAlign="center" mat-raised-button (click)="close()">{{'Back'|tr}}</button>
   </div>
 </div>

@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {UserWordsService} from '../../_services/user-words.service';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 
+
 @Component({
   selector: 'app-edit-word',
   templateUrl: './edit-word.component.html',
