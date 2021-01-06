@@ -42,28 +42,10 @@ export class CategoriesComponent implements OnInit {
   }
 
   toLobby(category: any): void {
-    switch (category) {
-      case 'Animals': {
-        localStorage.setItem('ownCategory', 'false');
-        localStorage.setItem('categoryID', 'Animals');
-        break;
-      }
-      case 'Video Games': {
-        localStorage.setItem('ownCategory', 'false');
-        localStorage.setItem('categoryID', 'Video Games');
-        break;
-      }
-      case 'Movies': {
-        localStorage.setItem('ownCategory', 'false');
-        localStorage.setItem('categoryID', 'Movies');
-        break;
-      }
-      default: {
-        localStorage.setItem('ownCategory', 'true');
-        localStorage.setItem('categoryID', category);
-        break;
-      }
-    }
+
+    localStorage.setItem('ownCategory', 'true');
+    localStorage.setItem('categoryID', category);
+
     this.gameService.create();
     this.router.navigate(['l']);
   }

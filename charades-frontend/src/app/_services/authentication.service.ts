@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Injector} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 
@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {SocialAuthService} from 'angularx-social-login';
+import {BasicCategoriesService} from './basic-categories.service';
 
 
 @Injectable({providedIn: 'root'})
@@ -15,11 +16,14 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<Sign_in>;
   public currentUser: Observable<Sign_in>;
 
+
   constructor(private http: HttpClient,
               private router: Router,
               public dialog: MatDialog,
               private authService: SocialAuthService,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private injector: Injector,
+  ) {
     this.currentUserSubject = new BehaviorSubject<Sign_in>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -35,21 +39,24 @@ export class AuthenticationService {
     return this.http.post('http://localhost:3000/sign_up', user).subscribe(
       response => {
         this.openSnackBar('User registered successfully', '');
+        const basicCategoriesService = this.injector.get(BasicCategoriesService);
+        // @ts-ignore
         console.log('User Signed Up');
         // @ts-ignore
         localStorage.setItem('userID', response.data.id);
         this.dialog.closeAll();
+        // @ts-ignore
+        basicCategoriesService.load(response.data.user.id);
       },
       error => {
         this.openSnackBar('Something went wrong', '');
-        console.log('Error:', error.status, error.statusText);
+        console.log('Error:', error.status, error.message);
       }
     );
 
   }
 
   SignIn(user: Sign_in): Subscription {
-
     return this.http.post('http://localhost:3000/sign_in', user).subscribe(
       response => {
         localStorage.setItem('socialLogin', 'false');
@@ -69,7 +76,6 @@ export class AuthenticationService {
       },
       error => {
         this.openSnackBar('Something went wrong', '');
-        console.log('Error:', error);
       }
     );
   }
@@ -78,6 +84,7 @@ export class AuthenticationService {
     return this.http.post('http://localhost:3000/sign_up', user).subscribe(
       response => {
         console.log('User Signed Up');
+
         // @ts-ignore
         localStorage.setItem('userID', response.data.id);
       },

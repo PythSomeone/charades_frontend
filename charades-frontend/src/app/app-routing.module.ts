@@ -9,6 +9,7 @@ import {LobbyComponent} from './lobby/lobby.component';
 import {SettingsComponent} from './settings/settings.component';
 import {GameComponent} from './game/game.component';
 import {ResultsComponent} from './results/results.component';
+import {HistoryAndStatisticsComponent} from './history-and-statistics/history-and-statistics.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,9 @@ const routes: Routes = [
   {path: 'l', component: LobbyComponent, canActivate: [AuthGuard]},
   {path: 's', component: SettingsComponent, canActivate: [AuthGuard]},
   {path: 'g', component: GameComponent, canActivate: [AuthGuard]},
-  {path: 'r', component: ResultsComponent, canActivate: [AuthGuard]}
+  {path: 'r', component: ResultsComponent, canActivate: [AuthGuard]},
+  {path: 'hns', component: HistoryAndStatisticsComponent, canActivate: [AuthGuard]}
+
 ];
 
 @NgModule({
@@ -39,6 +42,7 @@ export const routingComponents = [
   LobbyComponent,
   SettingsComponent,
   GameComponent,
-  ResultsComponent
+  ResultsComponent,
+  HistoryAndStatisticsComponent
 ];
 

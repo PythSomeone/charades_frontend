@@ -22,9 +22,9 @@
     </div>
   </div>
 
-  <div fxLayoutAlign="center center" *ngFor="let category of categories">
+  <div fxLayout="column"  fxLayoutGap="16px" *ngFor="let category of categories">
     <mat-expansion-panel fxFill>
-      <mat-expansion-panel-header>
+      <mat-expansion-panel-header >
         <h1>{{category.name}}</h1>
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column">

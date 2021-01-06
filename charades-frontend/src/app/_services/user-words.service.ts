@@ -49,6 +49,17 @@ export class UserWordsService {
     );
   }
 
+  quietCreate(user_id: string, category_id: string, word: any): void {
+    this.http.post('http://localhost:3000/user/' + user_id + '/categories/' + category_id + '/words', word).subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
   delete(user_id: string, category_id: string, id: string): void {
     this.http.delete('http://localhost:3000/user/' + user_id + '/categories/' + category_id + '/words/' + id).subscribe(
       response => {

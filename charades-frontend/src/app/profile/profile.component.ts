@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     private colorSchemeService: ColorSchemeService,
     private userSettingsService: UserSettingService) {
+
     colorSchemeService.load();
     this.userSettingsService.get(this.userID);
     this.userSettingsService.userObservable.subscribe(
@@ -53,4 +54,7 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['s']);
   }
 
+  toHistoryAndStatistics(): void {
+    this.router.navigate(['hns']);
+  }
 }

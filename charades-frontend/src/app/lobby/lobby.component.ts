@@ -31,6 +31,12 @@ export class LobbyComponent implements OnInit {
               private playerService: PlayerService,
               private router: Router,
               private snackBar: MatSnackBar) {
+
+    this.categoryID = localStorage.getItem('categoryID');
+    this.ownCategory = localStorage.getItem('ownCategory');
+    this.userID = localStorage.getItem('userID');
+    this.gameID = localStorage.getItem('gameID');
+
     colorSchemeService.load();
     this.playerService.index(this.gameID);
     this.playerService.playersObservable.subscribe(
@@ -64,7 +70,6 @@ export class LobbyComponent implements OnInit {
         }
       }
     }
-
   }
 
   openSnackBar(message: string, action: string): void {

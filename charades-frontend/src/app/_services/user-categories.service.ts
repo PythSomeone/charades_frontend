@@ -24,11 +24,16 @@ export class UserCategoriesService {
   create(userID: string, category: Category): void {
     this.http.post('http://localhost:3000/user/' + userID + '/categories', category).subscribe(
       response => {
-        console.log(response);
         location.reload();
-      },
-      error => {
-        console.log(error);
+      }
+    );
+  }
+
+  quietCreate(userID: string, category: Category): void {
+    this.http.post('http://localhost:3000/user/' + userID + '/categories', category).subscribe(
+      response => {
+        // @ts-ignore
+        this.setUserCategories(response.data);
       }
     );
   }

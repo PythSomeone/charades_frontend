@@ -13,11 +13,11 @@ export class UserCategoriesWithWordsService {
   userCategories: Array<any> = [];
   userCategoriesWithWords: Array<any> = [];
 
-  // tslint:disable-next-line:variable-name typedef
-  async get(user_id: string) {
+
+  async get(user_id: string): Promise<Array<any>> {
     this.userCategoriesService.index(user_id);
     this.userCategoriesService.UserCategoriesObservable.subscribe(
-      (categories) => {
+      categories => {
         this.userCategories = categories;
         this.userCategories.forEach(category => {
           this.userWordsService.index(user_id, category.id);

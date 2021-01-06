@@ -3,6 +3,7 @@ export class Categories {
   // tslint:disable-next-line:variable-name
   user_id: string;
   name: string;
+  created_at: string;
   words: any[];
 
   // tslint:disable-next-line:variable-name

@@ -15,7 +15,6 @@ import {MaterialModule} from './material.module';
 import {SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
 import {GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
 import {BasicCategoriesService} from './_services/basic-categories.service';
-import {MatExpansionModule} from '@angular/material/expansion';
 import {UserCategoriesService} from './_services/user-categories.service';
 import {DeleteCategoryComponent} from './dialogs/delete-category/delete-category.component';
 import {SignUpComponent} from './dialogs/sign-up/sign-up.component';
@@ -29,7 +28,6 @@ import {SocialService} from './_services/social.service';
 import {DeleteAccountComponent} from './dialogs/delete-account/delete-account.component';
 import {GameService} from './_services/game.service';
 import {PlayerService} from './_services/player.service';
-
 
 @NgModule({
   declarations: [
@@ -56,7 +54,6 @@ import {PlayerService} from './_services/player.service';
         FlexModule,
         MaterialModule,
         SocialLoginModule,
-        MatExpansionModule,
     ],
 
   providers: [

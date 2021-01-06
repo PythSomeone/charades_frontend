@@ -9,11 +9,7 @@
     </div>
   </div>
   <div fxFill fxLayoutAlign="start center" fxLayout="column" fxLayoutGap="5px">
-    <mat-label>Standard categories</mat-label>
-    <button mat-raised-button (click)="toLobby('Animals')">Animals</button>
-    <button mat-raised-button (click)="toLobby('Video Games')">Video Games</button>
-    <button mat-raised-button (click)="toLobby('Movies')">Movies</button>
-    <mat-label *ngIf="userCategories">Your categories</mat-label>
+    <mat-label *ngIf="userCategories"></mat-label>
     <div *ngFor="let category of userCategories">
       <button mat-raised-button (click)="toLobby(category.id)">{{category.name}}</button>
     </div>

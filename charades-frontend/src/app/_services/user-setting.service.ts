@@ -48,7 +48,6 @@ export class UserSettingService {
     this.http.delete('http://localhost:3000/user/' + userID).subscribe(
       response => {
         this.router.navigate(['h']);
-        console.log(response);
         this.dialog.closeAll();
       });
   }
@@ -56,7 +55,6 @@ export class UserSettingService {
   get(userID: string): void {
     this.http.get('http://localhost:3000/user/' + userID).subscribe(
       response => {
-        console.log(response);
         // @ts-ignore
         this.setUser(response.data);
       });

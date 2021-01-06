@@ -2,6 +2,8 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Game} from '../_models/game';
 import {Router} from '@angular/router';
+import {Subject} from 'rxjs';
+import {Player} from '../_models/player';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,8 @@ export class GameService {
   userID: string;
   apiURL: string;
   game: Game;
+  gamesSource = new Subject<Game[]>();
+  gamesObservable = this.gamesSource.asObservable();
 
 
   constructor(private http: HttpClient,
@@ -20,11 +24,19 @@ export class GameService {
     this.gameID = localStorage.getItem('gameID');
     this.userID = localStorage.getItem('userID');
     this.apiURL = 'http://localhost:3000/user/' + this.userID + '/games';
-    this.game = new Game(this.userID, this.gameID);
+    this.game = new Game(this.userID, this.categoryID);
+  }
+
+  setGames(games: Game[]): void {
+    this.gamesSource.next(games);
   }
 
   index(): void {
-    this.http.get(this.apiURL);
+    this.http.get(this.apiURL).subscribe(
+      response => {
+         // @ts-ignore
+        this.setGames(response.data);
+      });
   }
 
   get(game_id: string): void {
@@ -38,11 +50,7 @@ export class GameService {
         console.log(response.data);
         // @ts-ignore
         localStorage.setItem('gameID', response.data.id);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+      });
   }
 
   delete(): void {
