@@ -47,7 +47,6 @@
   "category-choice": "Please choose a category",
   "choose-lang": "Choose Language",
   "start-game": "Start Game",
-  "cancel": "cancel",
   "ready1": "Are you read for the next",
   "ready2": "round ",
   "yes": "Yes!",
@@ -59,5 +58,5 @@
   "points": "Points",
   "back-to-profile": "Back to profile",
   "cat-man": "Manage category: "
-  
+
 }
