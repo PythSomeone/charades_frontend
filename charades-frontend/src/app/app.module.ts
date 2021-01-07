@@ -28,6 +28,7 @@ import {SocialService} from './_services/social.service';
 import {DeleteAccountComponent} from './dialogs/delete-account/delete-account.component';
 import {GameService} from './_services/game.service';
 import {PlayerService} from './_services/player.service';
+import {StatisticsService} from './_services/statistics.service';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import {PlayerService} from './_services/player.service';
     SocialService,
     GameService,
     PlayerService,
+    StatisticsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,

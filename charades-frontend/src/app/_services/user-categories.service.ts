@@ -8,7 +8,7 @@ import {MatDialog} from '@angular/material/dialog';
   providedIn: 'root'
 })
 export class UserCategoriesService {
-  userCategoriesSource = new Subject<Category[]>();
+  userCategoriesSource = new Subject<Category>();
   UserCategoriesObservable = this.userCategoriesSource.asObservable();
 
 
@@ -17,7 +17,7 @@ export class UserCategoriesService {
   }
 
 
-  setUserCategories(categories: Category[]): void {
+  setUserCategories(categories: Category): void {
     this.userCategoriesSource.next(categories);
   }
 

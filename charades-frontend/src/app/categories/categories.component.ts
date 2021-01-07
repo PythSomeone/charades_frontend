@@ -29,7 +29,7 @@ export class CategoriesComponent implements OnInit {
     this.userCategoriesService.index(this.userID);
     this.userCategoriesService.UserCategoriesObservable.subscribe(
       categories => {
-        this.userCategories = categories;
+        this.userCategories = categories as any;
       });
   }
 

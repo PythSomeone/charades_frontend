@@ -18,7 +18,7 @@ export class UserCategoriesWithWordsService {
     this.userCategoriesService.index(user_id);
     this.userCategoriesService.UserCategoriesObservable.subscribe(
       categories => {
-        this.userCategories = categories;
+        this.userCategories = categories as any;
         this.userCategories.forEach(category => {
           this.userWordsService.index(user_id, category.id);
         });
