@@ -8,6 +8,7 @@ import {Player} from '../_models/player';
 import {GameService} from '../_services/game.service';
 import {PlayerService} from '../_services/player.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {stringify} from 'querystring';
 
 @Component({
   selector: 'app-lobby',
@@ -22,6 +23,8 @@ export class LobbyComponent implements OnInit {
   ownCategory = localStorage.getItem('ownCategory');
   userID = localStorage.getItem('userID');
   gameID = localStorage.getItem('gameID');
+  repeats: boolean;
+  hideButton = 'false';
   category: any = new Categories('', '', '', []);
 
   constructor(private userCategoriesService: UserCategoriesService,
@@ -36,21 +39,31 @@ export class LobbyComponent implements OnInit {
     this.ownCategory = localStorage.getItem('ownCategory');
     this.userID = localStorage.getItem('userID');
     this.gameID = localStorage.getItem('gameID');
-
     colorSchemeService.load();
     this.playerService.index(this.gameID);
     this.playerService.playersObservable.subscribe(
-      players => this.players = players
-    );
+      players => {
+        this.players = players;
+        if (this.players.length >= 8) {
+          localStorage.setItem('hideButton', 'false');
+        } else {
+          localStorage.setItem('hideButton', 'true');
+        }
+        this.hideButton = localStorage.getItem('hideButton');
+      });
+
   }
 
   ngOnInit(): void {
+    console.log(this.players.length);
+
     this.categoryID = localStorage.getItem('categoryID');
     this.ownCategory = localStorage.getItem('ownCategory');
     if (this.ownCategory === 'true') {
       this.userCategoriesService.get(this.userID, this.categoryID);
       this.userCategoriesService.UserCategoriesObservable.subscribe(
         category => {
+
           this.category = category;
           localStorage.setItem('categoryName', this.category.name);
         });
@@ -84,7 +97,23 @@ export class LobbyComponent implements OnInit {
 
   add(player: Player): void {
     this.gameID = localStorage.getItem('gameID');
-    this.playerService.create(this.gameID, player);
+    if (this.players[0] !== undefined){
+      for (const element of this.players){
+        if (player.name === element.name) {
+          this.repeats = true;
+          break;
+        }
+      }
+      if (this.repeats){
+        this.openSnackBar('The name is already in use!', 'Close');
+      } else{
+        this.playerService.create(this.gameID, player);
+      }
+    }
+    else {
+      console.log('ultimate noob');
+      this.playerService.create(this.gameID, player);
+    }
   }
 
   remove(player: Player): void {
@@ -94,7 +123,8 @@ export class LobbyComponent implements OnInit {
   start(): void {
     if (this.players.length > 2) {
       this.router.navigate(['g']);
-    } else {
+    }
+    else {
       this.openSnackBar('At least 3 players needed', 'Close');
     }
   }

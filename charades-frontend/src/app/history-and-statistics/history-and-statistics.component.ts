@@ -49,7 +49,7 @@ export class HistoryAndStatisticsComponent implements OnInit {
                 if (games[0].user_id === this.userID ) {
                   console.log('Chuj ci na pizde');
 
-                  this.stat = new Statistics(this.categories, this.players);
+                  //this.stat = new Statistics(this.categories, this.players);
                   this.statistics.push(this.stat);
                 }
               });

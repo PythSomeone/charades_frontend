@@ -4,7 +4,7 @@
   <h1 fxLayoutGap="16px">Add players that will play in</h1>
   <h1> <b>{{category.name}}</b> category</h1>
   <br>
-  <div fxLayoutGap="16px">
+  <div fxLayoutGap="16px" *ngIf="hideButton==='true'">
     <mat-form-field>
       <mat-label>Enter name or nickame</mat-label>
       <input matInput [(ngModel)]="player.name">
