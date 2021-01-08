@@ -5,7 +5,7 @@ import {UserSettingService} from '../_services/user-setting.service';
 import {User} from '../_models/user';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteAccountComponent} from '../dialogs/delete-account/delete-account.component';
-import {NgFerhadoTranslator} from '../translation';
+import {Translator} from '../translation';
 
 @Component({
   selector: 'app-user-categories',
@@ -22,7 +22,7 @@ export class SettingsComponent implements OnInit {
               private userSettingsService: UserSettingService,
               private colorSchemeService: ColorSchemeService,
               private dialog: MatDialog,
-              public translator: NgFerhadoTranslator) {
+              public translator: Translator) {
     this.userSettingsService.get(this.userID);
     this.userSettingsService.userObservable.subscribe(
       user => {

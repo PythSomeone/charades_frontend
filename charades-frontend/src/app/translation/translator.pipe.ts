@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { NgFerhadoTranslator } from './ng-ferhado-translator.service';
+import { Translator } from './translator.service';
 
 @Pipe({ name: 'tr', pure: false })
-export class NgFerhadoTranslatorPipe implements PipeTransform {
-  constructor(private translator: NgFerhadoTranslator) {}
+export class TranslatorPipe implements PipeTransform {
+  constructor(private translator: Translator) {}
   transform(value: any, strtr?: any): any {
     if (!value) { return; }
 

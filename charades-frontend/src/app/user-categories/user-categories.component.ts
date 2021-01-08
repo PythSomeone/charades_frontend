@@ -11,7 +11,7 @@ import {UserWordsService} from '../_services/user-words.service';
 import {UserCategoriesWithWordsService} from '../_services/user-categories-with-words.service';
 import {DeleteWordComponent} from '../dialogs/delete-word/delete-word.component';
 import {EditWordComponent} from '../dialogs/edit-word/edit-word.component';
-import {NgFerhadoTranslator} from '../translation';
+import {Translator} from '../translation';
 
 @Component({
   selector: 'app-user-categories',
@@ -30,7 +30,7 @@ export class UserCategoriesComponent implements OnInit {
               private userWordsService: UserWordsService,
               private userCategoriesWithWordsService: UserCategoriesWithWordsService,
               private dialog: MatDialog,
-              public translator: NgFerhadoTranslator
+              public translator: Translator
   ) {
     colorSchemeService.load();
   }

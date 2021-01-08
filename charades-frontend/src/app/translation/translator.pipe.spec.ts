@@ -1,8 +1,8 @@
-import { NgFerhadoTranslatorPipe } from './ng-ferhado-translator.pipe';
+import { TranslatorPipe } from './translator.pipe';
 
 describe('NgFerhadoTranslatorPipe', () => {
   it('create an instance', () => {
-    const pipe = new NgFerhadoTranslatorPipe();
+    const pipe = new TranslatorPipe();
     expect(pipe).toBeTruthy();
   });
 });

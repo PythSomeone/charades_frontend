@@ -29,7 +29,7 @@ import {DeleteAccountComponent} from './dialogs/delete-account/delete-account.co
 import {GameService} from './_services/game.service';
 import {PlayerService} from './_services/player.service';
 import {StatisticsService} from './_services/statistics.service';
-import { NgFerhadoTranslatorModule } from './translation/index';
+import { TranslatorModule } from './translation/index';
 import {EndGameComponent} from './dialogs/end-game/end-game.component';
 
 @NgModule({
@@ -59,9 +59,9 @@ import {EndGameComponent} from './dialogs/end-game/end-game.component';
     FlexModule,
     MaterialModule,
     SocialLoginModule,
-    NgFerhadoTranslatorModule.forRoot({
+    TranslatorModule.forRoot({
       defaultLang: 'en',
-      storagePrefix: 'ferhado-language'
+      storagePrefix: 'language'
     })
   ],
 

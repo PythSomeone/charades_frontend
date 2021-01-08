@@ -4,7 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {ColorSchemeService} from '../_services/color-scheme.service';
 import {SignUpComponent} from '../dialogs/sign-up/sign-up.component';
 import {SignInComponent} from '../dialogs/sign-in/sign-in.component';
-import {NgFerhadoTranslator} from '../translation';
+import {Translator} from '../translation';
 
 @Component({
   templateUrl: './home.component.html',
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   constructor(private authenticationService: AuthenticationService,
               public dialog: MatDialog,
               private colorSchemeService: ColorSchemeService,
-              public translator: NgFerhadoTranslator) {
+              public translator: Translator) {
     this.checkSlideToggle();
     this.colorSchemeService.load();
   }

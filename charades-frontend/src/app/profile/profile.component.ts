@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 import {ColorSchemeService} from '../_services/color-scheme.service';
 import {UserSettingService} from '../_services/user-setting.service';
 import {SocialService} from '../_services/social.service';
-import {NgFerhadoTranslator} from '../translation';
 
 @Component({
   selector: 'app-profile',

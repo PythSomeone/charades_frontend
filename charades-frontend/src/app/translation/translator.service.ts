@@ -6,7 +6,7 @@ declare const require;
   providedIn: 'root'
 })
 
-export class NgFerhadoTranslator {
+export class Translator {
   private prefix = 'ferhado-lang';
   private rtlLangs = ['ar', 'fa', 'ur'];
   private languagesObject;
@@ -24,7 +24,7 @@ export class NgFerhadoTranslator {
   setLanguage(value): any {
     this.lang = value;
     localStorage.setItem(this.prefix, value);
-    this.languagesObject = require(`./i18n/${value}.json`);
+    this.languagesObject = require(`./languages/${value}.json`);
 
     this.dir = this.rtlLangs.indexOf(value) !== -1 ? 'rtl' : 'ltr';
     this.html.setAttribute('dir', this.dir);
