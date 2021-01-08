@@ -1,6 +1,18 @@
 <body class="mat-app-background">
 <br>
-<div fxLayoutAlign="end">
+<div fxLayoutAlign="end" fxLayoutGap="10px">
+  <div fxLayoutGap="10px">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header hideToggle>
+        <mat-panel-title>
+          {{'choose-lang'|tr}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-panel-description fxLayout="column" fxLayoutGap="5%">
+        <button mat-raised-button (click)="translator.setLanguage(x)" *ngFor="let x of ['en','pl']">{{x|tr}}</button>
+      </mat-panel-description>
+    </mat-expansion-panel>
+  </div>
   <mat-icon>{{'wb_sunny'}}</mat-icon>
 <mat-slide-toggle [checked]="checked" (click)="setTheme()"></mat-slide-toggle>
   <mat-icon>{{'brightness_3'}}</mat-icon>
@@ -16,7 +28,6 @@
       <button mat-raised-button (click)="openSignIn()">{{'Sign_in'|tr}}</button>
       <button mat-stroked-button (click)="openSignUp()">{{'sign-up'|tr}}</button>
     </div>
-    <button mat-raised-button (click)="translator.setLanguage(x)" *ngFor="let x of ['en','pl']">{{x|tr}}</button>
   </mat-card-content>
 </div>
 </body>
