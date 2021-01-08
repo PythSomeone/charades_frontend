@@ -5,7 +5,7 @@
   <h1> {{'lobby2'|tr}}<b>{{category.name}}</b></h1>
 
   <br>
-  <div fxLayoutGap="16px">
+  <div fxLayoutGap="16px" *ngIf="hideButton==='true'">
     <mat-form-field>
       <mat-label>{{'enter-name'|tr}}</mat-label>
       <input matInput [(ngModel)]="this.player.name">

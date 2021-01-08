@@ -1,5 +1,6 @@
 <body class="mat-app-background">
 <br>
+<mat-accordion>
 <div fxLayout="column" fxLayoutGap="2%">
   <div fxFill fxLayoutAlign="center start" fxLayout="row wrap">
     <mat-expansion-panel fxLayoutGap="16px">
@@ -17,20 +18,18 @@
       </mat-panel-description>
     </mat-expansion-panel>
   </div>
+/<------look from this
   <div fxLayoutGap="16px" fxLayoutAlign="center">
     <button mat-raised-button (click)="toGame()">{{'to-game'|tr}}</button>
     <button mat-raised-button (click)="toProfile()">{{'Back'|tr}}</button>
   </div>
-
-
-  <div fxLayout="column"  fxLayoutGap="16px" *ngFor="let category of categories">
-    <mat-expansion-panel fxFill>
+  <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="16px" *ngFor="let category of categories">
+    <mat-expansion-panel fxFill hideToggle>
       <mat-expansion-panel-header fxLayoutAlign="space-between">
         <h1>{{category.name}}</h1>
-
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column">
-        <div fxLayoutGap="16px">
+        <div fxLayoutGap="8px">
           <h3>{{'cat-man'|tr}}</h3>
           <button mat-flat-button (click)="openEditCategory(category)">
             <mat-icon>edit</mat-icon>
@@ -40,33 +39,32 @@
           </button>
         </div>
         <mat-divider></mat-divider>
-        <div fxLayout="row" fxLayoutAlign="space-between" fxFill fxLayoutGap="16px" *ngFor="let word of category.words">
-          <p fxflex="50" fxLayoutAlign="start">{{word.word}}</p>
-          <div fxFlex="50" fxLayoutAlign="end">
-            <button mat-flat-button (click)="openEditWord(word)">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-flat-button (click)="openDeleteWord(word)">
-              <mat-icon>delete</mat-icon>
-            </button>
+        <div fxLayout="column" *ngFor="let word of category.words">
+          <div fxLayout="row" fxLayoutAlign="space-between" fxFill fxLayoutGap="16px">
+            <p fxflex="20" fxLayoutAlign="start">{{word.word}}</p>
+            <div fxFlex="20" fxLayoutAlign="end">
+              <button mat-flat-button (click)="openEditWord(word)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-flat-button (click)="openDeleteWord(word)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
           </div>
+          <mat-divider></mat-divider>
         </div>
-
       </mat-panel-description>
       <div fxLayout="row" fxLayoutAlign="space-between" fxFill>
         <mat-form-field>
           <mat-label>{{'enter-new'|tr}}</mat-label>
           <input matInput [(ngModel)]="newWord.word">
         </mat-form-field>
-        <div fxFlex="90" fxLayoutAlign="end">
-          <button (click)="createWord(category.user_id, category.id, newWord)" mat-flat-button>
+          <button fxFlex="20" fxLayoutAlign="end" fxLayoutGap="16px" (click)="createWord(category.user_id, category.id, newWord)" mat-flat-button>
             <mat-icon>add</mat-icon>
           </button>
-        </div>
       </div>
     </mat-expansion-panel>
-
   </div>
-
 </div>
+</mat-accordion>
 </body>
