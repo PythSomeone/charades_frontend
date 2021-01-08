@@ -1,0 +1,8 @@
+<div fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+  <p>{{'end-game-question1'|tr}}</p>
+  <p>{{'end-game-question2'|tr}}</p>
+  <div fxLayout="riw" fxLayoutGap="5%">
+    <button mat-stroked-button color="warn" (click)="endGame()" type="submit">{{'yes'|tr}}</button>
+    <button mat-raised-button  (click)="close()">{{'Back'|tr}}</button>
+  </div>
+</div>

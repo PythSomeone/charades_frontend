@@ -3,8 +3,6 @@ import {FacebookLoginProvider, SocialAuthService} from 'angularx-social-login';
 import {Router} from '@angular/router';
 import {SocialService} from '../_services/social.service';
 
-declare var FB: any;
-
 
 @Component({
   selector: 'app-facebook',

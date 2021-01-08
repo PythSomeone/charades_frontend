@@ -4,58 +4,61 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title>
-          Theme
+          {{'choose-lang'|tr}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <mat-panel-description fxLayout="column" fxLayoutGap="10%">
+          <button mat-raised-button (click)="translator.setLanguage(x)" *ngFor="let x of ['en','pl']">{{x|tr}}</button>
+        </mat-panel-description>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header hideToggle>
+        <mat-panel-title>
+          {{'Theme'|tr}}
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-panel-description  fxLayout="column" fxLayoutGap="15%">
         <div fxLayoutAlign="center center">
           <mat-icon matPrefix>{{'wb_sunny'}}</mat-icon>
-          <button mat-raised-button (click)="setLight()"  type="submit">Light</button>
+          <button mat-raised-button (click)="setLight()"  type="submit">{{'Light'|tr}}</button>
         </div>
         <div fxLayoutAlign="center center">
           <mat-icon>{{'brightness_3'}}</mat-icon>
-          <button mat-raised-button (click)="setDark()"  type="submit">Dark</button>
+          <button mat-raised-button (click)="setDark()"  type="submit">{{'Dark'|tr}}</button>
         </div>
       </mat-panel-description>
     </mat-expansion-panel>
-
     <mat-expansion-panel *ngIf="socialLogin">
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title>
-          Change nickname
+          {{'change-nick'|tr}}
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column">
         <mat-form-field>
-          <mat-label>Enter nickname</mat-label>
+          <mat-label>{{'enter-name'|tr}}</mat-label>
           <input matInput [(ngModel)]="user.username">
         </mat-form-field>
-        <button mat-raised-button (click)="changeUsername(user)"  type="submit">Change</button>
+        <button mat-raised-button (click)="changeUsername(user)"  type="submit">{{'Change'|tr}}</button>
       </mat-panel-description>
     </mat-expansion-panel>
 
     <mat-expansion-panel *ngIf="socialLogin">
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title>
-          Change e-mail
+          {{'change-mail'|tr}}
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column">
         <mat-form-field>
-          <mat-label>Enter e-mail</mat-label>
+          <mat-label>{{'email'|tr}}</mat-label>
           <input matInput [(ngModel)]="user.email">
         </mat-form-field>
-        <button mat-raised-button (click)="changeEmail(user)"  type="submit">Change</button>
+        <button mat-raised-button (click)="changeEmail(user)"  type="submit">{{'Change'|tr}}</button>
       </mat-panel-description>
     </mat-expansion-panel>
-
-
-    <button mat-raised-button color="warn" (click)="deleteUser()"> Delete account </button>
+    <button mat-raised-button color="warn" (click)="deleteUser()">{{'delete'|tr}}</button>
     <br>
-    <button mat-raised-button (click)="toProfile()">Back</button>
-
+    <button mat-raised-button (click)="toProfile()">{{'Back'|tr}}</button>
   </div>
-
-
-
 </body>

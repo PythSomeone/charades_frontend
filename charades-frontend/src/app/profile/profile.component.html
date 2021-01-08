@@ -1,11 +1,10 @@
 <body class="mat-app-background">
 <div fxFill fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="2%">
-  <h1>Welcome, {{user}}</h1>
-  <p>What are you up to?</p>
-  <button mat-raised-button (click)="toCreateGame()">Create game</button>
-  <button mat-raised-button (click)="toCategoriesManagement()">Manage your categories</button>
-  <button mat-raised-button (click)="toHistoryAndStatistics()">History & Statistics</button>
-  <button mat-raised-button (click)="toSettings()">Settings</button>
-  <button mat-raised-button (click)="logOut()">Logout</button>
+    <h1>{{'Welcome'|tr}}, {{user}}</h1>
+    <p>{{'sup'|tr}}</p>
+    <button mat-raised-button (click)="toCreateGame()" >{{'create-game'|tr}}</button>
+    <button mat-raised-button (click)="toCategoriesManagement()" >{{'manage'|tr}}</button>
+    <button mat-raised-button (click)="toSettings()">{{'Settings'|tr}}</button>
+    <button mat-raised-button (click)="logOut()">{{'Logout'|tr}}</button>
 </div>
 </body>

@@ -29,6 +29,8 @@ import {DeleteAccountComponent} from './dialogs/delete-account/delete-account.co
 import {GameService} from './_services/game.service';
 import {PlayerService} from './_services/player.service';
 import {StatisticsService} from './_services/statistics.service';
+import { NgFerhadoTranslatorModule } from './translation/index';
+import {EndGameComponent} from './dialogs/end-game/end-game.component';
 
 @NgModule({
   declarations: [
@@ -43,19 +45,26 @@ import {StatisticsService} from './_services/statistics.service';
     EditWordComponent,
     DeleteWordComponent,
     DeleteAccountComponent,
+    EndGameComponent
 
   ],
-    imports: [
-        BrowserAnimationsModule,
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-        MatButtonModule,
-        FlexModule,
-        MaterialModule,
-        SocialLoginModule,
-    ],
+
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    MatButtonModule,
+    FlexModule,
+    MaterialModule,
+    SocialLoginModule,
+    MatExpansionModule,
+    NgFerhadoTranslatorModule.forRoot({
+      defaultLang: 'en',
+      storagePrefix: 'ferhado-language'
+    })
+  ],
 
   providers: [
     AuthenticationService,
@@ -87,5 +96,4 @@ import {StatisticsService} from './_services/statistics.service';
     }],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
