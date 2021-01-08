@@ -16,14 +16,13 @@ export class ProfileComponent implements OnInit {
   userID = localStorage.getItem('userID');
   user: string;
 
-
   constructor(
     private socialService: SocialService,
     private authenticationService: AuthenticationService,
     private router: Router,
     private colorSchemeService: ColorSchemeService,
     private userSettingsService: UserSettingService) {
-
+    localStorage.setItem('refreshed', 'false');
     colorSchemeService.load();
     this.userSettingsService.get(this.userID);
     this.userSettingsService.userObservable.subscribe(

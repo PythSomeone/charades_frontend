@@ -5,14 +5,14 @@
   <h1> {{'lobby2'|tr}}<b>{{category.name}}</b></h1>
 
   <br>
-  <div fxLayoutGap="16px" *ngIf="hideButton==='true'">
+  <div fxLayoutGap="16px" *ngIf="showAdd==='true'">
     <mat-form-field>
       <mat-label>{{'enter-name'|tr}}</mat-label>
       <input matInput [(ngModel)]="this.player.name">
     </mat-form-field>
+    <button mat-raised-button (click)="add(player)" type="submit" color="accent">{{'Add'|tr}}</button>
   </div>
-  <button mat-raised-button (click)="add(player)" type="submit" color="accent">{{'Add'|tr}}</button>
-  <div *ngFor="let player of players" fxLayoutGap="16px">
+    <div *ngFor="let player of players" fxLayoutGap="16px">
     <button fxFill fxLayoutAlign="space-between center" mat-flat-button>
       {{player.name}}
       <button fxFlexAlign="end" mat-flat-button  (click)="remove(player)">

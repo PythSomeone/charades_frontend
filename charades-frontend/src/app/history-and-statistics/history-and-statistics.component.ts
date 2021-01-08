@@ -17,16 +17,23 @@ export class HistoryAndStatisticsComponent implements OnInit {
   userID;
   categoryID;
   gameID;
+  refreshed = 'false';
+  maxes: Array<number> = [];
 
   constructor(private colorSchemeService: ColorSchemeService,
               private gameService: GameService,
               private  statisticsService: StatisticsService,
               private router: Router) {
     this.userID = localStorage.getItem('userID');
+    this.refreshed = localStorage.getItem('refreshed');
     colorSchemeService.load();
     gameService.index();
     gameService.gamesObservable.subscribe(
       games => {
+        if (this.refreshed === 'false'){
+          localStorage.setItem('refreshed', 'true');
+          location.reload();
+        }
         this.statistics = [];
         this.games = games;
         this.games.forEach(game => {
@@ -34,10 +41,18 @@ export class HistoryAndStatisticsComponent implements OnInit {
         });
         statisticsService.statisticObservable.subscribe(
           statistics => {
+            let max = 0;
+            statistics.players.forEach(player => {
+              if (player.points > max){
+                max = player.points;
+              }
+            });
             this.statistics.push(statistics);
+            this.maxes.push(max);
           }
         );
       });
+    console.log(this.statistics);
   }
 
   ngOnInit(): void {

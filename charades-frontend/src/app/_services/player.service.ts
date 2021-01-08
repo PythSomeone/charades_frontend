@@ -51,7 +51,7 @@ export class PlayerService {
     this.http.delete(this.apiURL + '/games/' + game_id + '/players/' + player_id).subscribe(
       response => {
         console.log(response);
-        //location.reload();
+        location.reload();
       },
       error => console.log(error)
     );

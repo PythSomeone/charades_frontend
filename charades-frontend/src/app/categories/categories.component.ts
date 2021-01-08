@@ -23,6 +23,7 @@ export class CategoriesComponent implements OnInit {
               private userCategoriesService: UserCategoriesService,
               private gameService: GameService) {
     colorSchemeService.load();
+    localStorage.setItem('hideButton', 'false');
   }
 
   ngOnInit(): void {

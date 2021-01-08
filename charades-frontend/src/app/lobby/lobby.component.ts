@@ -8,7 +8,6 @@ import {Player} from '../_models/player';
 import {GameService} from '../_services/game.service';
 import {PlayerService} from '../_services/player.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {stringify} from 'querystring';
 
 @Component({
   selector: 'app-lobby',
@@ -23,8 +22,9 @@ export class LobbyComponent implements OnInit {
   ownCategory = localStorage.getItem('ownCategory');
   userID = localStorage.getItem('userID');
   gameID = localStorage.getItem('gameID');
-  repeats: boolean;
-  hideButton = 'false';
+  repeats = false;
+  showAdd = 'true';
+  refreshed = 'false';
   category: any = new Categories('', '', '', []);
 
   constructor(private userCategoriesService: UserCategoriesService,
@@ -34,7 +34,8 @@ export class LobbyComponent implements OnInit {
               private playerService: PlayerService,
               private router: Router,
               private snackBar: MatSnackBar) {
-
+    localStorage.setItem('showAdd', 'false');
+    this.refreshed = localStorage.getItem('refreshed');
     this.categoryID = localStorage.getItem('categoryID');
     this.ownCategory = localStorage.getItem('ownCategory');
     this.userID = localStorage.getItem('userID');
@@ -45,11 +46,19 @@ export class LobbyComponent implements OnInit {
       players => {
         this.players = players;
         if (this.players.length >= 8) {
-          localStorage.setItem('hideButton', 'false');
+          if (this.refreshed === 'false'){
+            localStorage.setItem('refreshed', 'true');
+            location.reload();
+          }
+          localStorage.setItem('showAdd', 'false');
         } else {
-          localStorage.setItem('hideButton', 'true');
+          localStorage.setItem('showAdd', 'true');
         }
-        this.hideButton = localStorage.getItem('hideButton');
+        this.showAdd = localStorage.getItem('showAdd');
+      },
+      error => {
+        this.showAdd = localStorage.getItem('showAdd');
+        localStorage.setItem('showAdd', 'false');
       });
 
   }
@@ -58,31 +67,14 @@ export class LobbyComponent implements OnInit {
     console.log(this.players.length);
 
     this.categoryID = localStorage.getItem('categoryID');
-    this.ownCategory = localStorage.getItem('ownCategory');
-    if (this.ownCategory === 'true') {
-      this.userCategoriesService.get(this.userID, this.categoryID);
-      this.userCategoriesService.UserCategoriesObservable.subscribe(
-        category => {
+    this.userCategoriesService.get(this.userID, this.categoryID);
+    this.userCategoriesService.UserCategoriesObservable.subscribe(
+      category => {
 
-          this.category = category;
-          localStorage.setItem('categoryName', this.category.name);
-        });
-    } else {
-      switch (this.categoryID) {
-        case 'Animals': {
-          this.category.name = 'Animals';
-          break;
-        }
-        case 'Video Games': {
-          this.category.name = 'Video Games';
-          break;
-        }
-        case 'Movies': {
-          this.category.name = 'Movies';
-          break;
-        }
-      }
-    }
+        this.category = category;
+        localStorage.setItem('categoryName', this.category.name);
+      });
+
   }
 
   openSnackBar(message: string, action: string): void {
@@ -97,20 +89,21 @@ export class LobbyComponent implements OnInit {
 
   add(player: Player): void {
     this.gameID = localStorage.getItem('gameID');
-    if (this.players[0] !== undefined){
-      for (const element of this.players){
+    if (this.players[0] !== undefined) {
+      for (const element of this.players) {
         if (player.name === element.name) {
           this.repeats = true;
           break;
+        } else {
+          this.repeats = false;
         }
       }
-      if (this.repeats){
+      if (this.repeats) {
         this.openSnackBar('The name is already in use!', 'Close');
-      } else{
+      } else {
         this.playerService.create(this.gameID, player);
       }
-    }
-    else {
+    } else {
       console.log('ultimate noob');
       this.playerService.create(this.gameID, player);
     }
@@ -123,8 +116,7 @@ export class LobbyComponent implements OnInit {
   start(): void {
     if (this.players.length > 2) {
       this.router.navigate(['g']);
-    }
-    else {
+    } else {
       this.openSnackBar('At least 3 players needed', 'Close');
     }
   }

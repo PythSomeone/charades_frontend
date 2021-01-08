@@ -59,7 +59,6 @@ import {EndGameComponent} from './dialogs/end-game/end-game.component';
     FlexModule,
     MaterialModule,
     SocialLoginModule,
-    MatExpansionModule,
     NgFerhadoTranslatorModule.forRoot({
       defaultLang: 'en',
       storagePrefix: 'ferhado-language'
