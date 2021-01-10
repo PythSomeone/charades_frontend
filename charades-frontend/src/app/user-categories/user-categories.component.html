@@ -1,3 +1,4 @@
+<html class="mat-app-background">
 <body class="mat-app-background">
 <br>
 <mat-accordion>
@@ -14,39 +15,47 @@
           <mat-label>{{'enter-name'|tr}}</mat-label>
           <input matInput [(ngModel)]="this.category.name">
         </mat-form-field>
-        <button mat-raised-button (click)="createCategory()" type="submit">{{'create'|tr}}</button>
+        <button color="primary" mat-raised-button (click)="createCategory()" type="submit">
+          <mat-icon>add_circle</mat-icon>
+          {{'create'|tr}}
+        </button>
       </mat-panel-description>
     </mat-expansion-panel>
   </div>
   <div fxLayoutGap="16px" fxLayoutAlign="center">
-    <button mat-raised-button (click)="toGame()">{{'to-game'|tr}}</button>
-    <button mat-raised-button (click)="toProfile()">{{'back'|tr}}</button>
+    <button color="accent" mat-raised-button (click)="toGame()">
+      <mat-icon>casino</mat-icon>
+      {{'to-game'|tr}}</button>
+    <button color="accent" mat-raised-button (click)="toProfile()">
+    <mat-icon>reply</mat-icon>
+      {{'back'|tr}}
+    </button>
   </div>
   <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="16px" *ngFor="let category of categories">
     <mat-expansion-panel fxFill hideToggle>
-      <mat-expansion-panel-header fxLayoutAlign="space-between">
-        <h1>{{category.name}}</h1>
+      <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-label class="title">{{category.name}}</mat-label>
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column">
         <div fxLayoutGap="8px">
           <h3>{{'cat-man'|tr}}</h3>
           <button mat-flat-button (click)="openEditCategory(category)">
-            <mat-icon>edit</mat-icon>
+            <mat-icon color="accent">edit</mat-icon>
           </button>
           <button mat-flat-button (click)="openDeleteCategory(category)">
-            <mat-icon>delete</mat-icon>
+            <mat-icon color="accent">delete</mat-icon>
           </button>
         </div>
         <mat-divider></mat-divider>
         <div fxLayout="column" *ngFor="let word of category.words">
           <div fxLayout="row" fxLayoutAlign="space-between" fxFill fxLayoutGap="16px">
-            <p fxflex="20" fxLayoutAlign="start">{{word.word}}</p>
+            <mat-label fxflex="20" fxLayoutAlign="start center">{{word.word}}</mat-label>
             <div fxFlex="20" fxLayoutAlign="end">
               <button mat-flat-button (click)="openEditWord(word)">
-                <mat-icon>edit</mat-icon>
+                <mat-icon color="accent">edit</mat-icon>
               </button>
               <button mat-flat-button (click)="openDeleteWord(word)">
-                <mat-icon>delete</mat-icon>
+                <mat-icon color="accent">delete</mat-icon>
               </button>
             </div>
           </div>
@@ -59,7 +68,7 @@
           <input matInput [(ngModel)]="newWord.word">
         </mat-form-field>
           <button fxFlex="20" fxLayoutAlign="end" fxLayoutGap="16px" (click)="createWord(category.user_id, category.id, newWord)" mat-flat-button>
-            <mat-icon>add</mat-icon>
+            <mat-icon color="accent">add</mat-icon>
           </button>
       </div>
     </mat-expansion-panel>
@@ -67,3 +76,4 @@
 </div>
 </mat-accordion>
 </body>
+</html>

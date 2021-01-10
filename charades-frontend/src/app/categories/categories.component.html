@@ -1,19 +1,26 @@
+<html class="mat-app-background">
 <body class="mat-app-background">
 <div fxFill fxFlexAlign="center center" class="mat-background-app" fxLayout="column" fxLayoutGap="5%">
   <br>
   <div fxLayoutAlign="center center" fxLayout="column" color="primary">
     <h1>{{'category-choice'|tr}}</h1>
     <div fxLayoutGap="5px">
-      <button mat-raised-button (click)="toUserCategories()">{{'edit_your_categories'|tr}}</button>
-      <button mat-raised-button (click)="back()">{{'back'|tr}}</button>
+      <button color="accent" mat-raised-button (click)="toUserCategories()">
+        <mat-icon>category</mat-icon>
+        {{'edit_your_categories'|tr}}
+      </button>
+      <button color="accent"  mat-raised-button (click)="back()">
+        <mat-icon>reply</mat-icon>
+        {{'back'|tr}}</button>
     </div>
   </div>
   <div fxFill fxLayoutAlign="start center" fxLayout="column" fxLayoutGap="5px">
     <mat-label *ngIf="userCategories"></mat-label>
     <div *ngFor="let category of userCategories">
-      <button mat-raised-button (click)="toLobby(category.id)">{{category.name}}</button>
+      <button mat-raised-button color="primary" (click)="toLobby(category.id)">{{category.name}}</button>
     </div>
 
     </div>
 </div>
 </body>
+</html>

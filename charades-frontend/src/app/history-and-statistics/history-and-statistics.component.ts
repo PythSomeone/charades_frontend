@@ -19,6 +19,8 @@ export class HistoryAndStatisticsComponent implements OnInit {
   gameID;
   refreshed = 'false';
   maxes: Array<number> = [];
+  dates: Array<string> = [];
+  hours: Array<string> = [];
 
   constructor(private colorSchemeService: ColorSchemeService,
               private gameService: GameService,
@@ -30,23 +32,38 @@ export class HistoryAndStatisticsComponent implements OnInit {
     gameService.index();
     gameService.gamesObservable.subscribe(
       games => {
-        if (this.refreshed === 'false'){
+        if (this.refreshed === 'false') {
           localStorage.setItem('refreshed', 'true');
           location.reload();
         }
         this.statistics = [];
         this.games = games;
         this.games.forEach(game => {
+          // @ts-ignore
+          this.dates.push(game.created_at.slice(0, 10));
+          // @ts-ignore
+          this.hours.push(game.created_at.slice(11, 19));
           statisticsService.get(this.userID, game.id, game.category_id);
         });
         statisticsService.statisticObservable.subscribe(
           statistics => {
+            let realGame = false;
             let max = 0;
+            console.log(statistics.game.id);
+            if (statistics.players.length < 3 ) {
+              this.gameService.autoDelete(statistics.game.id);
+            }
             statistics.players.forEach(player => {
-              if (player.points > max){
+              if ( player.points !== 0){
+                realGame = true;
+              }
+              if (player.points > max) {
                 max = player.points;
               }
             });
+            if (!realGame){
+              this.gameService.autoDelete(statistics.game.id);
+            }
             this.statistics.push(statistics);
             this.maxes.push(max);
           }

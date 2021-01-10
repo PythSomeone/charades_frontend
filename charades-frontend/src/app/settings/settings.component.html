@@ -1,36 +1,37 @@
+<html class="mat-app-background" fxLayoutAlign="center center">
 <body class="mat-app-background">
 <br>
 <mat-accordion>
-  <div fxFill fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="2%">
-    <mat-expansion-panel>
+  <div fxFill fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="16px">
+    <mat-expansion-panel fxFill>
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title fxLayoutAlign="center center" fxLayoutGap="16px">
-          <mat-icon>public</mat-icon>
+          <mat-icon color="primary">translate</mat-icon>
           <mat-label> {{'choose-lang'|tr}}</mat-label>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column" fxLayoutGap="10%">
-        <button mat-raised-button (click)="translator.setLanguage(x)" *ngFor="let x of ['en','pl']">{{x|tr}}</button>
+        <button color="accent" mat-raised-button (click)="translator.setLanguage(x)" *ngFor="let x of ['en','pl']">{{x|tr}}</button>
       </mat-panel-description>
     </mat-expansion-panel>
 
-    <mat-expansion-panel>
+    <mat-expansion-panel fxFill>
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title fxLayoutAlign="center center" fxLayoutGap="16px">
-          <mat-icon>format_paint</mat-icon>
+          <mat-icon color="accent">format_paint</mat-icon>
           <mat-label>{{'theme'|tr}}</mat-label>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column" fxLayoutGap="15%">
         <div fxLayoutAlign="center center">
 
-          <button mat-raised-button (click)="setLight()" type="submit">
+          <button fxFill color="accent" mat-raised-button (click)="setLight()" type="submit">
             <mat-icon matPrefix>wb_sunny</mat-icon>
             {{'light'|tr}}</button>
         </div>
         <div fxLayoutAlign="center center">
 
-          <button mat-raised-button (click)="setDark()" type="submit">
+          <button fxFill color="primary" mat-raised-button (click)="setDark()" type="submit">
             <mat-icon>brightness_3</mat-icon>
             {{'dark'|tr}}
           </button>
@@ -41,7 +42,7 @@
     <mat-expansion-panel *ngIf="socialLogin">
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title fxLayoutAlign="center center" fxLayoutGap="16px">
-          <mat-icon>text_format</mat-icon>
+          <mat-icon color="primary">text_format</mat-icon>
           <mat-label>{{'change-nick'|tr}}</mat-label>
         </mat-panel-title>
       </mat-expansion-panel-header>
@@ -57,7 +58,7 @@
     <mat-expansion-panel *ngIf="socialLogin">
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title fxLayoutAlign="center center" fxLayoutGap="16px">
-          <mat-icon>alternate_email</mat-icon>
+          <mat-icon color="accent">alternate_email</mat-icon>
           <mat-label>{{'change-mail'|tr}}</mat-label>
         </mat-panel-title>
       </mat-expansion-panel-header>
@@ -69,9 +70,16 @@
         <button mat-raised-button (click)="changeEmail(user)" type="submit">{{'Change'|tr}}</button>
       </mat-panel-description>
     </mat-expansion-panel>
-    <button mat-raised-button color="warn" (click)="deleteUser()">{{'delete'|tr}}</button>
+    <button fxLayoutAlign="center center" mat-stroked-button color="warn" (click)="deleteUser()">
+    <mat-icon>delete</mat-icon>
+      {{'delete'|tr}}
+    </button>
     <br>
-    <button mat-raised-button (click)="toProfile()">{{'back'|tr}}</button>
+    <button fxLayoutAlign="center center" color="primary" mat-raised-button (click)="toProfile()">
+    <mat-icon>reply</mat-icon>
+      {{'back'|tr}}
+    </button>
   </div>
 </mat-accordion>
 </body>
+</html>

@@ -1,4 +1,5 @@
-<body class="mat-app-background">
+<html class="mat-app-background" fxLayoutAlign="center center">
+<body class="mat-app-background" fxLayoutAlign="center center">
 
 <div fxFill fxLayoutAlign="center center" fxLayoutGap="16px" fxLayout="column">
   <h1> {{'lobby1'|tr}}</h1>
@@ -10,18 +11,28 @@
       <mat-label>{{'enter-name'|tr}}</mat-label>
       <input matInput [(ngModel)]="this.player.name">
     </mat-form-field>
-    <button mat-raised-button (click)="add(player)" type="submit" color="accent">{{'add'|tr}}</button>
+    <button mat-raised-button (click)="add(player)" type="submit" color="accent">
+      <mat-icon>add_circle</mat-icon>
+      {{'add'|tr}}
+    </button>
   </div>
     <div *ngFor="let player of players" fxLayoutGap="16px">
-    <button fxFill fxLayoutAlign="space-between center" mat-flat-button>
+    <button fxFill color="accent" fxFill fxLayoutAlign="space-between center" mat-flat-button>
       {{player.name}}
-      <button fxFlexAlign="end" mat-flat-button  (click)="remove(player)">
-        <mat-icon>cancel</mat-icon>
+      <button color="accent" fxFlexAlign="end" mat-flat-button  (click)="remove(player)">
+        <mat-icon>delete</mat-icon>
       </button>
     </button>
   </div>
   <br>
-  <button mat-stroked-button color="accent" (click)="start()">{{'start-game'|tr}}</button>
-  <button mat-raised-button (click)="toCategories()" >{{'back'|tr}}</button>
+  <button mat-stroked-button color="accent" (click)="start()">
+    <mat-icon>done</mat-icon>
+    {{'start-game'|tr}}
+  </button>
+  <button mat-raised-button (click)="toCategories()" color="accent">
+    <mat-icon>reply</mat-icon>
+    {{'back'|tr}}
+  </button>
 </div>
 </body>
+</html>

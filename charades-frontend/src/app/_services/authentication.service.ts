@@ -43,7 +43,7 @@ export class AuthenticationService {
         // @ts-ignore
         console.log('User Signed Up');
         // @ts-ignore
-        localStorage.setItem('userID', response.data.id);
+        localStorage.setItem('userID', response.data.user.id);
         this.dialog.closeAll();
         // @ts-ignore
         basicCategoriesService.load(response.data.user.id);
@@ -84,9 +84,11 @@ export class AuthenticationService {
     return this.http.post('http://localhost:3000/sign_up', user).subscribe(
       response => {
         console.log('User Signed Up');
-
+        const basicCategoriesService = this.injector.get(BasicCategoriesService);
         // @ts-ignore
-        localStorage.setItem('userID', response.data.id);
+        basicCategoriesService.load(response.data.user.id);
+        // @ts-ignore
+        localStorage.setItem('userID', response.data.user.id);
       },
       error => {
         console.log('Error:', error.status, error.statusText);

@@ -34,7 +34,7 @@ export class GameService {
   index(): void {
     this.http.get(this.apiURL).subscribe(
       response => {
-         // @ts-ignore
+        // @ts-ignore
         this.setGames(response.data);
       });
   }
@@ -66,4 +66,19 @@ export class GameService {
       }
     );
   }
+
+
+  autoDelete(game_id: string): void {
+    this.http.delete(this.apiURL + '/' + game_id).subscribe(
+      response => {
+        // @ts-ignore
+        localStorage.removeItem('gameID');
+        location.reload();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
 }

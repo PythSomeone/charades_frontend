@@ -12,7 +12,7 @@ import {SocialService} from '../_services/social.service';
 })
 export class ProfileComponent implements OnInit {
 
-  userID = localStorage.getItem('userID');
+  userID: string;
   user: string;
 
   constructor(
@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     private colorSchemeService: ColorSchemeService,
     private userSettingsService: UserSettingService) {
+    this.user = localStorage.getItem('userID');
     localStorage.setItem('refreshed', 'false');
     colorSchemeService.load();
     this.userSettingsService.get(this.userID);

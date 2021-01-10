@@ -46,7 +46,9 @@ export class LobbyComponent implements OnInit {
       players => {
         this.players = players;
         if (this.players.length >= 8) {
+          this.refreshed = localStorage.getItem('refreshed');
           if (this.refreshed === 'false'){
+
             localStorage.setItem('refreshed', 'true');
             location.reload();
           }
