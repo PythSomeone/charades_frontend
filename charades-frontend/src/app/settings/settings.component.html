@@ -4,35 +4,45 @@
   <div fxFill fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="2%">
     <mat-expansion-panel>
       <mat-expansion-panel-header hideToggle>
-        <mat-panel-title>
-          {{'choose-lang'|tr}}
+        <mat-panel-title fxLayoutAlign="center center" fxLayoutGap="16px">
+          <mat-icon>public</mat-icon>
+          <mat-label> {{'choose-lang'|tr}}</mat-label>
         </mat-panel-title>
       </mat-expansion-panel-header>
-        <mat-panel-description fxLayout="column" fxLayoutGap="10%">
-          <button mat-raised-button (click)="translator.setLanguage(x)" *ngFor="let x of ['en','pl']">{{x|tr}}</button>
-        </mat-panel-description>
+      <mat-panel-description fxLayout="column" fxLayoutGap="10%">
+        <button mat-raised-button (click)="translator.setLanguage(x)" *ngFor="let x of ['en','pl']">{{x|tr}}</button>
+      </mat-panel-description>
     </mat-expansion-panel>
+
     <mat-expansion-panel>
       <mat-expansion-panel-header hideToggle>
-        <mat-panel-title>
-          {{'Theme'|tr}}
+        <mat-panel-title fxLayoutAlign="center center" fxLayoutGap="16px">
+          <mat-icon>format_paint</mat-icon>
+          <mat-label>{{'Theme'|tr}}</mat-label>
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <mat-panel-description  fxLayout="column" fxLayoutGap="15%">
+      <mat-panel-description fxLayout="column" fxLayoutGap="15%">
         <div fxLayoutAlign="center center">
-          <mat-icon matPrefix>{{'wb_sunny'}}</mat-icon>
-          <button mat-raised-button (click)="setLight()"  type="submit">{{'Light'|tr}}</button>
+
+          <button mat-raised-button (click)="setLight()" type="submit">
+            <mat-icon matPrefix>wb_sunny</mat-icon>
+            {{'light'|tr}}</button>
         </div>
         <div fxLayoutAlign="center center">
-          <mat-icon>{{'brightness_3'}}</mat-icon>
-          <button mat-raised-button (click)="setDark()"  type="submit">{{'Dark'|tr}}</button>
+
+          <button mat-raised-button (click)="setDark()" type="submit">
+            <mat-icon>brightness_3</mat-icon>
+            {{'dark'|tr}}
+          </button>
         </div>
       </mat-panel-description>
     </mat-expansion-panel>
+
     <mat-expansion-panel *ngIf="socialLogin">
       <mat-expansion-panel-header hideToggle>
-        <mat-panel-title>
-          {{'change-nick'|tr}}
+        <mat-panel-title fxLayoutAlign="center center" fxLayoutGap="16px">
+          <mat-icon>text_format</mat-icon>
+          <mat-label>{{'change-nick'|tr}}</mat-label>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column">
@@ -40,14 +50,15 @@
           <mat-label>{{'enter-name'|tr}}</mat-label>
           <input matInput [(ngModel)]="user.username">
         </mat-form-field>
-        <button mat-raised-button (click)="changeUsername(user)"  type="submit">{{'Change'|tr}}</button>
+        <button mat-raised-button (click)="changeUsername(user)" type="submit">{{'Change'|tr}}</button>
       </mat-panel-description>
     </mat-expansion-panel>
 
     <mat-expansion-panel *ngIf="socialLogin">
       <mat-expansion-panel-header hideToggle>
-        <mat-panel-title>
-          {{'change-mail'|tr}}
+        <mat-panel-title fxLayoutAlign="center center" fxLayoutGap="16px">
+          <mat-icon>alternate_email</mat-icon>
+          <mat-label>{{'change-mail'|tr}}</mat-label>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column">
@@ -55,12 +66,12 @@
           <mat-label>{{'email'|tr}}</mat-label>
           <input matInput [(ngModel)]="user.email">
         </mat-form-field>
-        <button mat-raised-button (click)="changeEmail(user)"  type="submit">{{'Change'|tr}}</button>
+        <button mat-raised-button (click)="changeEmail(user)" type="submit">{{'Change'|tr}}</button>
       </mat-panel-description>
     </mat-expansion-panel>
     <button mat-raised-button color="warn" (click)="deleteUser()">{{'delete'|tr}}</button>
     <br>
-    <button mat-raised-button (click)="toProfile()">{{'Back'|tr}}</button>
+    <button mat-raised-button (click)="toProfile()">{{'back'|tr}}</button>
   </div>
 </mat-accordion>
 </body>

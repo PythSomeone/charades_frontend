@@ -1,6 +1,6 @@
 
 <div mat-dialog-content fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
-  <h2>{{'Sign_in'|tr}}</h2>
+  <h2>{{'sign-in'|tr}}</h2>
   <mat-form-field appearance="fill">
     <mat-label>{{'email'|tr}}</mat-label>
     <input required matInput [(ngModel)]="signInUserModel.email">
@@ -14,7 +14,7 @@
     </button>
   </mat-form-field>
   <div fxLayoutGap="20%" fxLayout="column" >
-    <button fxFill mat-raised-button (click)="signIn()" type="submit">{{'Sign_in'|tr}}</button>
-    <button mat-raised-button (click)="close()">{{'Back'|tr}}</button>
+    <button fxFill mat-raised-button (click)="signIn()" type="submit">{{'sign-in'|tr}}</button>
+    <button mat-raised-button (click)="close()">{{'back'|tr}}</button>
   </div>
 </div>

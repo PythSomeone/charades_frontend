@@ -23,7 +23,7 @@
 
 
   <mat-form-field appearance="fill">
-    <mat-label>{{'repassword'|tr}}</mat-label>
+    <mat-label>{{'re-password'|tr}}</mat-label>
     <input required matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="signUpUserModel.password_confirmation">
     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -33,7 +33,7 @@
 
   <div fxLayoutGap="20%" fxLayout="column">
     <button fxFill mat-raised-button (click)="signUp()" type="submit">{{'sign-up'|tr}}</button>
-    <button mat-raised-button (click)="close()">{{'Back'|tr}}</button>
+    <button mat-raised-button (click)="close()">{{'back'|tr}}</button>
   </div>
 
 </div>

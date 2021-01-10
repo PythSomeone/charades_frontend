@@ -42,26 +42,26 @@ export class BasicCategoriesService {
         // @ts-ignore
         this.movies = response.data.slice(41, 60);
 
-        this.category.name = 'Animals';
+        this.category.name = 'animals';
         this.category.user_id = user_id;
         this.userCategoriesService.quietCreate(user_id, this.category);
         this.userCategoriesService.UserCategoriesObservable.subscribe(
           category => {
             console.log(category);
             // @ts-ignore
-            if (category.name === 'Animals') {
+            if (category.name === 'animals') {
               this.animals.forEach(word => {
                 // @ts-ignore
                 this.userWordsService.quietCreate(user_id, category.id, word);
               });
             }
           });
-        this.category.name = 'Movies';
+        this.category.name = 'movies';
         this.userCategoriesService.quietCreate(user_id, this.category);
         this.userCategoriesService.UserCategoriesObservable.subscribe(
           category => {
             // @ts-ignore
-            if (category.name === 'Movies') {
+            if (category.name === 'movies') {
               this.movies.forEach(word => {
                 // @ts-ignore
                 this.userWordsService.quietCreate(user_id, category.id, word);

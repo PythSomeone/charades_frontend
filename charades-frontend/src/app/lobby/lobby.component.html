@@ -10,7 +10,7 @@
       <mat-label>{{'enter-name'|tr}}</mat-label>
       <input matInput [(ngModel)]="this.player.name">
     </mat-form-field>
-    <button mat-raised-button (click)="add(player)" type="submit" color="accent">{{'Add'|tr}}</button>
+    <button mat-raised-button (click)="add(player)" type="submit" color="accent">{{'add'|tr}}</button>
   </div>
     <div *ngFor="let player of players" fxLayoutGap="16px">
     <button fxFill fxLayoutAlign="space-between center" mat-flat-button>
@@ -22,6 +22,6 @@
   </div>
   <br>
   <button mat-stroked-button color="accent" (click)="start()">{{'start-game'|tr}}</button>
-  <button mat-raised-button (click)="toCategories()" >{{'Back'|tr}}</button>
+  <button mat-raised-button (click)="toCategories()" >{{'back'|tr}}</button>
 </div>
 </body>

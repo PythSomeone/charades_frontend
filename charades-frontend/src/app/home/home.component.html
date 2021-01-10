@@ -1,11 +1,11 @@
 <body class="mat-app-background">
 <br>
 <div fxLayoutAlign="end" fxLayoutGap="10px">
-  <div fxLayoutGap="10px">
+  <div fxLayoutGap="16px">
     <mat-expansion-panel>
       <mat-expansion-panel-header hideToggle>
-        <mat-panel-title>
-          {{'choose-lang'|tr}}
+        <mat-panel-title fxLayoutAlign="center center">
+          <mat-icon>public</mat-icon>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column" fxLayoutGap="5%">
@@ -13,9 +13,11 @@
       </mat-panel-description>
     </mat-expansion-panel>
   </div>
+  <div fxLayoutAlign="center center">
   <mat-icon>{{'wb_sunny'}}</mat-icon>
 <mat-slide-toggle [checked]="checked" (click)="setTheme()"></mat-slide-toggle>
   <mat-icon>{{'brightness_3'}}</mat-icon>
+  </div>
 </div>
 <div fxFill fxLayoutAlign="center center" fxLayout="column">
   <h1>Charades with friends</h1>
@@ -25,7 +27,7 @@
       <app-facebook></app-facebook>
     </div>
     <div fxLayoutGap="2%" fxLayout="column">
-      <button mat-raised-button (click)="openSignIn()">{{'Sign_in'|tr}}</button>
+      <button mat-raised-button (click)="openSignIn()">{{'sign-in'|tr}}</button>
       <button mat-stroked-button (click)="openSignUp()">{{'sign-up'|tr}}</button>
     </div>
   </mat-card-content>

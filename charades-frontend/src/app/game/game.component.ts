@@ -69,8 +69,8 @@ export class GameComponent implements OnInit {
     } else {
 
       switch (this.categoryID) {
-        case 'Animals': {
-        this.category.name = 'Animals';
+        case 'animals': {
+        this.category.name = 'animals';
         this.words = this.basicCategoriesService.getAnimals();
         this.random = this.getRandomInt(0, this.words.length);
         this.word = this.words[this.random];
@@ -83,8 +83,8 @@ export class GameComponent implements OnInit {
           this.word = this.words[this.random];
           break;
         }
-        case 'Movies': {
-          this.category.name = 'Movies';
+        case 'movies': {
+          this.category.name = 'movies';
           this.words = this.basicCategoriesService.getMovies();
           this.random = this.getRandomInt(0, this.words.length);
           this.word = this.words[this.random];

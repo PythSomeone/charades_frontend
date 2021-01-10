@@ -1,6 +1,6 @@
 <body class="mat-app-background" fxLayout="column" fxLayoutGap="16px">
 <div fxFlexAlign="center">
-  <button mat-raised-button (click)="toProfile()">{{'Back'|tr}}</button>
+  <button mat-raised-button (click)="toProfile()">{{'back'|tr}}</button>
 </div>
 <mat-card fxLayout="column" fxLayoutGap="16px" *ngFor="let stat of statistics; let i = index">
   <mat-card-header> {{stat.category.name}} </mat-card-header>

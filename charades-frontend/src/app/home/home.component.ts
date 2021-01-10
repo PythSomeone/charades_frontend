@@ -39,7 +39,6 @@ export class HomeComponent implements OnInit {
   setTheme(): void {
     if (localStorage.getItem('prefers-color') === 'light') {
       this.colorSchemeService.update('dark');
-
     } else {
       this.colorSchemeService.update('light');
     }

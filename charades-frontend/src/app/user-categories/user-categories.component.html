@@ -14,13 +14,13 @@
           <mat-label>{{'enter-name'|tr}}</mat-label>
           <input matInput [(ngModel)]="this.category.name">
         </mat-form-field>
-        <button mat-raised-button (click)="createCategory()" type="submit">{{'Create'|tr}}</button>
+        <button mat-raised-button (click)="createCategory()" type="submit">{{'create'|tr}}</button>
       </mat-panel-description>
     </mat-expansion-panel>
   </div>
   <div fxLayoutGap="16px" fxLayoutAlign="center">
     <button mat-raised-button (click)="toGame()">{{'to-game'|tr}}</button>
-    <button mat-raised-button (click)="toProfile()">{{'Back'|tr}}</button>
+    <button mat-raised-button (click)="toProfile()">{{'back'|tr}}</button>
   </div>
   <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="16px" *ngFor="let category of categories">
     <mat-expansion-panel fxFill hideToggle>
