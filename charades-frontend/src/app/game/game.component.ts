@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Player} from '../_models/player';
 import {Word} from '../_models/word';
 import {Category} from '../_models/category';
@@ -8,16 +8,16 @@ import {UserWordsService} from '../_services/user-words.service';
 import {ColorSchemeService} from '../_services/color-scheme.service';
 import {PlayerService} from '../_services/player.service';
 import {Router} from '@angular/router';
-import {DeleteAccountComponent} from '../dialogs/delete-account/delete-account.component';
 import {MatDialog} from '@angular/material/dialog';
 import {EndGameComponent} from '../dialogs/end-game/end-game.component';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, OnDestroy {
   host = new Player('', 0);
   word = new Word('', '', '', '');
   category = new Category('', '');
@@ -31,6 +31,8 @@ export class GameComponent implements OnInit {
   inTurn = true;
   words: Array<any> = [];
   private random: number;
+  private playerSubscribe: Subscription;
+  private wordsSubscribe: Subscription;
 
   constructor(
     private userCategoriesService: UserCategoriesService,
@@ -45,7 +47,7 @@ export class GameComponent implements OnInit {
 
     this.colorSchemeService.load();
     this.playerService.index(this.gameID);
-    this.playerService.playersObservable.subscribe(
+    this.playerSubscribe = this.playerService.playersObservable.subscribe(
       players => {
         this.players = players;
         this.inTurn = true;
@@ -59,7 +61,7 @@ export class GameComponent implements OnInit {
     if (this.ownCategory === 'true') {
       this.category.name = localStorage.getItem('categoryName');
       this.userWordsService.index(this.userID, this.categoryID);
-      this.userWordsService.userCategoryWordsObservable.subscribe(
+      this.wordsSubscribe =  this.userWordsService.userCategoryWordsObservable.subscribe(
         words => {
           this.words = words;
           this.random = this.getRandomInt(0, this.words.length);
@@ -93,6 +95,11 @@ export class GameComponent implements OnInit {
       }
     }
 
+  }
+
+  ngOnDestroy(): void {
+    this.playerSubscribe.unsubscribe();
+    this.wordsSubscribe.unsubscribe();
   }
 
   ngOnInit(): void {
