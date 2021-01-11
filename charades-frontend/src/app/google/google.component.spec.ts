@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, tick} from '@angular/core/testing';
 
 import { GoogleComponent } from './google.component';
 
@@ -8,18 +8,19 @@ describe('GoogleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GoogleComponent ]
+      declarations: [ GoogleComponent ],
+      providers: [],
     })
-    .compileComponents();
+      .compileComponents().then(() => {
+        fixture = TestBed.createComponent(GoogleComponent);
+        component = fixture.componentInstance;
+      });
   });
+  it('should', async(() => {
+    spyOn(component, 'signInWithGoogle');
+    const button = fixture.debugElement.nativeElement.querySelector('button');
+    tick();
+    expect(component.signInWithGoogle).toBeTruthy();
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(GoogleComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  }));
 });

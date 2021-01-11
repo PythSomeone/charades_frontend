@@ -1,6 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed, async, fakeAsync, inject, tick,  } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 import { HomeComponent } from './home.component';
+import {browser, by} from 'protractor';
+import {SignInComponent} from '../dialogs/sign-in/sign-in.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -8,18 +11,29 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [HomeComponent],
+      providers: [],
     })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+      .compileComponents().then(() => {
+        fixture = TestBed.createComponent(HomeComponent);
+        component = fixture.componentInstance;
+      });
+    it('should', async(() => {
+      spyOn(component, 'openSignIn');
+      const button = fixture.debugElement.nativeElement.querySelector('button');
+      tick();
+      expect(component.openSignIn).toHaveBeenCalled();
+    }));
+    it('should ', async(() => {
+      spyOn(component, 'openSignUp');
+      const  button = fixture.debugElement.nativeElement.querySelector('button');
+      button.click();
+      fixture.whenStable().then(() => {
+        expect(component.openSignUp).toHaveBeenCalled();
+      });
+    }));
   });
 });
+
+
+

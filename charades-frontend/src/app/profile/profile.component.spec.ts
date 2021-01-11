@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, tick} from '@angular/core/testing';
 
 import { ProfileComponent } from './profile.component';
 
@@ -19,7 +19,28 @@ describe('ProfileComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it('should ', async(() => {
+    spyOn(component, 'toCategoriesManagement');
+    const  button = fixture.debugElement.nativeElement.querySelector('button');
+    tick();
+    expect(component.toCategoriesManagement).toHaveBeenCalled();
+  }));
+  it('should ', async(() => {
+    spyOn(component, 'toSettings');
+    const  button = fixture.debugElement.nativeElement.querySelector('button');
+    tick();
+    expect(component.toSettings).toHaveBeenCalled();
+  }));
+  it('should ', async(() => {
+    spyOn(component, 'logOut');
+    const  button = fixture.debugElement.nativeElement.querySelector('button');
+    tick();
+    expect(component.logOut).toBeTruthy();
+  }));
+  it('should ', async(() => {
+    spyOn(component, 'toCreateGame');
+    const  button = fixture.debugElement.nativeElement.querySelector('button');
+    tick();
+    expect(component.toCreateGame).toBeTruthy();
+  }));
 });
