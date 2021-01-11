@@ -33,7 +33,7 @@ export class UserSettingService {
   }
 
   update(userID: string, user: any): void {
-    this.http.patch('http://localhost:3000/user/' + userID, user).subscribe(
+    this.http.patch('https://charades-with-friends-api.herokuapp.com/user/' + userID, user).subscribe(
       response => {
         this.setUser(response as User);
         console.log(response);
@@ -45,7 +45,7 @@ export class UserSettingService {
   }
 
   delete(userID: string): void {
-    this.http.delete('http://localhost:3000/user/' + userID).subscribe(
+    this.http.delete('https://charades-with-friends-api.herokuapp.com/user/' + userID).subscribe(
       response => {
         this.router.navigate(['h']);
         this.dialog.closeAll();
@@ -53,7 +53,7 @@ export class UserSettingService {
   }
 
   get(userID: string): void {
-    this.http.get('http://localhost:3000/user/' + userID).subscribe(
+    this.http.get('https://charades-with-friends-api.herokuapp.com/user/' + userID).subscribe(
       response => {
         // @ts-ignore
         this.setUser(response.data);

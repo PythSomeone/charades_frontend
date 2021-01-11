@@ -36,7 +36,7 @@ export class AuthenticationService {
   }
 
   SignUp(user: Sign_up): Subscription {
-    return this.http.post('http://localhost:3000/sign_up', user).subscribe(
+    return this.http.post('https://charades-with-friends-api.herokuapp.com/sign_up', user).subscribe(
       response => {
         this.openSnackBar('User registered successfully', '');
         const basicCategoriesService = this.injector.get(BasicCategoriesService);
@@ -57,7 +57,7 @@ export class AuthenticationService {
   }
 
   SignIn(user: Sign_in): Subscription {
-    return this.http.post('http://localhost:3000/sign_in', user).subscribe(
+    return this.http.post('https://charades-with-friends-api.herokuapp.com/sign_in', user).subscribe(
       response => {
         localStorage.setItem('socialLogin', 'false');
         // @ts-ignore
@@ -81,7 +81,7 @@ export class AuthenticationService {
   }
 
   QuietlySignUp(user: Sign_up): Subscription {
-    return this.http.post('http://localhost:3000/sign_up', user).subscribe(
+    return this.http.post('https://charades-with-friends-api.herokuapp.com/sign_up', user).subscribe(
       response => {
         console.log('User Signed Up');
         const basicCategoriesService = this.injector.get(BasicCategoriesService);
@@ -99,7 +99,7 @@ export class AuthenticationService {
 
   QuietlySignIn(user: Sign_in): Subscription {
 
-    return this.http.post('http://localhost:3000/sign_in', user).subscribe(
+    return this.http.post('https://charades-with-friends-api.herokuapp.com/sign_in', user).subscribe(
       response => {
         // @ts-ignore
         this.user = response.data.user;

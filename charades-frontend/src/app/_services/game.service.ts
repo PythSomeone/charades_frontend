@@ -23,7 +23,7 @@ export class GameService {
     this.categoryID = localStorage.getItem('categoryID');
     this.gameID = localStorage.getItem('gameID');
     this.userID = localStorage.getItem('userID');
-    this.apiURL = 'http://localhost:3000/user/' + this.userID + '/games';
+    this.apiURL = 'https://charades-with-friends-api.herokuapp.com/user/' + this.userID + '/games';
     this.game = new Game(this.userID, this.categoryID);
   }
 

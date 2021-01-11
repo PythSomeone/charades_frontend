@@ -20,7 +20,7 @@ export class UserWordsService {
   }
 
   index(userID: string, categoryID: string): Subscription {
-    return this.http.get<Categories[]>('http://localhost:3000/user/' + userID + '/categories/' + categoryID + '/words').subscribe(
+    return this.http.get<Categories[]>('https://charades-with-friends-api.herokuapp.com/user/' + userID + '/categories/' + categoryID + '/words').subscribe(
       response => {
         // @ts-ignore
         this.setUserCategoryWords(response.data);
@@ -29,7 +29,7 @@ export class UserWordsService {
   }
 
   get(userID: string, categoryID: string, wordID: string): Subscription {
-    return this.http.get<Categories[]>('http://localhost:3000/user/' + userID + '/categories/' + categoryID + '/words/' + wordID).subscribe(
+    return this.http.get<Categories[]>('https://charades-with-friends-api.herokuapp.com/user/' + userID + '/categories/' + categoryID + '/words/' + wordID).subscribe(
       response => {
         // @ts-ignore
         this.setUserCategoryWords(response.data);
@@ -38,7 +38,7 @@ export class UserWordsService {
   }
 
   create(user_id: string, category_id: string, word: any): void {
-    this.http.post('http://localhost:3000/user/' + user_id + '/categories/' + category_id + '/words', word).subscribe(
+    this.http.post('https://charades-with-friends-api.herokuapp.com/user/' + user_id + '/categories/' + category_id + '/words', word).subscribe(
       response => {
         console.log(response);
         location.reload();
@@ -50,7 +50,7 @@ export class UserWordsService {
   }
 
   quietCreate(user_id: string, category_id: string, word: any): void {
-    this.http.post('http://localhost:3000/user/' + user_id + '/categories/' + category_id + '/words', word).subscribe(
+    this.http.post('https://charades-with-friends-api.herokuapp.com/user/' + user_id + '/categories/' + category_id + '/words', word).subscribe(
       response => {
         console.log(response);
       },
@@ -61,7 +61,7 @@ export class UserWordsService {
   }
 
   delete(user_id: string, category_id: string, id: string): void {
-    this.http.delete('http://localhost:3000/user/' + user_id + '/categories/' + category_id + '/words/' + id).subscribe(
+    this.http.delete('https://charades-with-friends-api.herokuapp.com/user/' + user_id + '/categories/' + category_id + '/words/' + id).subscribe(
       response => {
         console.log(response);
         this.dialog.closeAll();
@@ -74,7 +74,7 @@ export class UserWordsService {
   }
 
   update(user_id: string, category_id: string, id: string, word: any): void {
-    this.http.patch('http://localhost:3000/user/' + user_id + '/categories/ ' + category_id + '/words/' + id, word).subscribe(
+    this.http.patch('https://charades-with-friends-api.herokuapp.com/user/' + user_id + '/categories/ ' + category_id + '/words/' + id, word).subscribe(
       response => {
         this.dialog.closeAll();
       },

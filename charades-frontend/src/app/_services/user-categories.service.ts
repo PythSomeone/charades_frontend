@@ -22,7 +22,7 @@ export class UserCategoriesService {
   }
 
   create(userID: string, category: Category): void {
-    this.http.post('http://localhost:3000/user/' + userID + '/categories', category).subscribe(
+    this.http.post('https://charades-with-friends-api.herokuapp.com/user/' + userID + '/categories', category).subscribe(
       response => {
         location.reload();
       }
@@ -30,7 +30,7 @@ export class UserCategoriesService {
   }
 
   quietCreate(userID: string, category: Category): void {
-    this.http.post('http://localhost:3000/user/' + userID + '/categories', category).subscribe(
+    this.http.post('https://charades-with-friends-api.herokuapp.com/user/' + userID + '/categories', category).subscribe(
       response => {
         // @ts-ignore
         this.setUserCategories(response.data);
@@ -40,7 +40,7 @@ export class UserCategoriesService {
 
 
   index(user_id: string): Subscription {
-    return this.http.get('http://localhost:3000/user/' + user_id + '/categories').subscribe(
+    return this.http.get('https://charades-with-friends-api.herokuapp.com/user/' + user_id + '/categories').subscribe(
       response => {
         // @ts-ignore
         this.setUserCategories(response.data);
@@ -49,7 +49,7 @@ export class UserCategoriesService {
   }
 
   async get(user_id: string, category_id: string): Promise<Subscription> {
-    return this.http.get('http://localhost:3000/user/' + user_id + '/categories/' + category_id).subscribe(
+    return this.http.get('https://charades-with-friends-api.herokuapp.com/user/' + user_id + '/categories/' + category_id).subscribe(
       response => {
         // @ts-ignore
         this.setUserCategories(response.data);
@@ -58,7 +58,7 @@ export class UserCategoriesService {
   }
 
   delete(userID: string, id: string): void {
-    this.http.delete('http://localhost:3000/user/' + userID + '/categories/ ' + id).subscribe(
+    this.http.delete('https://charades-with-friends-api.herokuapp.com/user/' + userID + '/categories/ ' + id).subscribe(
       response => {
         console.log(response);
         location.reload();
@@ -70,7 +70,7 @@ export class UserCategoriesService {
   }
 
   update(userID: string, id: string, category: any): void {
-    this.http.patch('http://localhost:3000/user/' + userID + '/categories/ ' + id, category).subscribe(
+    this.http.patch('https://charades-with-friends-api.herokuapp.com/user/' + userID + '/categories/ ' + id, category).subscribe(
       response => {
         console.log(response);
         this.dialog.closeAll();
