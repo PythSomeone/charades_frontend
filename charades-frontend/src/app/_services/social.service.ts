@@ -55,7 +55,21 @@ export class SocialService {
   }
 
   async signInWithFB(): Promise<void> {
-    await this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    await this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
+      () => {
+        this.subscribeSocial();
+        const promise = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            this.authenticationService.QuietlySignIn(this.login);
+          }, 100);
+        });
+        this.authenticationService.QuietlySignUp(this.newUser);
+        promise.then(value => {
+          console.log(value);
+        });
+        this.router.navigate(['p']);
+        localStorage.setItem('isLoggedIn', 'true');
+      });
     console.log('User signs in. (FB)');
   }
 

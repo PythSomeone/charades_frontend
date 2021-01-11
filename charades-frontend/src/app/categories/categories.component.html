@@ -15,9 +15,9 @@
     </div>
   </div>
   <div fxFill fxLayoutAlign="start center" fxLayout="column" fxLayoutGap="5px">
-    <mat-label *ngIf="userCategories"></mat-label>
-    <div *ngFor="let category of userCategories">
-      <button mat-raised-button color="primary" (click)="toLobby(category.id)">{{category.name}}</button>
+    <mat-label *ngIf="showCategories"></mat-label>
+    <div *ngFor="let category of showCategories">
+      <button mat-raised-button color="primary" (click)="toLobby(category)">{{category.name}}</button>
     </div>
 
     </div>

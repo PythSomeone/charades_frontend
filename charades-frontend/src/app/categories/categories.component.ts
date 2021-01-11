@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {BasicCategoriesService} from '../_services/basic-categories.service';
 import {Router} from '@angular/router';
 import {ColorSchemeService} from '../_services/color-scheme.service';
-import {UserCategoriesComponent} from '../user-categories/user-categories.component';
 import {UserCategoriesService} from '../_services/user-categories.service';
-import {Categories} from '../_models/categories';
+import {UserCategoriesWithWordsService} from '../_services/user-categories-with-words.service';
 import {GameService} from '../_services/game.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-categories',
@@ -14,23 +14,25 @@ import {GameService} from '../_services/game.service';
 })
 export class CategoriesComponent implements OnInit {
 
-  userCategories = [];
+  showCategories = [];
   userID = localStorage.getItem('userID');
 
   constructor(private basicCategoriesService: BasicCategoriesService,
               private router: Router,
               private colorSchemeService: ColorSchemeService,
               private userCategoriesService: UserCategoriesService,
-              private gameService: GameService) {
+              private gameService: GameService,
+              private snackBar: MatSnackBar,
+              private userCategoriesWithWordsService: UserCategoriesWithWordsService) {
     colorSchemeService.load();
     localStorage.setItem('hideButton', 'false');
   }
 
-  ngOnInit(): void {
-    this.userCategoriesService.index(this.userID);
-    this.userCategoriesService.UserCategoriesObservable.subscribe(
+  async ngOnInit(): Promise<void> {
+
+    await this.userCategoriesWithWordsService.get(this.userID).then(
       categories => {
-        this.userCategories = categories as any;
+        this.showCategories = categories;
       });
   }
 
@@ -43,11 +45,14 @@ export class CategoriesComponent implements OnInit {
   }
 
   toLobby(category: any): void {
-
-    localStorage.setItem('ownCategory', 'true');
-    localStorage.setItem('categoryID', category);
-
-    this.gameService.create();
-    this.router.navigate(['l']);
+    console.log(category);
+    if (category.words === undefined || category.words.length < 5) {
+      this.snackBar.open('To use category it has to have at least 5 words');
+    } else {
+      localStorage.setItem('ownCategory', 'true');
+      localStorage.setItem('categoryID', category.id);
+      this.gameService.create();
+      this.router.navigate(['l']);
+    }
   }
 }

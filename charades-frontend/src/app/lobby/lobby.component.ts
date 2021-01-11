@@ -121,10 +121,5 @@ export class LobbyComponent implements OnInit {
     } else {
       this.openSnackBar('At least 3 players needed', 'Close');
     }
-    if (this.category.words.length > 5) {
-      this.router.navigate(['g']);
-    } else {
-      this.openSnackBar('Too small number of words on this category! ', 'Close');
-    }
   }
 }
