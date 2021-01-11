@@ -1,19 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthenticationService} from '../_services/authentication.service';
 import {Router} from '@angular/router';
 import {ColorSchemeService} from '../_services/color-scheme.service';
 import {UserSettingService} from '../_services/user-setting.service';
 import {SocialService} from '../_services/social.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
 
   userID: string;
   user: string;
+  private settingsSubscribe: Subscription;
 
   constructor(
     private socialService: SocialService,
@@ -25,7 +27,7 @@ export class ProfileComponent implements OnInit {
     localStorage.setItem('refreshed', 'false');
     colorSchemeService.load();
     this.userSettingsService.get(this.userID);
-    this.userSettingsService.userObservable.subscribe(
+    this.settingsSubscribe = this.userSettingsService.userObservable.subscribe(
       user => {
         this.user = user.username;
       });
@@ -35,6 +37,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     document.body.removeAttribute('.modal-open');
     this.user = localStorage.getItem('username');
+  }
+
+  ngOnDestroy(): void {
+    this.settingsSubscribe.unsubscribe();
   }
 
   toCreateGame(): void {

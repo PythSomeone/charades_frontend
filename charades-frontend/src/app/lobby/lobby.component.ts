@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserCategoriesService} from '../_services/user-categories.service';
 import {BasicCategoriesService} from '../_services/basic-categories.service';
 import {Router} from '@angular/router';
@@ -8,13 +8,14 @@ import {Player} from '../_models/player';
 import {GameService} from '../_services/game.service';
 import {PlayerService} from '../_services/player.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-lobby',
   templateUrl: './lobby.component.html',
   styleUrls: ['./lobby.component.scss']
 })
-export class LobbyComponent implements OnInit {
+export class LobbyComponent implements OnInit, OnDestroy {
 
   players: Array<Player> = [];
   player = new Player('', 0);
@@ -26,6 +27,8 @@ export class LobbyComponent implements OnInit {
   showAdd = 'true';
   refreshed = 'false';
   category: any = new Categories('', '', '', []);
+  private categoriesSubscribe: Subscription;
+  private playersSubscribe: Subscription;
 
   constructor(private userCategoriesService: UserCategoriesService,
               private basicCategoriesService: BasicCategoriesService,
@@ -42,12 +45,12 @@ export class LobbyComponent implements OnInit {
     this.gameID = localStorage.getItem('gameID');
     colorSchemeService.load();
     this.playerService.index(this.gameID);
-    this.playerService.playersObservable.subscribe(
+    this.playersSubscribe = this.playerService.playersObservable.subscribe(
       players => {
         this.players = players;
         if (this.players.length >= 8) {
           this.refreshed = localStorage.getItem('refreshed');
-          if (this.refreshed === 'false'){
+          if (this.refreshed === 'false') {
 
             localStorage.setItem('refreshed', 'true');
             location.reload();
@@ -70,13 +73,18 @@ export class LobbyComponent implements OnInit {
 
     this.categoryID = localStorage.getItem('categoryID');
     this.userCategoriesService.get(this.userID, this.categoryID);
-    this.userCategoriesService.UserCategoriesObservable.subscribe(
+    this.categoriesSubscribe = this.userCategoriesService.UserCategoriesObservable.subscribe(
       category => {
 
         this.category = category;
         localStorage.setItem('categoryName', this.category.name);
       });
 
+  }
+
+  ngOnDestroy(): void {
+    this.categoriesSubscribe.unsubscribe();
+    this.playersSubscribe.unsubscribe();
   }
 
   openSnackBar(message: string, action: string): void {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ColorSchemeService} from '../_services/color-scheme.service';
 import {Router} from '@angular/router';
 import {UserSettingService} from '../_services/user-setting.service';
@@ -6,17 +6,19 @@ import {User} from '../_models/user';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteAccountComponent} from '../dialogs/delete-account/delete-account.component';
 import {Translator} from '../translation';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-user-categories',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent implements OnInit, OnDestroy {
   socialLogin: any = localStorage.getItem('socialLogin');
   userID = localStorage.getItem('userID');
   user = new User('', '');
   checked: boolean;
+  private settingsSubscribe: Subscription;
 
   constructor(private router: Router,
               private userSettingsService: UserSettingService,
@@ -24,13 +26,13 @@ export class SettingsComponent implements OnInit {
               private dialog: MatDialog,
               public translator: Translator) {
     this.userSettingsService.get(this.userID);
-    this.userSettingsService.userObservable.subscribe(
+    this.settingsSubscribe = this.userSettingsService.userObservable.subscribe(
       user => {
         this.user = user;
       });
     this.checkSlideToggle();
     this.colorSchemeService.load();
-    if (this.socialLogin === 'true'){
+    if (this.socialLogin === 'true') {
       this.socialLogin = false;
     }
   }
@@ -42,6 +44,10 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.settingsSubscribe.unsubscribe();
   }
 
   toProfile(): void {

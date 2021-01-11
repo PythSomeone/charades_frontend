@@ -1,16 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ColorSchemeService} from '../_services/color-scheme.service';
 import {Player} from '../_models/player';
 import {Category} from '../_models/category';
 import {PlayerService} from '../_services/player.service';
 import {Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.scss']
 })
-export class ResultsComponent implements OnInit {
+export class ResultsComponent implements OnInit, OnDestroy {
   categoryID = localStorage.getItem('categoryID');
   ownCategory = localStorage.getItem('ownCategory');
   userID = localStorage.getItem('userID');
@@ -19,6 +20,7 @@ export class ResultsComponent implements OnInit {
   max = 0;
   category = new Category('', '');
   players: Array<Player> = [];
+  private playersSubscribe: Subscription;
 
   constructor(private colorSchemeService: ColorSchemeService,
               private playerService: PlayerService,
@@ -26,7 +28,7 @@ export class ResultsComponent implements OnInit {
     this.colorSchemeService.load();
 
     this.playerService.index(this.gameID);
-    this.playerService.playersObservable.subscribe(
+    this.playersSubscribe = this.playerService.playersObservable.subscribe(
       players => {
         this.players = players;
         this.players.forEach(player => {
@@ -47,6 +49,10 @@ export class ResultsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.playersSubscribe.unsubscribe();
   }
 
   backToProfile(): void {
