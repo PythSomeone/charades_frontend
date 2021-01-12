@@ -11,7 +11,8 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column" fxLayoutGap="10%">
-        <button color="accent" mat-raised-button (click)="translator.setLanguage(x)" *ngFor="let x of ['en','pl']">{{x|tr}}</button>
+        <button color="accent" mat-raised-button (click)="translator.setLanguage(x)"
+                *ngFor="let x of ['en','pl']">{{x|tr}}</button>
       </mat-panel-description>
     </mat-expansion-panel>
 
@@ -30,7 +31,6 @@
             {{'light'|tr}}</button>
         </div>
         <div fxLayoutAlign="center center">
-
           <button fxFill color="primary" mat-raised-button (click)="setDark()" type="submit">
             <mat-icon>brightness_3</mat-icon>
             {{'dark'|tr}}
@@ -71,12 +71,12 @@
       </mat-panel-description>
     </mat-expansion-panel>
     <button fxLayoutAlign="center center" mat-stroked-button color="warn" (click)="deleteUser()">
-    <mat-icon>delete</mat-icon>
+      <mat-icon>delete</mat-icon>
       {{'delete'|tr}}
     </button>
     <br>
     <button fxLayoutAlign="center center" color="primary" mat-raised-button (click)="toProfile()">
-    <mat-icon>reply</mat-icon>
+      <mat-icon>reply</mat-icon>
       {{'back'|tr}}
     </button>
   </div>

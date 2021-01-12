@@ -58,5 +58,13 @@
   "points": "pkt",
   "back-to-profile": "Powrót do profilu",
   "cat-man": "Zarządzaj kategorią: ",
-  "history": "Historia i Statystyki"
+  "history": "Historia i Statystyki",
+  "timer-label": "Czas na pokazanie:",
+  "30seconds": "30 sekund",
+  "1minute": "1 minuta",
+  "90secs": "1 minuta 30 sekund",
+  "2minutes": "2 minuty",
+  "times-up": "Czas minął!",
+  "gave-up": "Poddałeś się!",
+  "next-person-ready": "Kolejna osoba gotowa?"
 }

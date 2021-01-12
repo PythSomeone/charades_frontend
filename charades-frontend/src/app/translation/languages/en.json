@@ -58,5 +58,13 @@
   "points": "Points",
   "back-to-profile": "Back to profile",
   "cat-man": "Manage category: ",
-  "history": "History & Statistics"
+  "history": "History & Statistics",
+  "timer-label": "Time per round",
+  "30seconds": "30 seconds",
+  "1minute": "1 minute",
+  "90secs": "1 minute 30 seconds",
+  "2minutes": "2 minutes",
+  "times-up": "Time is up!",
+  "gave-up": "Gave up!",
+  "next-person-ready": "Is the next person ready?"
 }

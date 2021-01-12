@@ -26,12 +26,12 @@
   </div>
   <br>
   <mat-form-field appearance="fill">
-    <mat-label>Time per round</mat-label>
+    <mat-label>{{'timer-label'|tr}}</mat-label>
     <mat-select required [(value)]="selected">
-      <mat-option value="30">30 seconds</mat-option>
-      <mat-option value="60">1 minute</mat-option>
-      <mat-option value="90">1 minute 30 seconds</mat-option>
-      <mat-option value="120">2 minutes</mat-option>
+      <mat-option value="30">{{'30seconds'|tr}}</mat-option>
+      <mat-option value="60">{{'1minute'|tr}}</mat-option>
+      <mat-option value="90">{{'90secs'|tr}}</mat-option>
+      <mat-option value="120">{{'2minutes'|tr}}</mat-option>
     </mat-select>
   </mat-form-field>
   <button mat-stroked-button color="accent" (click)="start()">
