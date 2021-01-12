@@ -33,6 +33,11 @@ export class GameComponent implements OnInit, OnDestroy {
   private random: number;
   private playerSubscribe: Subscription;
   private wordsSubscribe: Subscription;
+  seconds = '00';
+  minutes = 0;
+  timeEnd = false;
+  interval: any;
+  gaveUp = false;
 
   constructor(
     private userCategoriesService: UserCategoriesService,
@@ -44,6 +49,8 @@ export class GameComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
   ) {
     this.random = 0;
+    const time = parseInt(localStorage.getItem('gameLength'), 10);
+    this.Countdown(time);
 
     this.colorSchemeService.load();
     this.playerService.index(this.gameID);
@@ -61,7 +68,7 @@ export class GameComponent implements OnInit, OnDestroy {
     if (this.ownCategory === 'true') {
       this.category.name = localStorage.getItem('categoryName');
       this.userWordsService.index(this.userID, this.categoryID);
-      this.wordsSubscribe =  this.userWordsService.userCategoryWordsObservable.subscribe(
+      this.wordsSubscribe = this.userWordsService.userCategoryWordsObservable.subscribe(
         words => {
           this.words = words;
           this.random = this.getRandomInt(0, this.words.length);
@@ -72,12 +79,12 @@ export class GameComponent implements OnInit, OnDestroy {
 
       switch (this.categoryID) {
         case 'animals': {
-        this.category.name = 'animals';
-        this.words = this.basicCategoriesService.getAnimals();
-        this.random = this.getRandomInt(0, this.words.length);
-        this.word = this.words[this.random];
-        break;
-      }
+          this.category.name = 'animals';
+          this.words = this.basicCategoriesService.getAnimals();
+          this.random = this.getRandomInt(0, this.words.length);
+          this.word = this.words[this.random];
+          break;
+        }
         case 'Video Games': {
           this.category.name = 'Video Games';
           this.words = this.basicCategoriesService.getGames();
@@ -112,8 +119,8 @@ export class GameComponent implements OnInit, OnDestroy {
     this.host.name = player.name;
     this.word = this.words[this.random];
     this.playerService.update(this.gameID, player.id, player);
+    clearInterval(this.interval);
   }
-
 
 
   ready(): void {
@@ -122,20 +129,56 @@ export class GameComponent implements OnInit, OnDestroy {
 
 
   giveUp(): void {
-    this.word = this.words[this.getRandomInt(0, this.words.length)];
+    this.gaveUp = true;
+    this.inTurn = false;
+    this.timeEnd = true;
   }
 
   getRandomInt(min, max): number {
     min = Math.ceil(min);
     max = Math.floor(max);
     let randomNumber = Math.floor(Math.random() * (max - min)) + min;
-    while (randomNumber === this.random){
+    while (randomNumber === this.random) {
       randomNumber = Math.floor(Math.random() * (max - min)) + min;
     }
     this.random = randomNumber;
     return randomNumber;
   }
+
   endGame(): void {
     this.dialog.open(EndGameComponent, {});
+  }
+
+  Countdown(seconds: number): void {
+    let counter: number;
+    counter = seconds;
+
+    this.minutes = parseInt(String(counter / 60), 10);
+    counter = counter - (this.minutes * 60);
+
+    this.interval = setInterval(() => {
+      if (counter < 10) {
+        this.seconds = ('0' + counter);
+      } else {
+        this.seconds = counter.toString();
+      }
+
+      counter--;
+
+      if (counter < 0) {
+        if (counter < 0 && this.minutes === 0) {
+          clearInterval(this.interval);
+          this.timeEnd = true;
+          this.inTurn = false;
+        } else {
+          counter = 59;
+          this.minutes--;
+        }
+      }
+    }, 1000);
+  }
+
+  nextTurn(): void {
+    location.reload();
   }
 }

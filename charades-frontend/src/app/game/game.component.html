@@ -3,21 +3,34 @@
 <div *ngIf="inTurn">
   <div fxLayoutAlign="center center" fxLayout="column">
     <div fxLayoutAlign="center center" fxLayout="column">
+      <div fxFill class="counter">
+        <button mat-flat-button color="accent">{{minutes}} : {{seconds}}</button>
+      </div>
       <h1>{{word.word}}</h1>
       <p>{{category.name}}</p>
     </div>
-      <div fxLayoutAlign="center" fxLayout="column" fxLayoutGap="16px" *ngFor="let player of players">
-        <br>
-        <button color="primary" fxLayoutAlign="center" *ngIf="!(host.name === player.name)" mat-raised-button (click)="addPoints(player)">
-          <mat-label>{{player.name}}</mat-label>
-        </button>
-      </div>
+    <div fxLayoutAlign="center" fxLayout="column" fxLayoutGap="16px" *ngFor="let player of players">
+      <br>
+      <button color="primary" fxLayoutAlign="center" *ngIf="!(host.name === player.name)" mat-raised-button
+              (click)="addPoints(player)">
+        <mat-label>{{player.name}}</mat-label>
+      </button>
+    </div>
   </div>
 </div>
 <div *ngIf="!inTurn" fxLayoutAlign="center center" fxLayout="column wrap">
-  <h1> {{'ready1'|tr}}</h1>
-  <h1> {{'ready2'|tr}}{{host.name}}? </h1>
-  <button mat-raised-button color="accent" (click)="ready()">{{'yes'|tr}}</button>
+  <div *ngIf="!timeEnd" fxLayoutAlign="center center" fxLayout="column wrap">
+    <h1> {{'ready1'|tr}}</h1>
+    <h1> {{'ready2'|tr}}{{host.name}}? </h1>
+    <button mat-raised-button color="accent" (click)="ready()">{{'yes'|tr}}</button>
+  </div>
+<div *ngIf="timeEnd" fxLayoutAlign="center center" fxLayout="column wrap">
+  <h1 *ngIf="!gaveUp">Time is up!</h1>
+  <h1 *ngIf="gaveUp">Gave up!</h1>
+  <h1>Is the next person ready?</h1>
+  <button mat-raised-button color="accent" (click)="nextTurn()">{{'yes'|tr}}</button>
+</div>
+
 </div>
 <br>
 <div fxLayoutAlign="center" fxLayout="row" fxLayoutGap="16px grid" fxLayout="row wrap">
@@ -28,11 +41,11 @@
 <br>
 <div fxLayout="column" fxLayoutGap="15px">
   <button *ngIf="inTurn" mat-raised-button color="accent" (click)="giveUp()">
-    <mat-icon>casino</mat-icon>
+    <mat-icon>pan_tool</mat-icon>
     {{'change-word'|tr}}
   </button>
-  <button mat-raised-button color="warn" (click)="endGame()" >
-  <mat-icon>reply</mat-icon>
+  <button mat-raised-button color="warn" (click)="endGame()">
+    <mat-icon>flag</mat-icon>
     {{'end-game'|tr}}
   </button>
 </div>

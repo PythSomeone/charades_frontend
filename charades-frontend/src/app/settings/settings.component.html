@@ -51,7 +51,7 @@
           <mat-label>{{'enter-name'|tr}}</mat-label>
           <input matInput [(ngModel)]="user.username">
         </mat-form-field>
-        <button mat-raised-button (click)="changeUsername(user)" type="submit">{{'Change'|tr}}</button>
+        <button mat-raised-button color="accent" (click)="changeUsername(user)" type="submit">{{'change'|tr}}</button>
       </mat-panel-description>
     </mat-expansion-panel>
 
@@ -67,7 +67,7 @@
           <mat-label>{{'email'|tr}}</mat-label>
           <input matInput [(ngModel)]="user.email">
         </mat-form-field>
-        <button mat-raised-button (click)="changeEmail(user)" type="submit">{{'Change'|tr}}</button>
+        <button mat-raised-button color="accent" (click)="changeEmail(user)" type="submit">{{'change'|tr}}</button>
       </mat-panel-description>
     </mat-expansion-panel>
     <button fxLayoutAlign="center center" mat-stroked-button color="warn" (click)="deleteUser()">

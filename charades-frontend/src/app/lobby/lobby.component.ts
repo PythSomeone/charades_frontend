@@ -29,6 +29,7 @@ export class LobbyComponent implements OnInit, OnDestroy {
   category: any = new Categories('', '', '', []);
   private categoriesSubscribe: Subscription;
   private playersSubscribe: Subscription;
+  selected = '60';
 
   constructor(private userCategoriesService: UserCategoriesService,
               private basicCategoriesService: BasicCategoriesService,
@@ -129,5 +130,8 @@ export class LobbyComponent implements OnInit, OnDestroy {
     } else {
       this.openSnackBar('At least 3 players needed', 'Close');
     }
+    localStorage.setItem('gameLength', this.selected);
   }
+
+
 }
