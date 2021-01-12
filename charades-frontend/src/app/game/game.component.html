@@ -3,7 +3,7 @@
 <div *ngIf="inTurn">
   <div fxLayoutAlign="center center" fxLayout="column">
     <div fxLayoutAlign="center center" fxLayout="column">
-      <div fxFill class="counter">
+      <div fxFill class="counter" fxLayoutAlign="center">
         <button mat-flat-button color="accent">{{minutes}} : {{seconds}}</button>
       </div>
       <h1>{{word.word}}</h1>
@@ -24,12 +24,12 @@
     <h1> {{'ready2'|tr}}{{host.name}}? </h1>
     <button mat-raised-button color="accent" (click)="ready()">{{'yes'|tr}}</button>
   </div>
-<div *ngIf="timeEnd" fxLayoutAlign="center center" fxLayout="column wrap">
-  <h1 *ngIf="!gaveUp">{{'times-up'|tr}}</h1>
-  <h1 *ngIf="gaveUp">{{'gave-up'|tr}}</h1>
-  <h1>{{'next-person-ready'|tr}}</h1>
-  <button mat-raised-button color="accent" (click)="nextTurn()">{{'yes'|tr}}</button>
-</div>
+  <div *ngIf="timeEnd" fxLayoutAlign="center center" fxLayout="column wrap">
+    <h1 *ngIf="!gaveUp">{{'times-up'|tr}}</h1>
+    <h1 *ngIf="gaveUp">{{'gave-up'|tr}}</h1>
+    <h1>{{'next-person-ready'|tr}}</h1>
+    <button mat-raised-button color="accent" (click)="nextTurn()">{{'yes'|tr}}</button>
+  </div>
 
 </div>
 <br>

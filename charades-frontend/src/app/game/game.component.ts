@@ -51,7 +51,7 @@ export class GameComponent implements OnInit, OnDestroy {
     this.random = 0;
     const time = parseInt(localStorage.getItem('gameLength'), 10);
     this.Countdown(time);
-
+    this.host.name = localStorage.getItem('hostname');
     this.colorSchemeService.load();
     this.playerService.index(this.gameID);
     this.playerSubscribe = this.playerService.playersObservable.subscribe(
@@ -65,43 +65,15 @@ export class GameComponent implements OnInit, OnDestroy {
         });
       }
     );
-    if (this.ownCategory === 'true') {
-      this.category.name = localStorage.getItem('categoryName');
-      this.userWordsService.index(this.userID, this.categoryID);
-      this.wordsSubscribe = this.userWordsService.userCategoryWordsObservable.subscribe(
-        words => {
-          this.words = words;
-          this.random = this.getRandomInt(0, this.words.length);
-          this.word = words[this.random];
-          console.log(words);
-        });
-    } else {
-
-      switch (this.categoryID) {
-        case 'animals': {
-          this.category.name = 'animals';
-          this.words = this.basicCategoriesService.getAnimals();
-          this.random = this.getRandomInt(0, this.words.length);
-          this.word = this.words[this.random];
-          break;
-        }
-        case 'Video Games': {
-          this.category.name = 'Video Games';
-          this.words = this.basicCategoriesService.getGames();
-          this.random = this.getRandomInt(0, this.words.length);
-          this.word = this.words[this.random];
-          break;
-        }
-        case 'movies': {
-          this.category.name = 'movies';
-          this.words = this.basicCategoriesService.getMovies();
-          this.random = this.getRandomInt(0, this.words.length);
-          this.word = this.words[this.random];
-          break;
-        }
-      }
-    }
-
+    this.category.name = localStorage.getItem('categoryName');
+    this.userWordsService.index(this.userID, this.categoryID);
+    this.wordsSubscribe = this.userWordsService.userCategoryWordsObservable.subscribe(
+      words => {
+        this.words = words;
+        this.random = this.getRandomInt(0, this.words.length);
+        this.word = words[this.random];
+        console.log(words);
+      });
   }
 
   ngOnDestroy(): void {
@@ -120,11 +92,13 @@ export class GameComponent implements OnInit, OnDestroy {
     this.word = this.words[this.random];
     this.playerService.update(this.gameID, player.id, player);
     clearInterval(this.interval);
+    localStorage.setItem('hostname', player.name);
   }
 
 
   ready(): void {
     this.inTurn = true;
+    location.reload();
   }
 
 
