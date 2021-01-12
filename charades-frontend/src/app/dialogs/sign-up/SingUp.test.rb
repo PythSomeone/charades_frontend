@@ -1,6 +1,6 @@
 require 'selenium-webdriver'
 driver = Selenium::WebDriver.for :chrome
-driver.navigate.to 'http://localhost:4200/h'
+driver.navigate.to 'https://pythsomeone.github.io/charades-with-friends/h/h'
 sleep(1)
 driver.find_element(:xpath,'//*[@id="mat-slide-toggle-1"]/label/div/div').click
 sleep(2)
