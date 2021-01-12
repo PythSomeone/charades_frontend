@@ -17,11 +17,11 @@ jobs:
         with:
           node-version: '12.x'
       - name: Install dependencies
-        run: npm ci
+        run: npm --prefix /home/runner/work/charades_frontend/charades_frontend/charades-frontend ci
       - name: Build
-        run: npm run build:ci
+        run: npm --prefix /home/runner/work/charades_frontend/charades_frontend/charades-frontend run build:ci
       - name: Test
-        run: npm run test:ci
+        run: npm --prefix /home/runner/work/charades_frontend/charades_frontend/charades-frontend run test:ci
       - name: Archive build
         if: success()
         uses: actions/upload-artifact@v1
@@ -49,5 +49,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: deploy_dist/charades_frontend
-      
+          FOLDER: deploy_dist/charades-frontend
