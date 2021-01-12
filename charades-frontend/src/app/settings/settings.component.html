@@ -11,7 +11,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column" fxLayoutGap="10%">
-        <button color="accent" mat-raised-button (click)="translator.setLanguage(x)" *ngFor="let x of ['en','pl']">{{x|tr}}</button>
+        <button id="{{'language' + 1}}" color="accent" mat-raised-button (click)="translator.setLanguage(x)" *ngFor="let x of ['en','pl']">{{x|tr}}</button>
       </mat-panel-description>
     </mat-expansion-panel>
 
@@ -25,13 +25,13 @@
       <mat-panel-description fxLayout="column" fxLayoutGap="15%">
         <div fxLayoutAlign="center center">
 
-          <button fxFill color="accent" mat-raised-button (click)="setLight()" type="submit">
+          <button id="{{'setLight' + 1}}" fxFill color="accent" mat-raised-button (click)="setLight()" type="submit">
             <mat-icon matPrefix>wb_sunny</mat-icon>
             {{'light'|tr}}</button>
         </div>
         <div fxLayoutAlign="center center">
 
-          <button fxFill color="primary" mat-raised-button (click)="setDark()" type="submit">
+          <button id="{{'setDark' + 1}}" fxFill color="primary" mat-raised-button (click)="setDark()" type="submit">
             <mat-icon>brightness_3</mat-icon>
             {{'dark'|tr}}
           </button>
@@ -65,17 +65,17 @@
       <mat-panel-description fxLayout="column">
         <mat-form-field>
           <mat-label>{{'email'|tr}}</mat-label>
-          <input matInput [(ngModel)]="user.email">
+          <input id="{{'email' + 1}}" matInput [(ngModel)]="user.email">
         </mat-form-field>
-        <button mat-raised-button (click)="changeEmail(user)" type="submit">{{'Change'|tr}}</button>
+        <button id="{{'changeEmail' + 1}}" mat-raised-button (click)="changeEmail(user)" type="submit">{{'Change'|tr}}</button>
       </mat-panel-description>
     </mat-expansion-panel>
-    <button fxLayoutAlign="center center" mat-stroked-button color="warn" (click)="deleteUser()">
+    <button id="{{'deleteUser' + 1}}" fxLayoutAlign="center center" mat-stroked-button color="warn" (click)="deleteUser()">
     <mat-icon>delete</mat-icon>
       {{'delete'|tr}}
     </button>
     <br>
-    <button fxLayoutAlign="center center" color="primary" mat-raised-button (click)="toProfile()">
+    <button id="{{'toProfile' + 1}}"fxLayoutAlign="center center" color="primary" mat-raised-button (click)="toProfile()">
     <mat-icon>reply</mat-icon>
       {{'back'|tr}}
     </button>

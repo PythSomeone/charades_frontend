@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
   <p>Are you sure you want to delete <b>{{data.word.word}}</b>?</p>
   <div fxLayout="riw" fxLayoutGap="5%">
-    <button mat-stroked-button color="warn" (click)="deleteWord(data.word)" type="submit">{{'+delete'|tr}}</button>
-    <button mat-raised-button  (click)="close()">{{'-delete'|tr}}</button>
+    <button id="{{'deleteWord' + 1}}" mat-stroked-button color="warn" (click)="deleteWord(data.word)" type="submit">{{'+delete'|tr}}</button>
+    <button id="{{'close' + 1}}" mat-raised-button  (click)="close()">{{'-delete'|tr}}</button>
   </div>
 </div>

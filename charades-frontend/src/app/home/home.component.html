@@ -1,13 +1,13 @@
 <html class="mat-app-background">
 <div fxLayoutAlign="end" fxLayoutGap="10px">
   <div fxLayoutGap="16px">
-    <button mat-icon-button [matMenuTriggerFor]="menu">
+    <button id="{{'menu' + 1}}" mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon class="accent" color="accent">translate</mat-icon>
     </button>
 
     <mat-menu #menu="matMenu" >
       <div fxLayout="column">
-        <button mat-flat-button (click)="translator.setLanguage(x)" *ngFor="let x of ['en','pl']">{{x|tr}}</button>
+        <button id="{{'language' + 1}}" mat-flat-button (click)="translator.setLanguage(x)" *ngFor="let x of ['en','pl']">{{x|tr}}</button>
       </div>
     </mat-menu>
   </div>
@@ -28,8 +28,8 @@
       <app-facebook></app-facebook>
     </div>
     <div class="main-menu" fxLayoutGap="2%" fxLayout="column">
-      <button mat-raised-button color="accent" (click)="openSignIn()">{{'sign-in'|tr}}</button>
-      <button mat-stroked-button color="accent" (click)="openSignUp()">{{'sign-up'|tr}}</button>
+      <button id="{{'openSignIn' + 1}}" mat-raised-button color="accent" (click)="openSignIn()">{{'sign-in'|tr}}</button>
+      <button id="{{'openSignUp' + 1}}" mat-stroked-button color="accent" (click)="openSignUp()">{{'sign-up'|tr}}</button>
     </div>
   </mat-card-content>
 </div>

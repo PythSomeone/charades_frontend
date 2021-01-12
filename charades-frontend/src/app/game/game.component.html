@@ -8,7 +8,7 @@
     </div>
       <div fxLayoutAlign="center" fxLayout="column" fxLayoutGap="16px" *ngFor="let player of players">
         <br>
-        <button color="primary" fxLayoutAlign="center" *ngIf="!(host.name === player.name)" mat-raised-button (click)="addPoints(player)">
+        <button id="{{'addPoints' + 1}}" color="primary" fxLayoutAlign="center" *ngIf="!(host.name === player.name)" mat-raised-button (click)="addPoints(player)">
           <mat-label>{{player.name}}</mat-label>
         </button>
       </div>
@@ -17,21 +17,21 @@
 <div *ngIf="!inTurn" fxLayoutAlign="center center" fxLayout="column wrap">
   <h1> {{'ready1'|tr}}</h1>
   <h1> {{'ready2'|tr}}{{host.name}}? </h1>
-  <button mat-raised-button color="accent" (click)="ready()">{{'yes'|tr}}</button>
+  <button id="{{'ready' + 1}}" mat-raised-button color="accent" (click)="ready()">{{'yes'|tr}}</button>
 </div>
 <br>
 <div fxLayoutAlign="center" fxLayout="row" fxLayoutGap="16px grid" fxLayout="row wrap">
   <div *ngFor="let player of players" fxLayoutAlign="center">
-    <button color="accent" mat-stroked-button> {{player.name}} {{player.points}} </button>
+    <button id="{{'name' + 1}}" color="accent" mat-stroked-button> {{player.name}} {{player.points}} </button>
   </div>
 </div>
 <br>
 <div fxLayout="column" fxLayoutGap="15px">
-  <button *ngIf="inTurn" mat-raised-button color="accent" (click)="giveUp()">
+  <button id="{{'giveUp' + 1}}" *ngIf="inTurn" mat-raised-button color="accent" (click)="giveUp()">
     <mat-icon>casino</mat-icon>
     {{'change-word'|tr}}
   </button>
-  <button mat-raised-button color="warn" (click)="endGame()" >
+  <button id="{{'endGame' + 1}}" mat-raised-button color="warn" (click)="endGame()" >
   <mat-icon>reply</mat-icon>
     {{'end-game'|tr}}
   </button>
