@@ -16,10 +16,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: Change path
-        run: cd /home/runner/work/charades_frontend/charades_frontend/charades-frontend/
       - name: Install dependencies
-        run: npm ci
+        run: npm --prefix /home/runner/work/charades_frontend/charades_frontend/charades-frontend ci
       - name: Build
         run: npm run build:ci
       - name: Test
