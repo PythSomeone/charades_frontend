@@ -20,8 +20,8 @@ jobs:
         description: 'Setup chromedriver'
         author: 'nanasess'
         runs:
-        using: 'node12'
-        main: 'lib/setup-chromedriver.js'
+            using: 'node12'
+            main: 'lib/setup-chromedriver.js'
       - name: Install dependencies
         run: npm --prefix /home/runner/work/charades_frontend/charades_frontend/charades-frontend ci
 
