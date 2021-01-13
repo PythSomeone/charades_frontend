@@ -18,6 +18,8 @@ jobs:
           node-version: '12.x'
       - name: Install dependencies
         run: npm --prefix /home/runner/work/charades_frontend/charades_frontend/charades-frontend ci
+      - name: Install chrome
+        run: apt-get chrome
       - name: Build
         run: npm --prefix /home/runner/work/charades_frontend/charades_frontend/charades-frontend run build:ci
       - name: Test
