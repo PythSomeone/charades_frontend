@@ -21,7 +21,7 @@ jobs:
       - name: Build
         run: npm run build:ci
       - name: Test
-        run: npm run test:ci --sourceMap=false --browsers=ChromeHeadless --watch=false
+        run: npm run ng test --sourceMap=false --browsers=ChromeHeadless --watch=false
       - name: Archive build
         if: success()
         uses: actions/upload-artifact@v1
