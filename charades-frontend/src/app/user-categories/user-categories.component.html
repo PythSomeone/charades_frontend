@@ -13,9 +13,9 @@
       <mat-panel-description fxLayout="column">
         <mat-form-field>
           <mat-label>{{'enter-name'|tr}}</mat-label>
-          <input matInput [(ngModel)]="this.category.name">
+          <input id="{{'category'+1}}" matInput [(ngModel)]="this.category.name">
         </mat-form-field>
-        <button color="primary" mat-raised-button (click)="createCategory()" type="submit">
+        <button id="{{'createCategory'+1}}"color="primary" mat-raised-button (click)="createCategory()" type="submit">
           <mat-icon>add_circle</mat-icon>
           {{'create'|tr}}
         </button>
@@ -23,10 +23,10 @@
     </mat-expansion-panel>
   </div>
   <div fxLayoutGap="16px" fxLayoutAlign="center">
-    <button color="accent" mat-raised-button (click)="toGame()">
+    <button id="{{'toGame'+1}}"color="accent" mat-raised-button (click)="toGame()">
       <mat-icon>casino</mat-icon>
       {{'to-game'|tr}}</button>
-    <button color="accent" mat-raised-button (click)="toProfile()">
+    <button id="{{'toProfile'+1}}"color="accent" mat-raised-button (click)="toProfile()">
     <mat-icon>reply</mat-icon>
       {{'back'|tr}}
     </button>
@@ -39,10 +39,10 @@
       <mat-panel-description fxLayout="column">
         <div fxLayoutGap="8px">
           <h3>{{'cat-man'|tr}}</h3>
-          <button mat-flat-button (click)="openEditCategory(category)">
+          <button id="{{'openEditCategory'+1}}"mat-flat-button (click)="openEditCategory(category)">
             <mat-icon color="accent">edit</mat-icon>
           </button>
-          <button mat-flat-button (click)="openDeleteCategory(category)">
+          <button id="{{'openDeleteCategory'+1}}"mat-flat-button (click)="openDeleteCategory(category)">
             <mat-icon color="accent">delete</mat-icon>
           </button>
         </div>
@@ -51,10 +51,10 @@
           <div fxLayout="row" fxLayoutAlign="space-between" fxFill fxLayoutGap="16px">
             <mat-label fxflex="20" fxLayoutAlign="start center">{{word.word}}</mat-label>
             <div fxFlex="20" fxLayoutAlign="end">
-              <button mat-flat-button (click)="openEditWord(word)">
+              <button id="{{'openEditWord'+1}}" mat-flat-button (click)="openEditWord(word)">
                 <mat-icon color="accent">edit</mat-icon>
               </button>
-              <button mat-flat-button (click)="openDeleteWord(word)">
+              <button id="{{'openDeleteWord'+1}}" mat-flat-button (click)="openDeleteWord(word)">
                 <mat-icon color="accent">delete</mat-icon>
               </button>
             </div>
@@ -65,9 +65,9 @@
       <div fxLayout="row" fxLayoutAlign="space-between" fxFill>
         <mat-form-field>
           <mat-label>{{'enter-new'|tr}}</mat-label>
-          <input matInput [(ngModel)]="newWord.word">
+          <input id="{{'newWord'+1}}"matInput [(ngModel)]="newWord.word">
         </mat-form-field>
-          <button fxFlex="20" fxLayoutAlign="end" fxLayoutGap="16px" (click)="createWord(category.user_id, category.id, newWord)" mat-flat-button>
+          <button id="{{'createWord'+1}}"fxFlex="20" fxLayoutAlign="end" fxLayoutGap="16px" (click)="createWord(category.user_id, category.id, newWord)" mat-flat-button>
             <mat-icon color="accent">add</mat-icon>
           </button>
       </div>

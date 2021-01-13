@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
   <p>{{'delete-category'|tr}}<b>{{data.category.name}}</b> ?</p>
   <div fxLayout="riw" fxLayoutGap="5%">
-    <button mat-stroked-button color="warn" (click)="deleteCategory(data.category.id)" type="submit">{{'+delete'|tr}}</button>
-    <button mat-raised-button  (click)="close()">{{'-delete'|tr}}</button>
+    <button id="{{'deleteCategory'+1}}" mat-stroked-button color="warn" (click)="deleteCategory(data.category.id)" type="submit">{{'+delete'|tr}}</button>
+    <button id="{{'close'+1}}" mat-raised-button  (click)="close()">{{'-delete'|tr}}</button>
   </div>
 </div>

@@ -3,20 +3,20 @@
 
   <mat-form-field appearance="fill">
     <mat-label>{{'username'|tr}}</mat-label>
-    <input required matInput [(ngModel)]="signUpUserModel.username">
-    <button matSuffix mat-icon-button disabled></button>
+    <input id="{{'signUp'+1}}"required matInput [(ngModel)]="signUpUserModel.username">
+    <button id="{{'button'+1}}" matSuffix mat-icon-button disabled></button>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>{{'email'|tr}}</mat-label>
-    <input required matInput [(ngModel)]="signUpUserModel.email">
-    <button matSuffix mat-icon-button disabled></button>
+    <input id="{{'signUp'+1}}" required matInput [(ngModel)]="signUpUserModel.email">
+    <button id="{{'button'+2}}" matSuffix mat-icon-button disabled></button>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>{{'password'|tr}}</mat-label>
-    <input required matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="signUpUserModel.password">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <input id="{{'password'+1}}" required matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="signUpUserModel.password">
+    <button id="{{'hide'+1}}" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
   </mat-form-field>
@@ -24,16 +24,16 @@
 
   <mat-form-field appearance="fill">
     <mat-label>{{'re-password'|tr}}</mat-label>
-    <input required matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="signUpUserModel.password_confirmation">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <input id="{{'password'+2}}" required matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="signUpUserModel.password_confirmation">
+    <button id="{{'hide'+1}}" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
   </mat-form-field>
 
 
   <div fxLayoutGap="20%" fxLayout="column">
-    <button fxFill mat-raised-button (click)="signUp()" type="submit">{{'sign-up'|tr}}</button>
-    <button mat-raised-button (click)="close()">{{'back'|tr}}</button>
+    <button id="{{'signUp'+1}}" fxFill mat-raised-button (click)="signUp()" type="submit">{{'sign-up'|tr}}</button>
+    <button id="{{'close'+1}}" mat-raised-button (click)="close()">{{'back'|tr}}</button>
   </div>
 
 </div>

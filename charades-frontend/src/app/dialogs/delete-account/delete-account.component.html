@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
   <p>{{'delete-account'|tr}}</p>
   <div fxLayout="riw" fxLayoutGap="5%">
-    <button mat-stroked-button color="warn" (click)="deleteAccount()" type="submit">{{'+delete'|tr}}</button>
-    <button mat-raised-button  (click)="close()">{{'-delete'|tr}}</button>
+    <button id="{{'deleteAccount'+1}}" mat-stroked-button color="warn" (click)="deleteAccount()" type="submit">{{'+delete'|tr}}</button>
+    <button id="{{'close'+1}}" mat-raised-button  (click)="close()">{{'-delete'|tr}}</button>
   </div>
 </div>

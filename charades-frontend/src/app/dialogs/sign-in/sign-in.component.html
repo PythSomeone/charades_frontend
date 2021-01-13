@@ -3,18 +3,18 @@
   <h2>{{'sign-in'|tr}}</h2>
   <mat-form-field appearance="fill">
     <mat-label>{{'email'|tr}}</mat-label>
-    <input required matInput [(ngModel)]="signInUserModel.email">
-    <button matSuffix mat-icon-button disabled></button>
+    <input id="{{'signInUserModel'+1}}" required matInput [(ngModel)]="signInUserModel.email">
+    <button id="{{'button'+1}}" matSuffix mat-icon-button disabled></button>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>{{'password'|tr}}</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="signInUserModel.password">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <input id="{{'password'+1}}" matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="signInUserModel.password">
+    <button id="{{'hide'+1}}" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
   </mat-form-field>
   <div fxLayoutGap="20%" fxLayout="column" >
-    <button fxFill mat-raised-button (click)="signIn()" type="submit">{{'sign-in'|tr}}</button>
-    <button mat-raised-button (click)="close()">{{'back'|tr}}</button>
+    <button id="{{'signIn'+1}}" fxFill mat-raised-button (click)="signIn()" type="submit">{{'sign-in'|tr}}</button>
+    <button id="{{'close'+1}}" mat-raised-button (click)="close()">{{'back'|tr}}</button>
   </div>
 </div>

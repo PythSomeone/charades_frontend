@@ -1,19 +1,19 @@
 <html class="mat-app-background">
 <body class="mat-app-background" fxLayout="column" fxLayoutGap="16px">
 <div fxFlexAlign="center">
-  <button class="back" color="accent" fxLayoutAlign="center center" mat-raised-button (click)="toProfile()">
+  <button id="{{'toProfile'+1}}"class="back" color="accent" fxLayoutAlign="center center" mat-raised-button (click)="toProfile()">
     <mat-icon>reply</mat-icon>
     {{'back'|tr}}
   </button>
 </div>
 <mat-card fxLayout="column" fxLayoutGap="16px" *ngFor="let stat of statistics; let i = index">
 
-  <button mat-raised-button color="primary">
+  <button id="{{'button'+1}}" mat-raised-button color="primary">
     <mat-label>{{stat.category.name}}</mat-label>
   </button>
-  <button mat-flat-button disabled>{{dates[i]}} {{hours[i]}}</button>
+  <button id="{{'button'+2}}" mat-flat-button disabled>{{dates[i]}} {{hours[i]}}</button>
   <mat-card-content *ngFor="let player of stat.players">
-    <button mat-flat-button>{{player.name}} - {{player.points}} {{'points'|tr}} </button>
+    <button id="{{'button'+3}}" mat-flat-button>{{player.name}} - {{player.points}} {{'points'|tr}} </button>
     <div fxFlexAlign="end">
       <mat-progress-bar mode="determinate" value="{{player.points/maxes[i] * 100}}" color="accent"></mat-progress-bar>
     </div>

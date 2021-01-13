@@ -3,23 +3,23 @@
 <div fxFill fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="16px">
     <h1>{{'welcome'|tr}}, {{user}}</h1>
     <p>{{'sup'|tr}}</p>
-    <button color="primary" fxLayoutAlign="center center" mat-raised-button (click)="toCreateGame()" >
+    <button id="{{'toCreateGame'+1}}"color="primary" fxLayoutAlign="center center" mat-raised-button (click)="toCreateGame()" >
     <mat-icon>add_circle</mat-icon>
       {{'create-game'|tr}}
     </button>
-    <button color="accent" fxLayoutAlign="center center" mat-raised-button (click)="toCategoriesManagement()" >
+    <button id="{{'toCategoriesManagement'+1}}" color="accent" fxLayoutAlign="center center" mat-raised-button (click)="toCategoriesManagement()" >
     <mat-icon>category</mat-icon>
       {{'manage'|tr}}
     </button>
-    <button color="accent" fxLayoutAlign="center center" mat-raised-button (click)="toHistoryAndStatistics()">
+    <button id="{{'toHistoryAndStatistics'+1}}" color="accent" fxLayoutAlign="center center" mat-raised-button (click)="toHistoryAndStatistics()">
     <mat-icon>book</mat-icon>
       {{'history'|tr}}
     </button>
-    <button color="accent" fxLayoutAlign="center center" mat-raised-button (click)="toSettings()">
+    <button id="{{'toSettings'+1}}" color="accent" fxLayoutAlign="center center" mat-raised-button (click)="toSettings()">
     <mat-icon>build</mat-icon>
       {{'settings'|tr}}
     </button>
-    <button color="warn" fxLayoutAlign="center center" mat-raised-button (click)="logOut()">
+    <button id="{{'logout'+1}}"color="warn" fxLayoutAlign="center center" mat-raised-button (click)="logOut()">
       <mat-icon>reply</mat-icon>
       {{'logout'|tr}}
     </button>

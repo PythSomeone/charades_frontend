@@ -5,11 +5,11 @@
   <div fxLayoutAlign="center center" fxLayout="column" color="primary">
     <h1>{{'category-choice'|tr}}</h1>
     <div fxLayoutGap="5px">
-      <button color="accent" mat-raised-button (click)="toUserCategories()">
+      <button  id="{{'toUserCategories'+1}}" color="accent" mat-raised-button (click)="toUserCategories()">
         <mat-icon>category</mat-icon>
         {{'edit_your_categories'|tr}}
       </button>
-      <button color="accent"  mat-raised-button (click)="back()">
+      <button id="{{'back'+1}}" color="accent"  mat-raised-button (click)="back()">
         <mat-icon>reply</mat-icon>
         {{'back'|tr}}</button>
     </div>
@@ -17,7 +17,7 @@
   <div fxFill fxLayoutAlign="start center" fxLayout="column" fxLayoutGap="5px">
     <mat-label *ngIf="showCategories"></mat-label>
     <div *ngFor="let category of showCategories">
-      <button mat-raised-button color="primary" (click)="toLobby(category)">{{category.name}}</button>
+      <button id="{{'toLobby'+1}}" mat-raised-button color="primary" (click)="toLobby(category)">{{category.name}}</button>
     </div>
 
     </div>
