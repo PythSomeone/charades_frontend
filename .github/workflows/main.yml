@@ -17,10 +17,8 @@ jobs:
       - name: Install dependencies
         run: npm --prefix /home/runner/work/charades_frontend/charades_frontend/charades-frontend ci
       - name: Build
-        run: npm run build:ci
         run: npm --prefix /home/runner/work/charades_frontend/charades_frontend/charades-frontend run build:ci
       - name: Test
-        run: npm run test:ci
         run: npm --prefix /home/runner/work/charades_frontend/charades_frontend/charades-frontend run test:ci
       - name: Archive build
         if: success()
