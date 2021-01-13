@@ -1,5 +1,8 @@
-trigger:
-- workflow-for-deploy
+on:
+
+  push:
+    branches:
+      - workflow-for-deploy
 
 pool:
   vmImage: 'ubuntu-latest'
