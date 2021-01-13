@@ -33,7 +33,7 @@ export class BasicCategoriesService {
   }
 
   load(user_id: string): void {
-    this.http.get('https://charades-with-friends-api.herokuapp.com/basic_words').subscribe(
+    this.http.get('http://localhost:3000/basic_words').subscribe(
       response => {
         // @ts-ignore
         this.animals = response.data.slice(0, 20);

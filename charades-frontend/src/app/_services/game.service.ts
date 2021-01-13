@@ -3,7 +3,6 @@ import {Injectable} from '@angular/core';
 import {Game} from '../_models/game';
 import {Router} from '@angular/router';
 import {Subject} from 'rxjs';
-import {Player} from '../_models/player';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +22,7 @@ export class GameService {
     this.categoryID = localStorage.getItem('categoryID');
     this.gameID = localStorage.getItem('gameID');
     this.userID = localStorage.getItem('userID');
-    this.apiURL = 'https://charades-with-friends-api.herokuapp.com/user/' + this.userID + '/games';
+    this.apiURL = 'http://localhost:3000/user/' + this.userID + '/games';
     this.game = new Game(this.userID, this.categoryID);
   }
 

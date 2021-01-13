@@ -9,7 +9,7 @@ import {Subject, Subscription} from 'rxjs';
 export class PlayerService {
 
   userID = localStorage.getItem('userID');
-  apiURL = 'https://charades-with-friends-api.herokuapp.com/user/' + this.userID;
+  apiURL = 'http://localhost:3000/user/' + this.userID;
 
   playersSource = new Subject<Player[]>();
   playersObservable = this.playersSource.asObservable();
