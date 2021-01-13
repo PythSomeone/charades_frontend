@@ -16,19 +16,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: 'setup-chromedriver'
-        description: 'Setup chromedriver'
-        author: 'nanasess'
-        runs:
-            using: 'node12'
-            main: 'lib/setup-chromedriver.js'
       - name: Install dependencies
-        run: npm ci
-
+        run: npm --prefix /home/runner/work/charades_frontend/charades_frontend/charades-frontend ci
       - name: Build
-        run: npm build:ci
+        run: npm --prefix /home/runner/work/charades_frontend/charades_frontend/charades-frontend run build:ci
       - name: Test
-        run: ng test --sourceMap=false --browsers=ChromeHeadless --watch=false
+        run: npm --prefix /home/runner/work/charades_frontend/charades_frontend/charades-frontend run test:ci
       - name: Archive build
         if: success()
         uses: actions/upload-artifact@v1
