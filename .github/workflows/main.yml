@@ -10,8 +10,6 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
       - name: Use Node 12.x
         uses: actions/setup-node@v1
         with:
