@@ -9,7 +9,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>{{'email'|tr}}</mat-label>
-    <input id="{{'signUp'+1}}" required matInput [(ngModel)]="signUpUserModel.email">
+    <input id="{{'signUp'+2}}" required matInput [(ngModel)]="signUpUserModel.email">
     <button id="{{'button'+2}}" matSuffix mat-icon-button disabled></button>
   </mat-form-field>
 
@@ -25,14 +25,14 @@
   <mat-form-field appearance="fill">
     <mat-label>{{'re-password'|tr}}</mat-label>
     <input id="{{'password'+2}}" required matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="signUpUserModel.password_confirmation">
-    <button id="{{'hide'+1}}" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <button id="{{'hide'+2}}" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
   </mat-form-field>
 
 
   <div fxLayoutGap="20%" fxLayout="column">
-    <button id="{{'signUp'+1}}" fxFill mat-raised-button (click)="signUp()" type="submit">{{'sign-up'|tr}}</button>
+    <button id="{{'signUp'+3}}" fxFill mat-raised-button (click)="signUp()" type="submit">{{'sign-up'|tr}}</button>
     <button id="{{'close'+1}}" mat-raised-button (click)="close()">{{'back'|tr}}</button>
   </div>
 

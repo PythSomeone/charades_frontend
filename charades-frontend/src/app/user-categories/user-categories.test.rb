@@ -1,0 +1,110 @@
+require 'selenium-webdriver'
+
+driver = Selenium::WebDriver.for :chrome
+
+driver.navigate.to 'http://localhost:4200/h'
+
+driver.find_element(:id,'openSignIn1').click
+driver.find_element(:id,'signInUserModel1').send_keys('testowaniemch@gmail.com')
+driver.find_element(:id,'password1').send_keys('test123')
+driver.find_element(:id,'hide1').click
+driver.find_element(:id,'hide1').click
+driver.find_element(:id,'signIn1').click
+sleep(3)
+
+driver.find_element(:id,'toCategoriesManagement1').click
+sleep(2)
+driver.find_element(:id,'CreateCategories1').click
+sleep(2)
+driver.find_element(:id,'category1').send_keys('Star Wars')
+sleep(2)
+driver.find_element(:id,'createCategory1').click
+sleep(3)
+
+driver.find_element(:id,'Category'+'Animals').click
+sleep(2)
+driver.find_element(:id,'openEditCategory'+'Animals').click
+sleep(2)
+driver.find_element(:id,'category4').clear
+driver.find_element(:id,'category4').send_keys('AnimalsTest')
+sleep(2)
+driver.find_element(:id,'updateCategory1').click
+driver.find_element(:id,'close1').click
+sleep(3)
+
+driver.find_element(:id,'newWord'+'AnimalsTest').send_keys('Kot')
+sleep(2)
+driver.find_element(:id,'createWord'+'AnimalsTest').click
+sleep(2)
+driver.find_element(:id,'newWord'+'AnimalsTest').clear
+driver.find_element(:id,'newWord'+'AnimalsTest').send_keys('Pies')
+sleep(2)
+driver.find_element(:id,'createWord'+'AnimalsTest').click
+sleep(2)
+
+driver.find_element(:id,'Category'+'Movies').click
+sleep(2)
+driver.find_element(:id,'openEditCategory'+'Movies').click
+sleep(2)
+driver.find_element(:id,'category4').clear
+driver.find_element(:id,'category4').send_keys('MoviesTest')
+sleep(2)
+driver.find_element(:id,'updateCategory1').click
+driver.find_element(:id,'close1').click
+sleep(3)
+
+driver.find_element(:id,'newWord'+'MoviesTest').clear
+driver.find_element(:id,'newWord'+'MoviesTest').send_keys('Horror')
+sleep(2)
+driver.find_element(:id,'createWord'+'MoviesTest').click
+sleep(2)
+driver.find_element(:id,'newWord'+'MoviesTest').clear
+driver.find_element(:id,'newWord'+'MoviesTest').send_keys('Comedy')
+sleep(2)
+driver.find_element(:id,'createWord'+'MoviesTest').click
+sleep(2)
+
+driver.find_element(:id,'Category'+'Video Games').click
+sleep(2)
+driver.find_element(:id,'openEditCategory'+'Video Games').click
+sleep(2)
+driver.find_element(:id,'category4').clear
+driver.find_element(:id,'category4').send_keys('Video Games Test')
+sleep(2)
+driver.find_element(:id,'updateCategory1').click
+driver.find_element(:id,'close1').click
+sleep(3)
+
+driver.find_element(:id,'nweWord'+'Video Games Test').clear
+driver.find_element(:id,'newWord'+'Video Games Test').send_keys('Witcher')
+sleep(2)
+driver.find_element(:id,'createWord'+'Video Games Test').click
+sleep(2)
+driver.find_element(:id,'newWord'+'Video Games Test').clear
+driver.find_element(:id,'newWord'+'Video Games Test').send_keys('Cyberpunk')
+sleep(2)
+driver.find_element(:id,'createWord'+'Video Games Test').click
+sleep(2)
+
+driver.find_element(:id,'Category'+'Star Wars').click
+sleep(2)
+driver.find_element(:id,'openEditCategory'+'Star Wars').click
+sleep(2)
+driver.find_element(:id,'category4').clear
+driver.find_element(:id,'category4').send_keys('Star Wars Test')
+sleep(2)
+driver.find_element(:id,'updateCategory1').click
+driver.find_element(:id,'close1').click
+sleep(3)
+
+driver.find_element(:id,'newWord'+'Star Wars Test').clear
+driver.find_element(:id,'newWord'+'Star Wars Test').send_keys('Obi wan')
+sleep(2)
+driver.find_element(:id,'createWord'+'Star Wars Test').click
+sleep(2)
+driver.find_element(:id,'newWord'+'Star Wars Test').clear
+driver.find_element(:id,'newWord'+'Star Wars Test').send_keys('Anakin')
+sleep(2)
+driver.find_element(:id,'createWord'+'Star Wars Test').click
+sleep(5)
+

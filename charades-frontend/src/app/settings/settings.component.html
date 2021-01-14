@@ -1,17 +1,17 @@
 <html class="mat-app-background" fxLayoutAlign="center center">
 <body class="mat-app-background">
 <br>
-<mat-accordion>
+<mat-accordion >
   <div fxFill fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="16px">
-    <mat-expansion-panel fxFill>
-      <mat-expansion-panel-header hideToggle>
+    <mat-expansion-panel id="{{'language'+1}}" fxFill>
+      <mat-expansion-panel-header  hideToggle >
         <mat-panel-title fxLayoutAlign="center center" fxLayoutGap="16px">
           <mat-icon color="primary">translate</mat-icon>
           <mat-label> {{'choose-lang'|tr}}</mat-label>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-panel-description fxLayout="column" fxLayoutGap="10%">
-        <button id="{{'translator'+1}}" color="accent" mat-raised-button (click)="translator.setLanguage(x)"
+        <button id="{{'translator'+x}}" color="accent" mat-raised-button (click)="translator.setLanguage(x)"
                 *ngFor="let x of ['en','pl']">{{x|tr}}</button>
       </mat-panel-description>
     </mat-expansion-panel>
@@ -19,7 +19,7 @@
     <mat-expansion-panel fxFill>
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title fxLayoutAlign="center center" fxLayoutGap="16px">
-          <mat-icon color="accent">format_paint</mat-icon>
+          <mat-icon id="{{'theme'+1}}"color="accent">format_paint</mat-icon>
           <mat-label>{{'theme'|tr}}</mat-label>
         </mat-panel-title>
       </mat-expansion-panel-header>
@@ -42,7 +42,7 @@
     <mat-expansion-panel *ngIf="socialLogin">
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title fxLayoutAlign="center center" fxLayoutGap="16px">
-          <mat-icon color="primary">text_format</mat-icon>
+          <mat-icon id="{{'change-nick'+1}}"color="primary">text_format</mat-icon>
           <mat-label>{{'change-nick'|tr}}</mat-label>
         </mat-panel-title>
       </mat-expansion-panel-header>
@@ -58,7 +58,7 @@
     <mat-expansion-panel *ngIf="socialLogin">
       <mat-expansion-panel-header hideToggle>
         <mat-panel-title fxLayoutAlign="center center" fxLayoutGap="16px">
-          <mat-icon color="accent">alternate_email</mat-icon>
+          <mat-icon id="{{'change-mail'+1}}"color="accent">alternate_email</mat-icon>
           <mat-label>{{'change-mail'|tr}}</mat-label>
         </mat-panel-title>
       </mat-expansion-panel-header>
