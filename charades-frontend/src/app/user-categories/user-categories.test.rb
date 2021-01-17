@@ -36,6 +36,8 @@ driver.find_element(:id,'newWord'+'AnimalsTest').send_keys('Kot')
 sleep(2)
 driver.find_element(:id,'createWord'+'AnimalsTest').click
 sleep(2)
+driver.find_element(:id,'Category'+'Animals').click
+sleep(2)
 driver.find_element(:id,'newWord'+'AnimalsTest').clear
 driver.find_element(:id,'newWord'+'AnimalsTest').send_keys('Pies')
 sleep(2)
@@ -58,6 +60,7 @@ driver.find_element(:id,'newWord'+'MoviesTest').send_keys('Horror')
 sleep(2)
 driver.find_element(:id,'createWord'+'MoviesTest').click
 sleep(2)
+driver.find_element(:id,'Category'+'MoviesTest').click
 driver.find_element(:id,'newWord'+'MoviesTest').clear
 driver.find_element(:id,'newWord'+'MoviesTest').send_keys('Comedy')
 sleep(2)
@@ -80,48 +83,31 @@ driver.find_element(:id,'newWord'+'StarWarsTest').send_keys('Obi wan')
 sleep(2)
 driver.find_element(:id,'createWord'+'StarWarsTest').click
 sleep(2)
+driver.find_element(:id,'Category'+'StarWarsTest').click
 driver.find_element(:id,'newWord'+'StarWarsTest').clear
 driver.find_element(:id,'newWord'+'StarWarsTest').send_keys('Anakin')
 sleep(2)
 driver.find_element(:id,'createWord'+'StarWarsTest').click
 sleep(5)
+driver.find_element(:id,'Category'+'StarWArsTest').click
 driver.find_element(:id,'newWord'+'StarWarsTest').clear
 driver.find_element(:id,'newWord'+'StarWarsTest').send_keys('Joda')
 sleep(2)
 driver.find_element(:id,'createWord'+'StarWarsTest').click
 sleep(5)
+driver.find_element(:id,'Category'+'StarWarsTest').click
 driver.find_element(:id,'newWord'+'StarWarsTest').clear
 driver.find_element(:id,'newWord'+'StarWarsTest').send_keys('Padme')
 sleep(2)
 driver.find_element(:id,'createWord'+'StarWarsTest').click
 sleep(5)
+driver.find_element(:id,'Category'+'StarWArsTest').click
 driver.find_element(:id,'newWord'+'StarWarsTest').clear
 driver.find_element(:id,'newWord'+'StarWarsTest').send_keys('Palpatine')
 sleep(2)
 driver.find_element(:id,'createWord'+'StarWarsTest').click
 sleep(5)
 
-driver.find_element(:id,'Category'+'Video Games').click
-sleep(2)
-driver.find_element(:id,'openEditCategory'+'Video Games').click
-sleep(2)
-driver.find_element(:id,'category4').clear
-driver.find_element(:id,'category4').send_keys('Video Games Test')
-sleep(2)
-driver.find_element(:id,'updateCategory1').click
-driver.find_element(:id,'close1').click
-sleep(3)
-
-driver.find_element(:id,'nweWord'+'Video Games Test').clear
-driver.find_element(:id,'newWord'+'Video Games Test').send_keys('Witcher')
-sleep(2)
-driver.find_element(:id,'createWord'+'Video Games Test').click
-sleep(2)
-driver.find_element(:id,'newWord'+'Video Games Test').clear
-driver.find_element(:id,'newWord'+'Video Games Test').send_keys('Cyberpunk')
-sleep(2)
-driver.find_element(:id,'createWord'+'Video Games Test').click
-sleep(2)
 
 
 

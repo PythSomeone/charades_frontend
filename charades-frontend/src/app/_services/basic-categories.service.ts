@@ -68,12 +68,12 @@ export class BasicCategoriesService {
               });
             }
           });
-        this.category.name = 'Video Games';
+        this.category.name = 'VideoGames';
         this.userCategoriesService.quietCreate(user_id, this.category);
         this.userCategoriesService.UserCategoriesObservable.subscribe(
           category => {
             // @ts-ignore
-            if (category.name === 'Video Games') {
+            if (category.name === 'VideoGames') {
               this.games.forEach(word => {
                 // @ts-ignore
                 this.userWordsService.quietCreate(user_id, category.id, word);

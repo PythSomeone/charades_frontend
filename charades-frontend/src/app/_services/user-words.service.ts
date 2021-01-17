@@ -38,7 +38,7 @@ export class UserWordsService {
   }
 
   create(user_id: string, category_id: string, word: any): void {
-    this.http.post('http://localhost:3000user/' + user_id + '/categories/' + category_id + '/words', word).subscribe(
+    this.http.post('http://localhost:3000/user/' + user_id + '/categories/' + category_id + '/words', word).subscribe(
       response => {
         console.log(response);
         location.reload();
