@@ -16,7 +16,7 @@ driver.find_element(:id,'toCategoriesManagement1').click
 sleep(2)
 driver.find_element(:id,'CreateCategories1').click
 sleep(2)
-driver.find_element(:id,'category1').send_keys('Star Wars')
+driver.find_element(:id,'category1').send_keys('StarWars')
 sleep(2)
 driver.find_element(:id,'createCategory1').click
 sleep(3)
@@ -64,6 +64,43 @@ sleep(2)
 driver.find_element(:id,'createWord'+'MoviesTest').click
 sleep(2)
 
+driver.find_element(:id,'Category'+'StarWars').click
+sleep(2)
+driver.find_element(:id,'openEditCategory'+'StarWars').click
+sleep(2)
+driver.find_element(:id,'category4').clear
+driver.find_element(:id,'category4').send_keys('StarWarsTest')
+sleep(2)
+driver.find_element(:id,'updateCategory1').click
+driver.find_element(:id,'close1').click
+sleep(3)
+
+driver.find_element(:id,'newWord'+'StarWarsTest').clear
+driver.find_element(:id,'newWord'+'StarWarsTest').send_keys('Obi wan')
+sleep(2)
+driver.find_element(:id,'createWord'+'StarWarsTest').click
+sleep(2)
+driver.find_element(:id,'newWord'+'StarWarsTest').clear
+driver.find_element(:id,'newWord'+'StarWarsTest').send_keys('Anakin')
+sleep(2)
+driver.find_element(:id,'createWord'+'StarWarsTest').click
+sleep(5)
+driver.find_element(:id,'newWord'+'StarWarsTest').clear
+driver.find_element(:id,'newWord'+'StarWarsTest').send_keys('Joda')
+sleep(2)
+driver.find_element(:id,'createWord'+'StarWarsTest').click
+sleep(5)
+driver.find_element(:id,'newWord'+'StarWarsTest').clear
+driver.find_element(:id,'newWord'+'StarWarsTest').send_keys('Padme')
+sleep(2)
+driver.find_element(:id,'createWord'+'StarWarsTest').click
+sleep(5)
+driver.find_element(:id,'newWord'+'StarWarsTest').clear
+driver.find_element(:id,'newWord'+'StarWarsTest').send_keys('Palpatine')
+sleep(2)
+driver.find_element(:id,'createWord'+'StarWarsTest').click
+sleep(5)
+
 driver.find_element(:id,'Category'+'Video Games').click
 sleep(2)
 driver.find_element(:id,'openEditCategory'+'Video Games').click
@@ -86,25 +123,5 @@ sleep(2)
 driver.find_element(:id,'createWord'+'Video Games Test').click
 sleep(2)
 
-driver.find_element(:id,'Category'+'Star Wars').click
-sleep(2)
-driver.find_element(:id,'openEditCategory'+'Star Wars').click
-sleep(2)
-driver.find_element(:id,'category4').clear
-driver.find_element(:id,'category4').send_keys('Star Wars Test')
-sleep(2)
-driver.find_element(:id,'updateCategory1').click
-driver.find_element(:id,'close1').click
-sleep(3)
 
-driver.find_element(:id,'newWord'+'Star Wars Test').clear
-driver.find_element(:id,'newWord'+'Star Wars Test').send_keys('Obi wan')
-sleep(2)
-driver.find_element(:id,'createWord'+'Star Wars Test').click
-sleep(2)
-driver.find_element(:id,'newWord'+'Star Wars Test').clear
-driver.find_element(:id,'newWord'+'Star Wars Test').send_keys('Anakin')
-sleep(2)
-driver.find_element(:id,'createWord'+'Star Wars Test').click
-sleep(5)
 
