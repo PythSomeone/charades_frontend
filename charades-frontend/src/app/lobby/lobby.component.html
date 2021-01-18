@@ -19,7 +19,7 @@
     <div *ngFor="let player of players" fxLayoutGap="16px">
     <button id="{{'button'+1}}"fxFill color="accent" fxFill fxLayoutAlign="space-between center" mat-flat-button>
       {{player.name}}
-      <button id="{{'remove'+1}}"color="accent" fxFlexAlign="end" mat-flat-button  (click)="remove(player)">
+      <button id="{{'remove'+player.name}}"color="accent" fxFlexAlign="end" mat-flat-button  (click)="remove(player)">
         <mat-icon>delete</mat-icon>
       </button>
     </button>

@@ -11,7 +11,7 @@
     </div>
     <div fxLayoutAlign="center" fxLayout="column" fxLayoutGap="16px" *ngFor="let player of players">
       <br>
-      <button id="{{'addPoints'+1}}"color="primary" fxLayoutAlign="center" *ngIf="!(host.name === player.name)" mat-raised-button
+      <button id="{{'addPoints'+player.name}}"color="primary" fxLayoutAlign="center" *ngIf="!(host.name === player.name)" mat-raised-button
               (click)="addPoints(player)">
         <mat-label>{{player.name}}</mat-label>
       </button>

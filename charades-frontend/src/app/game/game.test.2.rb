@@ -14,36 +14,53 @@ sleep(3)
 
 
 driver.find_element(:id,'toCreateGame1').click
-sleep(2)
+sleep(1)
 driver.find_element(:id,'toLobbyAnimalsTest').click
-sleep(2)
+sleep(1)
 driver.find_element(:id,'toLobbyStarWarsTest').click
-sleep(2)
+sleep(1)
 driver.find_element(:id,'player1').send_keys('Michal')
-sleep(3)
+sleep(1)
 driver.find_element(:id,'addplayer1').click
-sleep(2)
+sleep(1)
 driver.find_element(:id,'player1').send_keys('Andrzej')
-sleep(2)
+sleep(1)
 driver.find_element(:id,'addplayer1').click
-sleep(2)
+sleep(1)
 driver.find_element(:id,'player1').send_keys('Jakub')
-sleep(2)
+sleep(1)
 driver.find_element(:id,'addplayer1').click
-sleep(2)
+sleep(1)
 driver.find_element(:id,'player1').send_keys('Damian')
-sleep(2)
+sleep(1)
 driver.find_element(:id,'addplayer1').click
-sleep(2)
+sleep(1)
 driver.find_element(:id,'removeDamian').click
-sleep(2)
+sleep(1)
 driver.find_element(:id,'start1').click
 sleep(2)
 
+driver.find_element(:id,'addPointsMichal').click
+sleep(2)
+driver.find_element(:id,'ready1').click
+sleep(2)
+driver.find_element(:id,'addPointsAndrzej').click
+sleep(2)
+driver.find_element(:id,'endGame1').click
+sleep(2)
+driver.find_element(:id,'End1').click
+sleep(5)
+
 wait=Selenium::WebDriver::Wait.new(:Timeout=>10)
 wait.until{
-  driver.find_element(:id,'button1').text
+  driver.find_element(:id,'backToProfile1').text
 }
 
+sleep(2)
+driver.find_element(:id,'backToProfile1').click
+sleep(5)
 
-
+wait=Selenium::WebDriver::Wait.new(:Timeout=>10)
+wait.until{
+  driver.find_element(:xpath,'/html/body/app-root/app-profile/html/body/div/p').text
+}

@@ -3,8 +3,6 @@ require 'selenium-webdriver'
 driver = Selenium::WebDriver.for :chrome
 
 driver.navigate.to 'http://localhost:4200/h'
-sleep(3)
-driver.find_element(:id,'mat-slide-toggle-1').click
 
 sleep(2)
 driver.find_element(:id,'openSignUp1').click
